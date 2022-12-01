@@ -2,7 +2,7 @@
   "name": "tree-sitter-prolog",
   "version": "1.1.0",
   "description": "Tree Sitter Prolog",
-  "main": "index.js",
+  "main": "bindings/node",
   "scripts": {
     "build": "tree-sitter generate && prebuildify --napi --electron-compat && prebuildify --napi --electron-compat --platform=windows",
     "install": "node-gyp-build",
@@ -12,7 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "nan": "^2.14.2",
-    "node-gyp-build": "^4.2.3"
+    "node-gyp": "^9.3.0",
+    "node-gyp-build": "^4.2.3",
+    "prebuildify": "^5.0.1",
+    "tree-sitter": "^0.20.1",
+    "tree-sitter-prolog": "^1.1.0"
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.15.3"

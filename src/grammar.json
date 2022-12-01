@@ -48,18 +48,240 @@
         }
       ]
     },
+    "pred_compound_term": {
+      "type": "PREC",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "name",
+            "content": {
+              "type": "SYMBOL",
+              "name": "predicate"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "open",
+            "content": {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "("
+              },
+              "named": true,
+              "value": "bracket"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "arguments",
+            "content": {
+              "type": "SYMBOL",
+              "name": "args"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "close",
+            "content": {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": ")"
+              },
+              "named": true,
+              "value": "bracket"
+            }
+          }
+        ]
+      }
+    },
+    "goal_compound_term": {
+      "type": "PREC",
+      "value": 4,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "name",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "goal"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "open",
+                "content": {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": "("
+                  },
+                  "named": true,
+                  "value": "bracket"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "arguments",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "args"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "close",
+                "content": {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": ")"
+                  },
+                  "named": true,
+                  "value": "bracket"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "_head_term": {
+      "type": "PREC",
+      "value": 2,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "predicate"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "pred_compound_term"
+          }
+        ]
+      }
+    },
+    "_goal_term": {
+      "type": "PREC",
+      "value": 3,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "goal_compound_term"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_non_arg_operator"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_operator_notation"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_list_notation"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_curly_bracketed_notation"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "goal"
+          }
+        ]
+      }
+    },
     "clause_term": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_term"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "end"
-        }
-      ]
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_head_term"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "end"
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "STRING",
+                          "value": ":-"
+                        },
+                        "named": true,
+                        "value": "operator"
+                      },
+                      {
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-->"
+                        },
+                        "named": true,
+                        "value": "operator"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "_goal_term"
+                        },
+                        {
+                          "type": "FIELD",
+                          "name": "close",
+                          "content": {
+                            "type": "STRING",
+                            "value": ","
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_goal_term"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     "_term": {
       "type": "PREC",
@@ -160,7 +382,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[\\n|\\r]*\\.\\s*\\n*"
+          "value": "[\\\\n|\\r]*\\.\\s*\\n*"
         },
         {
           "type": "PATTERN",
@@ -174,6 +396,10 @@
         {
           "type": "SYMBOL",
           "name": "number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "functor"
         },
         {
           "type": "SYMBOL",
@@ -2825,9 +3051,49 @@
       "type": "PATTERN",
       "value": "0[bB][01](_?[01])*|0[oO]?[0-7](_?[0-7])*|(0[dD])?\\d(_?\\d)*|0[xX][0-9a-fA-F](_?[0-9a-fA-F])*"
     },
+    "functor": {
+      "type": "PREC",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "atom"
+          },
+          {
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "STRING",
+              "value": "/"
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "number"
+          }
+        ]
+      }
+    },
     "atom": {
       "type": "PATTERN",
       "value": "[a-z][a-zA-Z0-9_]*"
+    },
+    "predicate": {
+      "type": "PREC",
+      "value": 2,
+      "content": {
+        "type": "SYMBOL",
+        "name": "atom"
+      }
+    },
+    "goal": {
+      "type": "PREC",
+      "value": 3,
+      "content": {
+        "type": "SYMBOL",
+        "name": "atom"
+      }
     },
     "quoted_atom": {
       "type": "TOKEN",
@@ -3363,6 +3629,7 @@
       "_prefix_non_associative"
     ]
   ],
+  "precedences": [],
   "externals": [],
   "inline": [],
   "supertypes": []

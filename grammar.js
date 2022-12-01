@@ -110,6 +110,8 @@ const ops = [
   '$'
 ];
 
+const builtins = [
+];
 
 module.exports = grammar({
   name: 'prolog',
@@ -155,16 +157,64 @@ module.exports = grammar({
     ),
 
 
-    clause_term: $ => seq(
-      $._term,
-      $.end
+       pred_compound_term: $ => prec(2, 
+	   seq(      field('name', $.predicate),
+      field('open', alias('(', $.bracket)),//$.open_ct,
+      field('arguments', $.args),
+      field('close', alias(')', $.bracket))//$.close_ct
     ),
+	     ),
+
+       goal_compound_term: $ => prec(4, choice(
+	   seq(      field('name', $.goal),
+      field('open', alias('(', $.bracket)),//$.open_ct,
+      field('arguments', $.args),
+      field('close', alias(')', $.bracket))//$.close_ct
+	      ))),
+	
+
+	    
+	  
+
+      _head_term: $ => prec(2, choice(
+      // Define Term
+      $.predicate,
+	$.pred_compound_term
+      )),
+      
+      _goal_term: $ => prec(3, choice(
+      // Define Term
+	  $.goal_compound_term,
+	        $._non_arg_operator, // Special case for ',' not being in arguments without ().
+      $._operator_notation,
+      $._list_notation,
+      $._curly_bracketed_notation,
+ 
+	  $.goal)),
+			  
+
+      clause_term: $ => 
+      prec(1,
+	      seq($._head_term,
+		  choice(	  $.end,
+		      seq(
+	   
+		  choice(
+		      alias(':-', $.operator),
+		      alias('-->', $.operator)
+
+		  ),	  
+		  repeat(seq($._goal_term,
+			    field('close', ','))),
+		  $._goal_term,
+			  $.end     )))),
+
 
     _term: $ => prec(1, choice(
       // Define Term
       $.atomic,
       $.variable,
-      $.compound_term,
+	$.compound_term,
       $.bracketed_term,
       $.dict
     )),
@@ -183,12 +233,13 @@ module.exports = grammar({
     ),
 
     end: $ => choice(
-      /[\n|\r]*\.\s*\n*/,
+      /[\\n|\r]*\.\s*\n*/,
       /[\n|\r]*\.\s*[\r\n]*/
     ),
 
     atomic: $ => choice(
-      $.number,
+	$.number,
+	$.functor,
       //$.negaltive_number,
       $.string,
       $.quoted_atom,
@@ -390,14 +441,26 @@ module.exports = grammar({
       token.immediate(':'),
       $._arg_term
     ),
-
+      
     number: $ => (
       /0[bB][01](_?[01])*|0[oO]?[0-7](_?[0-7])*|(0[dD])?\d(_?\d)*|0[xX][0-9a-fA-F](_?[0-9a-fA-F])*/
     ),
 
-    atom: $ => (
+      functor: $ => prec(2,seq(
+      $.atom,
+      token.immediate('/'),
+	  $.number
+      )),
+
+      atom: $ => (
       /[a-z][a-zA-Z0-9_]*/
     ),
+
+      predicate: $ => prec(2,$.atom),
+      
+      goal: $ => prec(3,$.atom),
+      
+
 
     quoted_atom: $ => token(seq('\'', /.*/, '\'')),
 
