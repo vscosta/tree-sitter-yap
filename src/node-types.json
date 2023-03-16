@@ -43,7 +43,19 @@
           "named": true
         },
         {
+          "type": "code",
+          "named": true
+        },
+        {
+          "type": "codes",
+          "named": true
+        },
+        {
           "type": "cut",
+          "named": true
+        },
+        {
+          "type": "float",
           "named": true
         },
         {
@@ -51,7 +63,7 @@
           "named": true
         },
         {
-          "type": "number",
+          "type": "integer",
           "named": true
         },
         {
@@ -252,6 +264,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "code",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "compound_term",
@@ -560,15 +577,11 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
           "type": "atom",
-          "named": true
-        },
-        {
-          "type": "number",
           "named": true
         }
       ]
@@ -869,11 +882,19 @@
     }
   },
   {
+    "type": "'",
+    "named": false
+  },
+  {
     "type": ",",
     "named": false
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": "0",
     "named": false
   },
   {
@@ -889,6 +910,10 @@
     "named": true
   },
   {
+    "type": "codes",
+    "named": true
+  },
+  {
     "type": "comment",
     "named": true
   },
@@ -901,7 +926,11 @@
     "named": true
   },
   {
-    "type": "number",
+    "type": "float",
+    "named": true
+  },
+  {
+    "type": "integer",
     "named": true
   },
   {
