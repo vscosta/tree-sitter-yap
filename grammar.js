@@ -238,9 +238,12 @@ module.exports = grammar({
     ),
 
     atomic: $ => choice(
-	$.number,
+      $.code,
+	$.integer,
+	$.float,
 	$.functor,
       //$.negaltive_number,
+      $.codes,
       $.string,
       $.quoted_atom,
       $.atom,
@@ -446,20 +449,54 @@ module.exports = grammar({
       token.immediate(':'),
       $._arg_term
     ),
-      
-    number: $ => (
-      /0[bB][01](_?[01])*|0[oO]?[0-7](_?[0-7])*|(0[dD])?\d(_?\d)*|0[xX][0-9a-fA-F](_?[0-9a-fA-F])*/
-    ),
+    integer: $ => token(choice(
+      seq(
+        choice('0x', '0X'),
+        repeat1(/_?[A-Fa-f0-9]+/),
+        optional(/[Ll]/)
+      ),
+      seq(
+        choice('0o', '0O'),
+        repeat1(/_?[0-7]+/),
+        optional(/[Ll]/)
+      ),
+      seq(
+        choice('0b', '0B'),
+        repeat1(/_?[0-1]+/),
+        optional(/[Ll]/)
+      ),
+        repeat1(/[0-9]+_?/)
+    )),
 
+    float: $ => {
+      const digits = repeat1(/[0-9]+_?/);
+      const exponent = seq(/[eE][\+-]?/, digits)
+
+      return token(seq(
+        choice(
+          seq(digits, '.', optional(digits), optional(exponent)),
+          seq(optional(digits), '.', digits, optional(exponent)),
+          seq(digits, exponent)
+        ),
+        optional(choice(/[Ll]/, /[jJ]/))
+      ))
+    }, 
+
+code: $ =>
+      seq(token('0'),
+		       token.immediate("\'"),
+		       token.immediate(/./)
+		      ),
+    
+      
       functor: $ => prec(2,seq(
       $.atom,
       token.immediate('/'),
-	  $.number
+	  /[0-9][0-9]?/
       )),
 
-      atom: $ => (
-      /[a-z][a-zA-Z0-9_]*/
-    ),
+      atom: $ => 
+	  /[a-z][a-zA-Z0-9_]*/ ,
 
       predicate: $ => prec(2,(choice($.atom,
 				     seq(($.atom,':',$.atom))))),
@@ -470,7 +507,9 @@ module.exports = grammar({
 
     quoted_atom: $ => token(seq('\'', /.*/, '\'')),
 
-    string: $ => token(seq('\"', /.*/, '\"')),
+    string: $ => token(seq('`', /.*/, '`')),
+
+    codes: $ => token(seq('\"', /.*/, '\"')),
 
     comment: $ => token(choice(
       seq('%', /.*/),

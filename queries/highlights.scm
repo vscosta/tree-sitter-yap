@@ -1,6 +1,8 @@
 ; highlights.scm
 
-(number) @constant.numeric
+(integer) @number
+(float) @number
+(code) @number
 
 (functor) @constant
 
@@ -9,6 +11,7 @@
 (quoted_atom) @string.special
 
 (string) @string
+(codes) @string
 
 (end) @constant.builtin
 
