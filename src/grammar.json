@@ -436,7 +436,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "functional_notation"
+            "name": "_functional_notation"
           },
           {
             "type": "SYMBOL",
@@ -465,7 +465,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "functional_notation"
+            "name": "_functional_notation"
           },
           {
             "type": "SYMBOL",
@@ -482,15 +482,23 @@
         ]
       }
     },
-    "functional_notation": {
+    "_functional_notation": {
       "type": "SEQ",
       "members": [
         {
           "type": "FIELD",
           "name": "name",
           "content": {
-            "type": "SYMBOL",
-            "name": "atom"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "atom"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           }
         },
         {
@@ -3083,8 +3091,22 @@
       "type": "PREC",
       "value": 2,
       "content": {
-        "type": "SYMBOL",
-        "name": "atom"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "atom"
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "atom"
+              }
+            ]
+          }
+        ]
       }
     },
     "goal": {

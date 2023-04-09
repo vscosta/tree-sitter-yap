@@ -252,7 +252,7 @@ module.exports = grammar({
       /[A-Z_][a-zA-Z0-9_]*/,
 
     compound_term: $ => prec(1, choice(
-      $.functional_notation,
+      $._functional_notation,
       $._non_arg_operator, // Special case for ',' not being in arguments without ().
       $._operator_notation,
       $._list_notation,
@@ -260,14 +260,19 @@ module.exports = grammar({
     )),
 
     _compound_term_arg: $ => prec(2, choice(
-      $.functional_notation,
+      $._functional_notation,
       $._operator_notation,
       $._list_notation,
       $._curly_bracketed_notation,
     )),
 
-    functional_notation: $ => seq(
-      field('name', $.atom),
+      _functional_notation: $ => seq(
+	  field('name',
+	  optional($.atom),
+	  seq(
+	      repeat(seq('.',
+			 token.immediate($.atom))))
+	       ),
       field('open', alias('(', $.bracket)),//$.open_ct,
       field('arguments', $.args),
       field('close', alias(')', $.bracket))//$.close_ct
@@ -305,8 +310,8 @@ module.exports = grammar({
 
     infix_operator: $ => { // xfx
 
-      const table = [
-        [prec, PREC.clause, ':-'], // xfx
+	const table = [
+            [prec, PREC.clause, ':-'], // xfx
         [prec, PREC.dcg, '-->'], // xfx
 
         [prec.right, PREC.list_sperator, '|'], // xfy
@@ -318,7 +323,7 @@ module.exports = grammar({
 
         [prec, PREC.colon_equals, ':='], // xfx
 
-        [prec, PREC.less_than, '<'], // xfx
+        [prec, PREC.less_than, '<'], // xfxchoice
         [prec, PREC.assign, '='], // xfx
         [prec, PREC.univ, '=..'], // xfx
         [prec, PREC.compund_equals, '=@='], // xfx
@@ -456,7 +461,8 @@ module.exports = grammar({
       /[a-z][a-zA-Z0-9_]*/
     ),
 
-      predicate: $ => prec(2,$.atom),
+      predicate: $ => prec(2,(choice($.atom,
+				     seq(($.atom,':',$.atom))))),
       
       goal: $ => prec(3,$.atom),
       

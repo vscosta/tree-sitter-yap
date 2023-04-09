@@ -1,6 +1,6 @@
 ; highlights.scm
 
-(number) @constant
+(number) @constant.numeric
 
 (functor) @constant
 
@@ -12,7 +12,7 @@
 
 (end) @constant.builtin
 
-
+(predicate) @function
 
 (bracket) @operator
 
@@ -30,4 +30,3 @@
 (operator) @operator
 
 
-(predicate) @attribute
