@@ -13,9 +13,11 @@
 (string) @string
 (codes) @string
 
-(end) @constant.builtin
+(eot) @constant.builtin
 
-(predicate) @function
+(predicate_definition) @function
+
+(call) @function.method
 
 (bracket) @operator
 
