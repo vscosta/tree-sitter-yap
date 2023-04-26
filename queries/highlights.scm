@@ -4,7 +4,10 @@
 (float) @number
 (code) @number
 
-(functor) @constant
+(head_atom) @function
+
+(call_atom) @function.call
+
 
 (comment) @comment
 
@@ -13,22 +16,16 @@
 (string) @string
 (codes) @string
 
-(eot) @constant.builtin
+(eot) @keyword
 
-(predicate) @function
-
-
-(call) @function.method
-
-(bracket) @operator
+(builtin) @constant.builtin
 
 (curly_bracket) @operator
 
-(cut) @function.builtin
-
+(cut) @function.built
 
 (variable) @variable.builtin
 
 (operator) @operator
 
-
+(ERROR) @error

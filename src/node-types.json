@@ -2,13 +2,24 @@
   {
     "type": "args",
     "named": true,
-    "fields": {},
+    "fields": {
+      "operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "atomic",
+          "type": "args",
           "named": true
         },
         {
@@ -16,109 +27,7 @@
           "named": true
         },
         {
-          "type": "compound_term",
-          "named": true
-        },
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "variable",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "atom",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "quoted_atom",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "atomic",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "atom",
-          "named": true
-        },
-        {
-          "type": "code",
-          "named": true
-        },
-        {
           "type": "codes",
-          "named": true
-        },
-        {
-          "type": "cut",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "functor",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "body_goal",
-    "named": true,
-    "fields": {
-      "infix": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "infix_operator",
-            "named": true
-          }
-        ]
-      },
-      "prefix": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "prefix_operator",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "call",
           "named": true
         },
         {
@@ -126,11 +35,35 @@
           "named": true
         },
         {
-          "type": "goal_compound_term",
+          "type": "cut",
+          "named": true
+        },
+        {
+          "type": "dict",
           "named": true
         },
         {
           "type": "list",
+          "named": true
+        },
+        {
+          "type": "method",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "quoted_atom",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "variable",
           "named": true
         }
       ]
@@ -139,13 +72,24 @@
   {
     "type": "bracketed_term",
     "named": true,
-    "fields": {},
+    "fields": {
+      "operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": false,
-      "required": true,
+      "multiple": true,
+      "required": false,
       "types": [
         {
-          "type": "atomic",
+          "type": "args",
           "named": true
         },
         {
@@ -153,11 +97,39 @@
           "named": true
         },
         {
-          "type": "compound_term",
+          "type": "codes",
+          "named": true
+        },
+        {
+          "type": "curly_bracket_term",
+          "named": true
+        },
+        {
+          "type": "cut",
           "named": true
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "method",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "quoted_atom",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -168,15 +140,24 @@
     }
   },
   {
-    "type": "call",
+    "type": "builtin",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "call_atom",
     "named": true,
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "atom",
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "quoted_atom",
           "named": true
         }
       ]
@@ -186,105 +167,6 @@
     "type": "code",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "compound_term",
-    "named": true,
-    "fields": {
-      "arguments": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "args",
-            "named": true
-          }
-        ]
-      },
-      "close": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "bracket",
-            "named": true
-          }
-        ]
-      },
-      "infix": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "infix_operator",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "method",
-            "named": true
-          }
-        ]
-      },
-      "open": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "bracket",
-            "named": true
-          }
-        ]
-      },
-      "prefix": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "prefix_operator",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "curly_bracket_term",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "conjunction",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "conjunction",
-          "named": true
-        },
-        {
-          "type": "disjunction",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "curly_bracket_term",
@@ -309,6 +191,16 @@
             "named": true
           }
         ]
+      },
+      "operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
       }
     },
     "children": {
@@ -316,7 +208,7 @@
       "required": false,
       "types": [
         {
-          "type": "atomic",
+          "type": "args",
           "named": true
         },
         {
@@ -324,11 +216,39 @@
           "named": true
         },
         {
-          "type": "compound_term",
+          "type": "codes",
+          "named": true
+        },
+        {
+          "type": "curly_bracket_term",
+          "named": true
+        },
+        {
+          "type": "cut",
           "named": true
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "method",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "quoted_atom",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -347,11 +267,11 @@
       "required": true,
       "types": [
         {
-          "type": "atom",
+          "type": "dict_value",
           "named": true
         },
         {
-          "type": "dict_value",
+          "type": "quoted_atom",
           "named": true
         },
         {
@@ -364,17 +284,24 @@
   {
     "type": "dict_value",
     "named": true,
-    "fields": {},
+    "fields": {
+      "operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "atom",
-          "named": true
-        },
-        {
-          "type": "atomic",
+          "type": "args",
           "named": true
         },
         {
@@ -382,7 +309,39 @@
           "named": true
         },
         {
-          "type": "compound_term",
+          "type": "codes",
+          "named": true
+        },
+        {
+          "type": "curly_bracket_term",
+          "named": true
+        },
+        {
+          "type": "cut",
+          "named": true
+        },
+        {
+          "type": "dict",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "method",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "quoted_atom",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -397,11 +356,57 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "atomic",
+          "type": "goal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "goal",
+    "named": true,
+    "fields": {
+      "goal": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "call_atom",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      },
+      "predicate": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "call_atom",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "args",
           "named": true
         },
         {
@@ -409,11 +414,39 @@
           "named": true
         },
         {
-          "type": "compound_term",
+          "type": "codes",
+          "named": true
+        },
+        {
+          "type": "curly_bracket_term",
+          "named": true
+        },
+        {
+          "type": "cut",
           "named": true
         },
         {
           "type": "dict",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "method",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "quoted_atom",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -424,135 +457,22 @@
     }
   },
   {
-    "type": "disjunction",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "body_goal",
-          "named": true
-        },
-        {
-          "type": "conjunction",
-          "named": true
-        },
-        {
-          "type": "disjunction",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "functor",
+    "type": "head_atom",
     "named": true,
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "atom",
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "quoted_atom",
           "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "goal_compound_term",
-    "named": true,
-    "fields": {
-      "arguments": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "args",
-            "named": true
-          }
-        ]
-      },
-      "call": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "call",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "infix_operator",
-    "named": true,
-    "fields": {
-      "left": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "atomic",
-            "named": true
-          },
-          {
-            "type": "bracketed_term",
-            "named": true
-          },
-          {
-            "type": "compound_term",
-            "named": true
-          },
-          {
-            "type": "dict",
-            "named": true
-          },
-          {
-            "type": "variable",
-            "named": true
-          }
-        ]
-      },
-      "operator": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "operator",
-            "named": true
-          }
-        ]
-      },
-      "right": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "atomic",
-            "named": true
-          },
-          {
-            "type": "bracketed_term",
-            "named": true
-          },
-          {
-            "type": "compound_term",
-            "named": true
-          },
-          {
-            "type": "dict",
-            "named": true
-          },
-          {
-            "type": "variable",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
@@ -561,7 +481,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "args",
@@ -573,13 +493,116 @@
   {
     "type": "method",
     "named": true,
+    "fields": {}
+  },
+  {
+    "type": "number",
+    "named": true,
     "fields": {},
     "children": {
       "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "atom",
+          "type": "code",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "predicate_definition",
+    "named": true,
+    "fields": {
+      "head": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "head_atom",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      },
+      "predicate": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "head_atom",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "args",
+          "named": true
+        },
+        {
+          "type": "bracketed_term",
+          "named": true
+        },
+        {
+          "type": "codes",
+          "named": true
+        },
+        {
+          "type": "curly_bracket_term",
+          "named": true
+        },
+        {
+          "type": "cut",
+          "named": true
+        },
+        {
+          "type": "dict",
+          "named": true
+        },
+        {
+          "type": "goal",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "method",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "quoted_atom",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -590,75 +613,11 @@
     }
   },
   {
-    "type": "module_prefix",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "atom",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "predicate",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "atom",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "predicate_definition",
-    "named": true,
-    "fields": {
-      "arguments": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "args",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "conjunction",
-          "named": true
-        },
-        {
-          "type": "module_prefix",
-          "named": true
-        },
-        {
-          "type": "predicate",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "prefix_operator",
     "named": true,
     "fields": {
       "operator": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
@@ -668,11 +627,19 @@
         ]
       },
       "right": {
-        "multiple": false,
-        "required": true,
+        "multiple": true,
+        "required": false,
         "types": [
           {
-            "type": "atomic",
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "args",
             "named": true
           },
           {
@@ -680,11 +647,43 @@
             "named": true
           },
           {
-            "type": "compound_term",
+            "type": "codes",
+            "named": true
+          },
+          {
+            "type": "curly_bracket_term",
+            "named": true
+          },
+          {
+            "type": "cut",
             "named": true
           },
           {
             "type": "dict",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "method",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "operator",
+            "named": true
+          },
+          {
+            "type": "quoted_atom",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -693,6 +692,60 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "args",
+          "named": true
+        },
+        {
+          "type": "bracketed_term",
+          "named": true
+        },
+        {
+          "type": "codes",
+          "named": true
+        },
+        {
+          "type": "curly_bracket_term",
+          "named": true
+        },
+        {
+          "type": "cut",
+          "named": true
+        },
+        {
+          "type": "dict",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "method",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "quoted_atom",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -703,6 +756,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
         {
           "type": "directive",
           "named": true
@@ -719,7 +776,7 @@
     }
   },
   {
-    "type": "'",
+    "type": "!",
     "named": false
   },
   {
@@ -731,6 +788,10 @@
     "named": false
   },
   {
+    "type": "*->",
+    "named": false
+  },
+  {
     "type": ",",
     "named": false
   },
@@ -739,11 +800,15 @@
     "named": false
   },
   {
-    "type": "/",
+    "type": "->",
     "named": false
   },
   {
-    "type": "0",
+    "type": ".",
+    "named": false
+  },
+  {
+    "type": "0'",
     "named": false
   },
   {
@@ -759,7 +824,83 @@
     "named": false
   },
   {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "=..",
+    "named": false
+  },
+  {
+    "type": "=:=",
+    "named": false
+  },
+  {
+    "type": "=<",
+    "named": false
+  },
+  {
+    "type": "==",
+    "named": false
+  },
+  {
+    "type": "=@=",
+    "named": false
+  },
+  {
+    "type": "=\\=",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": ">=",
+    "named": false
+  },
+  {
+    "type": "?-",
+    "named": false
+  },
+  {
+    "type": "@<",
+    "named": false
+  },
+  {
+    "type": "@=<",
+    "named": false
+  },
+  {
+    "type": "@>",
+    "named": false
+  },
+  {
+    "type": "@>=",
+    "named": false
+  },
+  {
     "type": "[",
+    "named": false
+  },
+  {
+    "type": "[]",
+    "named": false
+  },
+  {
+    "type": "\\+",
+    "named": false
+  },
+  {
+    "type": "\\=",
+    "named": false
+  },
+  {
+    "type": "\\==",
     "named": false
   },
   {
@@ -767,8 +908,8 @@
     "named": false
   },
   {
-    "type": "bracket",
-    "named": true
+    "type": "^",
+    "named": false
   },
   {
     "type": "codes",
@@ -816,6 +957,10 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {
