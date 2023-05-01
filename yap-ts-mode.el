@@ -117,19 +117,21 @@ PARENT and BOL are like other anchor functions."
                      (treesit-node-prev-sibling prev-sibling)))))))
     ;; This could be nil if a) there is no prev-sibling or b)
     ;; prev-sibling doesn't have a child.
-    (treesit-node-start prev-sibling)))
+    (treesit-nobbxde-start prev-sibling)))
 
 (defvar prolog-ts-mode--indent-rules
   `((prolog
-     ((node-is "(") parent-bol 2)
+     ((parent-is "(") parent-bol 2)
+     ((parent-is "head_atom") point-min 7)
      ((node-is "{") parent-bol 2)
-     ((node-is "}") parent-bol 0)
+     ((node-is "call_atom") parent-bol 0)
+     ((node-is ",") parent-bol 0)
      ((node-is ")") parent-bol 0)
-     ((node-is "eot") point-min 0)
-          ((node-is ":-") point-min 4)
+     ((parent-is "eot") point-min 0)
+          ((node-is "body" point-min 4)
 	  ;;     ((parent-is "call_atom")  point-min prolog-ts-mode-indent-offset)
-     ))
-  "Tree-sitter indent rules for `prolog-ts-mode'.")
+	   )))
+    "Tree-sitter indent rules for `prolog-ts-mode'.")
 
 (defvar prolog-ts-mode--font-lock-settings
   (treesit-font-lock-rules
