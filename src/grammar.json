@@ -182,8 +182,12 @@
               "value": "("
             },
             {
-              "type": "SYMBOL",
-              "name": "_body"
+              "type": "FIELD",
+              "name": "inner",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_body"
+              }
             },
             {
               "type": "STRING",
@@ -413,25 +417,21 @@
       }
     },
     "bracketed_term": {
-      "type": "PREC",
-      "value": -1200,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "("
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_scoped_term"
-          },
-          {
-            "type": "STRING",
-            "value": ")"
-          }
-        ]
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_scoped_term"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
     },
     "_scoped_term": {
       "type": "PREC_RIGHT",

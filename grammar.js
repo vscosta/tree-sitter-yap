@@ -19,6 +19,7 @@ module.exports = grammar({
 	[$.head_atom,$ ._atomic],
 	[$.call_atom, $._compound_term],
 	[$.head_atom,$ ._compound_term],
+	[$.body,$ ._term],
 	[$.goal,$ ._compound_term],
 	[$.goal,$ ._operator_notation],
 	[$.goal,$ ._functional_notation],
@@ -56,8 +57,9 @@ module.exports = grammar({
       	$._directive,
 
 	predicate_definition: $ =>
-
-	prec(-1200,seq($._head,optional(seq(choice(':-','-->'),$._body)))),
+	seq(
+	    $.head,
+	    optional($._body)),
 
 	_body: $ =>
 	choice(
@@ -70,10 +72,11 @@ module.exports = grammar({
 		       seq($._body,'->',$._body)),
 	    prec.right(-1050,
 		       seq($._body,'*->',$._body)),
-	    seq('(', $._body, ')'),
+	    seq('(',  field("inner", $._body), ')')) ,
 	    seq('{', $._body, '}'),
 	    $.goal
-	),
+    ),
+    
 	goal: $=>
 	choice(
 	    $._compound_goal,
@@ -83,21 +86,22 @@ module.exports = grammar({
 		  $.call_atom
 		 )     ),
 	
-	_head: $=>
-	choice(
-	    $._compound_head,
-	    $._operator_notation,
-	    field("head",
-		  $.head_atom
+head: $=>
+seq(
+    choice(
+	$._compound_head,
+	$._operator_notation,
+	$.head_atom
+    ),
+    ,optional(seq(choice(':-','-->')
 		 )
-	),
-	
+	     )
+),
 	call_atom: $  =>
 	choice($.builtin,$._atom),
 	head_atom: $  =>
 	choice($.builtin,$._atom),
 	builtin: $ =>
-
 	choice(
 
 	    "!",
@@ -911,9 +915,7 @@ module.exports = grammar({
 	)),
 
 	bracketed_term: $ =>
-	prec(-1200,
 	     seq('(', $._scoped_term, ')')
-	    )
 	     		    ,
 	_scoped_term: $=>
 	prec.right(

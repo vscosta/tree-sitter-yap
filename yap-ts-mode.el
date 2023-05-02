@@ -121,16 +121,9 @@ PARENT and BOL are like other anchor functions."
 
 (defvar prolog-ts-mode--indent-rules
   `((prolog
-     ((parent-is "(") parent-bol 2)
-     ((parent-is "head_atom") point-min 7)
-     ((node-is "{") parent-bol 2)
-     ((node-is "call_atom") parent-bol 0)
-     ((node-is ",") parent-bol 0)
-     ((node-is ")") parent-bol 0)
-     ((parent-is "eot") point-min 0)
-          ((node-is "body" point-min 4)
-	  ;;     ((parent-is "call_atom")  point-min prolog-ts-mode-indent-offset)
-	   )))
+     ((node-is "inner") parent-bol 2)
+     ((node-is "goal") parent-bol 4)
+     ))
     "Tree-sitter indent rules for `prolog-ts-mode'.")
 
 (defvar prolog-ts-mode--font-lock-settings
