@@ -101,8 +101,8 @@
                 "name": "_body"
               },
               {
-                "type": "STRING",
-                "value": ";"
+                "type": "SYMBOL",
+                "name": "semic"
               },
               {
                 "type": "SYMBOL",
@@ -143,8 +143,8 @@
                 "name": "_body"
               },
               {
-                "type": "STRING",
-                "value": "->"
+                "type": "SYMBOL",
+                "name": "rghtarrow"
               },
               {
                 "type": "SYMBOL",
@@ -164,8 +164,8 @@
                 "name": "_body"
               },
               {
-                "type": "STRING",
-                "value": "*->"
+                "type": "SYMBOL",
+                "name": "stararrow"
               },
               {
                 "type": "SYMBOL",
@@ -174,6 +174,35 @@
             ]
           }
         },
+        {
+          "type": "SYMBOL",
+          "name": "disj"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "goal"
+        }
+      ]
+    },
+    "semic": {
+      "type": "STRING",
+      "value": ";"
+    },
+    "rghtarrow": {
+      "type": "STRING",
+      "value": "->"
+    },
+    "stararrow": {
+      "type": "STRING",
+      "value": "*->"
+    },
+    "close_b": {
+      "type": "STRING",
+      "value": ")"
+    },
+    "disj": {
+      "type": "CHOICE",
+      "members": [
         {
           "type": "SEQ",
           "members": [
@@ -186,8 +215,8 @@
               "name": "_body"
             },
             {
-              "type": "STRING",
-              "value": ")"
+              "type": "SYMBOL",
+              "name": "close_b"
             }
           ]
         },
@@ -207,10 +236,6 @@
               "value": "}"
             }
           ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "goal"
         }
       ]
     },
@@ -380,6 +405,3098 @@
         {
           "type": "STRING",
           "value": "^"
+        },
+        {
+          "type": "STRING",
+          "value": "{}"
+        },
+        {
+          "type": "STRING",
+          "value": "abolish"
+        },
+        {
+          "type": "STRING",
+          "value": "abolish_all_tables"
+        },
+        {
+          "type": "STRING",
+          "value": "abolish_frozen_choice_points"
+        },
+        {
+          "type": "STRING",
+          "value": "abolish_module"
+        },
+        {
+          "type": "STRING",
+          "value": "abolish_table"
+        },
+        {
+          "type": "STRING",
+          "value": "abort"
+        },
+        {
+          "type": "STRING",
+          "value": "absf_trace"
+        },
+        {
+          "type": "STRING",
+          "value": "absf_trace_compogtnent"
+        },
+        {
+          "type": "STRING",
+          "value": "absolute_file_name"
+        },
+        {
+          "type": "STRING",
+          "value": "absolute_file_system_path"
+        },
+        {
+          "type": "STRING",
+          "value": "access"
+        },
+        {
+          "type": "STRING",
+          "value": "access_file"
+        },
+        {
+          "type": "STRING",
+          "value": "acyclic_term"
+        },
+        {
+          "type": "STRING",
+          "value": "add_import_module"
+        },
+        {
+          "type": "STRING",
+          "value": "add_to_array_element"
+        },
+        {
+          "type": "STRING",
+          "value": "add_to_path"
+        },
+        {
+          "type": "STRING",
+          "value": "alarm"
+        },
+        {
+          "type": "STRING",
+          "value": "all"
+        },
+        {
+          "type": "STRING",
+          "value": "all_attvars"
+        },
+        {
+          "type": "STRING",
+          "value": "always_prompt_user"
+        },
+        {
+          "type": "STRING",
+          "value": "append"
+        },
+        {
+          "type": "STRING",
+          "value": "append_args"
+        },
+        {
+          "type": "STRING",
+          "value": "arena_size"
+        },
+        {
+          "type": "STRING",
+          "value": "arg"
+        },
+        {
+          "type": "STRING",
+          "value": "array"
+        },
+        {
+          "type": "STRING",
+          "value": "array_element"
+        },
+        {
+          "type": "STRING",
+          "value": "assert"
+        },
+        {
+          "type": "STRING",
+          "value": "asserta"
+        },
+        {
+          "type": "STRING",
+          "value": "asserta_static"
+        },
+        {
+          "type": "STRING",
+          "value": "assert_in_program"
+        },
+        {
+          "type": "STRING",
+          "value": "assert_static"
+        },
+        {
+          "type": "STRING",
+          "value": "assertz"
+        },
+        {
+          "type": "STRING",
+          "value": "assertz_static"
+        },
+        {
+          "type": "STRING",
+          "value": "at_end_of_line"
+        },
+        {
+          "type": "STRING",
+          "value": "at_end_of_stream"
+        },
+        {
+          "type": "STRING",
+          "value": "at_end_of_stream_0"
+        },
+        {
+          "type": "STRING",
+          "value": "at_halt"
+        },
+        {
+          "type": "STRING",
+          "value": "atom"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_chars"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_codes"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_concat"
+        },
+        {
+          "type": "STRING",
+          "value": "_atomic"
+        },
+        {
+          "type": "STRING",
+          "value": "_atomic_concat"
+        },
+        {
+          "type": "STRING",
+          "value": "_atomic_length"
+        },
+        {
+          "type": "STRING",
+          "value": "_atomic_list_concat"
+        },
+        {
+          "type": "STRING",
+          "value": "_atomics_to_string"
+        },
+        {
+          "type": "STRING",
+          "value": "_atomic_to_string"
+        },
+        {
+          "type": "STRING",
+          "value": "_atomic_to_term"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_length"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_number"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_string"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_to_string"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_to_term"
+        },
+        {
+          "type": "STRING",
+          "value": "attvar"
+        },
+        {
+          "type": "STRING",
+          "value": "aux_preds"
+        },
+        {
+          "type": "STRING",
+          "value": "bagof"
+        },
+        {
+          "type": "STRING",
+          "value": "bb_delete"
+        },
+        {
+          "type": "STRING",
+          "value": "bb_get"
+        },
+        {
+          "type": "STRING",
+          "value": "bb_put"
+        },
+        {
+          "type": "STRING",
+          "value": "bb_update"
+        },
+        {
+          "type": "STRING",
+          "value": "between"
+        },
+        {
+          "type": "STRING",
+          "value": "b_getval"
+        },
+        {
+          "type": "STRING",
+          "value": "bind_attvar"
+        },
+        {
+          "type": "STRING",
+          "value": "break"
+        },
+        {
+          "type": "STRING",
+          "value": "b_setval"
+        },
+        {
+          "type": "STRING",
+          "value": "build_body"
+        },
+        {
+          "type": "STRING",
+          "value": "'C'"
+        },
+        {
+          "type": "STRING",
+          "value": "call"
+        },
+        {
+          "type": "STRING",
+          "value": "callable"
+        },
+        {
+          "type": "STRING",
+          "value": "call_cleanup"
+        },
+        {
+          "type": "STRING",
+          "value": "call_count"
+        },
+        {
+          "type": "STRING",
+          "value": "call_count_data"
+        },
+        {
+          "type": "STRING",
+          "value": "call_count_reset"
+        },
+        {
+          "type": "STRING",
+          "value": "call_in_mod"
+        },
+        {
+          "type": "STRING",
+          "value": "call_residue"
+        },
+        {
+          "type": "STRING",
+          "value": "call_residue_vars"
+        },
+        {
+          "type": "STRING",
+          "value": "call_shared_object_function"
+        },
+        {
+          "type": "STRING",
+          "value": "call_with_args"
+        },
+        {
+          "type": "STRING",
+          "value": "call_wo_mod"
+        },
+        {
+          "type": "STRING",
+          "value": "catch"
+        },
+        {
+          "type": "STRING",
+          "value": "cd"
+        },
+        {
+          "type": "STRING",
+          "value": "char_code"
+        },
+        {
+          "type": "STRING",
+          "value": "char_conversion"
+        },
+        {
+          "type": "STRING",
+          "value": "chars"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_alnum"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_alpha"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_ascii"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_cntrl"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_csym"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_csymf"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_digit"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_end_of_file"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_end_of_line"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_graph"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_lower"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_newline"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_paren"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_period"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_prolog_atom_start"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_prolog_identifier_continue"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_prolog_prolog_symbol"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_prolog_var_start"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_punct"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_quote"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_space"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_upper"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_white"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_xdigit"
+        },
+        {
+          "type": "STRING",
+          "value": "check_dbload_stream"
+        },
+        {
+          "type": "STRING",
+          "value": "checklist"
+        },
+        {
+          "type": "STRING",
+          "value": "checknodes"
+        },
+        {
+          "type": "STRING",
+          "value": "checknodes_list"
+        },
+        {
+          "type": "STRING",
+          "value": "clause"
+        },
+        {
+          "type": "STRING",
+          "value": "clause_property"
+        },
+        {
+          "type": "STRING",
+          "value": "close"
+        },
+        {
+          "type": "STRING",
+          "value": "close_shared_object"
+        },
+        {
+          "type": "STRING",
+          "value": "close_static_array"
+        },
+        {
+          "type": "STRING",
+          "value": "codes"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_alnum"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_alpha"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_ascii"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_cntrl"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_csym"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_csymf"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_digit"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_end_of_file"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_end_of_line"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_graph"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_lower"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_newline"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_paren"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_period"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_prolog_atom_start"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_prolog_identifier_continue"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_prolog_prolog_symbol"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_prolog_var_start"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_punct"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_quote"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_space"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_upper"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_white"
+        },
+        {
+          "type": "STRING",
+          "value": "code_type_xdigit"
+        },
+        {
+          "type": "STRING",
+          "value": "comma"
+        },
+        {
+          "type": "STRING",
+          "value": "comment_hook"
+        },
+        {
+          "type": "STRING",
+          "value": "commons_library"
+        },
+        {
+          "type": "STRING",
+          "value": "compare"
+        },
+        {
+          "type": "STRING",
+          "value": "compile"
+        },
+        {
+          "type": "STRING",
+          "value": "compile_clause"
+        },
+        {
+          "type": "STRING",
+          "value": "compile_clauses"
+        },
+        {
+          "type": "STRING",
+          "value": "compile_expressions"
+        },
+        {
+          "type": "STRING",
+          "value": "compile_predicates"
+        },
+        {
+          "type": "STRING",
+          "value": "compound"
+        },
+        {
+          "type": "STRING",
+          "value": "constraining_variables"
+        },
+        {
+          "type": "STRING",
+          "value": "consult"
+        },
+        {
+          "type": "STRING",
+          "value": "consult_depth"
+        },
+        {
+          "type": "STRING",
+          "value": "context_module"
+        },
+        {
+          "type": "STRING",
+          "value": "convlist"
+        },
+        {
+          "type": "STRING",
+          "value": "copy_term"
+        },
+        {
+          "type": "STRING",
+          "value": "copy_term_nat"
+        },
+        {
+          "type": "STRING",
+          "value": "create_mutable"
+        },
+        {
+          "type": "STRING",
+          "value": "create_prolog_flag"
+        },
+        {
+          "type": "STRING",
+          "value": "creep"
+        },
+        {
+          "type": "STRING",
+          "value": "creep_allowed"
+        },
+        {
+          "type": "STRING",
+          "value": "ctrace"
+        },
+        {
+          "type": "STRING",
+          "value": "current_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "current_char_conversion"
+        },
+        {
+          "type": "STRING",
+          "value": "current_choice_point"
+        },
+        {
+          "type": "STRING",
+          "value": "current_dollar_var"
+        },
+        {
+          "type": "STRING",
+          "value": "current_error"
+        },
+        {
+          "type": "STRING",
+          "value": "current_host"
+        },
+        {
+          "type": "STRING",
+          "value": "current_input"
+        },
+        {
+          "type": "STRING",
+          "value": "current_key"
+        },
+        {
+          "type": "STRING",
+          "value": "current_line_number"
+        },
+        {
+          "type": "STRING",
+          "value": "current_module"
+        },
+        {
+          "type": "STRING",
+          "value": "current_mutex"
+        },
+        {
+          "type": "STRING",
+          "value": "current_op"
+        },
+        {
+          "type": "STRING",
+          "value": "current_output"
+        },
+        {
+          "type": "STRING",
+          "value": "current_predicate"
+        },
+        {
+          "type": "STRING",
+          "value": "current_prolog_flag"
+        },
+        {
+          "type": "STRING",
+          "value": "current_reference_count"
+        },
+        {
+          "type": "STRING",
+          "value": "current_source_module"
+        },
+        {
+          "type": "STRING",
+          "value": "current_stream"
+        },
+        {
+          "type": "STRING",
+          "value": "current_thread"
+        },
+        {
+          "type": "STRING",
+          "value": "cut_at"
+        },
+        {
+          "type": "STRING",
+          "value": "'_cut_by'"
+        },
+        {
+          "type": "STRING",
+          "value": "cut_by"
+        },
+        {
+          "type": "STRING",
+          "value": "cut_to"
+        },
+        {
+          "type": "STRING",
+          "value": "cyclic_term"
+        },
+        {
+          "type": "STRING",
+          "value": "db_files"
+        },
+        {
+          "type": "STRING",
+          "value": "dbload"
+        },
+        {
+          "type": "STRING",
+          "value": "dbload_add_fact"
+        },
+        {
+          "type": "STRING",
+          "value": "dbload_add_facts"
+        },
+        {
+          "type": "STRING",
+          "value": "dbload_count"
+        },
+        {
+          "type": "STRING",
+          "value": "db_reference"
+        },
+        {
+          "type": "STRING",
+          "value": "dcg_extend"
+        },
+        {
+          "type": "STRING",
+          "value": "debug"
+        },
+        {
+          "type": "STRING",
+          "value": "debug_action_hook"
+        },
+        {
+          "type": "STRING",
+          "value": "debugging"
+        },
+        {
+          "type": "STRING",
+          "value": "decrease_reference_count"
+        },
+        {
+          "type": "STRING",
+          "value": "del_attr"
+        },
+        {
+          "type": "STRING",
+          "value": "del_attrs"
+        },
+        {
+          "type": "STRING",
+          "value": "delete_file"
+        },
+        {
+          "type": "STRING",
+          "value": "delete_import_module"
+        },
+        {
+          "type": "STRING",
+          "value": "depth_bound_call"
+        },
+        {
+          "type": "STRING",
+          "value": "det_atom_concat"
+        },
+        {
+          "type": "STRING",
+          "value": "dif"
+        },
+        {
+          "type": "STRING",
+          "value": "diff_list"
+        },
+        {
+          "type": "STRING",
+          "value": "digit_weight"
+        },
+        {
+          "type": "STRING",
+          "value": "directory_files"
+        },
+        {
+          "type": "STRING",
+          "value": "discontiguous"
+        },
+        {
+          "type": "STRING",
+          "value": "display"
+        },
+        {
+          "type": "STRING",
+          "value": "do_dbload"
+        },
+        {
+          "type": "STRING",
+          "value": "domain_error"
+        },
+        {
+          "type": "STRING",
+          "value": "do_not_compile_expressions"
+        },
+        {
+          "type": "STRING",
+          "value": "downcase_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "downcase_text_to_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "downcase_text_to_chars"
+        },
+        {
+          "type": "STRING",
+          "value": "downcase_text_to_codes"
+        },
+        {
+          "type": "STRING",
+          "value": "downcase_text_to_string"
+        },
+        {
+          "type": "STRING",
+          "value": "dum"
+        },
+        {
+          "type": "STRING",
+          "value": "dump_active_goals"
+        },
+        {
+          "type": "STRING",
+          "value": "duplicate_term"
+        },
+        {
+          "type": "STRING",
+          "value": "dynamic"
+        },
+        {
+          "type": "STRING",
+          "value": "dynamic_predicate"
+        },
+        {
+          "type": "STRING",
+          "value": "dynamic_update_array"
+        },
+        {
+          "type": "STRING",
+          "value": "element_types"
+        },
+        {
+          "type": "STRING",
+          "value": "ensure_loaded"
+        },
+        {
+          "type": "STRING",
+          "value": "enter_compiler"
+        },
+        {
+          "type": "STRING",
+          "value": "erase"
+        },
+        {
+          "type": "STRING",
+          "value": "eraseall"
+        },
+        {
+          "type": "STRING",
+          "value": "erased"
+        },
+        {
+          "type": "STRING",
+          "value": "error_handler"
+        },
+        {
+          "type": "STRING",
+          "value": "exclude"
+        },
+        {
+          "type": "STRING",
+          "value": "existence_error"
+        },
+        {
+          "type": "STRING",
+          "value": "exists"
+        },
+        {
+          "type": "STRING",
+          "value": "exists_directory"
+        },
+        {
+          "type": "STRING",
+          "value": "exists_file"
+        },
+        {
+          "type": "STRING",
+          "value": "exists_source"
+        },
+        {
+          "type": "STRING",
+          "value": "exodb_add_fact"
+        },
+        {
+          "type": "STRING",
+          "value": "exodb_add_facts"
+        },
+        {
+          "type": "STRING",
+          "value": "exo_files"
+        },
+        {
+          "type": "STRING",
+          "value": "expand_clause"
+        },
+        {
+          "type": "STRING",
+          "value": "expand_expr"
+        },
+        {
+          "type": "STRING",
+          "value": "expand_exprs"
+        },
+        {
+          "type": "STRING",
+          "value": "expand_file_name"
+        },
+        {
+          "type": "STRING",
+          "value": "expand_goal"
+        },
+        {
+          "type": "STRING",
+          "value": "expand_term"
+        },
+        {
+          "type": "STRING",
+          "value": "expects_dialect"
+        },
+        {
+          "type": "STRING",
+          "value": "export"
+        },
+        {
+          "type": "STRING",
+          "value": "export_from_prolog"
+        },
+        {
+          "type": "STRING",
+          "value": "export_list"
+        },
+        {
+          "type": "STRING",
+          "value": "export_resource"
+        },
+        {
+          "type": "STRING",
+          "value": "extensions_to_present_answer"
+        },
+        {
+          "type": "STRING",
+          "value": "fail"
+        },
+        {
+          "type": "STRING",
+          "value": "false"
+        },
+        {
+          "type": "STRING",
+          "value": "fast_get_for_int_vector"
+        },
+        {
+          "type": "STRING",
+          "value": "fast_set_for_int_vector"
+        },
+        {
+          "type": "STRING",
+          "value": "file_base_name"
+        },
+        {
+          "type": "STRING",
+          "value": "file_directory_name"
+        },
+        {
+          "type": "STRING",
+          "value": "fileerrors"
+        },
+        {
+          "type": "STRING",
+          "value": "file_exists"
+        },
+        {
+          "type": "STRING",
+          "value": "file_name_extension"
+        },
+        {
+          "type": "STRING",
+          "value": "file_size"
+        },
+        {
+          "type": "STRING",
+          "value": "findall"
+        },
+        {
+          "type": "STRING",
+          "value": "float"
+        },
+        {
+          "type": "STRING",
+          "value": "flush_output"
+        },
+        {
+          "type": "STRING",
+          "value": "foldl"
+        },
+        {
+          "type": "STRING",
+          "value": "foldl_"
+        },
+        {
+          "type": "STRING",
+          "value": "foldl2"
+        },
+        {
+          "type": "STRING",
+          "value": "foldl2_"
+        },
+        {
+          "type": "STRING",
+          "value": "foldl3"
+        },
+        {
+          "type": "STRING",
+          "value": "foldl3_"
+        },
+        {
+          "type": "STRING",
+          "value": "foldl4"
+        },
+        {
+          "type": "STRING",
+          "value": "foldl4_"
+        },
+        {
+          "type": "STRING",
+          "value": "forall"
+        },
+        {
+          "type": "STRING",
+          "value": "format"
+        },
+        {
+          "type": "STRING",
+          "value": "format_to_chars"
+        },
+        {
+          "type": "STRING",
+          "value": "free_att"
+        },
+        {
+          "type": "STRING",
+          "value": "free_variables_in_term"
+        },
+        {
+          "type": "STRING",
+          "value": "freeze"
+        },
+        {
+          "type": "STRING",
+          "value": "freeze_choice_point"
+        },
+        {
+          "type": "STRING",
+          "value": "frozen"
+        },
+        {
+          "type": "STRING",
+          "value": "fully_strip_module"
+        },
+        {
+          "type": "STRING",
+          "value": "functor"
+        },
+        {
+          "type": "STRING",
+          "value": "garbage_collect"
+        },
+        {
+          "type": "STRING",
+          "value": "garbage_collect_atoms"
+        },
+        {
+          "type": "STRING",
+          "value": "gated_call"
+        },
+        {
+          "type": "STRING",
+          "value": "gc"
+        },
+        {
+          "type": "STRING",
+          "value": "get"
+        },
+        {
+          "type": "STRING",
+          "value": "get0"
+        },
+        {
+          "type": "STRING",
+          "value": "get_all_swi_atts"
+        },
+        {
+          "type": "STRING",
+          "value": "get_att"
+        },
+        {
+          "type": "STRING",
+          "value": "get_attr"
+        },
+        {
+          "type": "STRING",
+          "value": "get_attrs"
+        },
+        {
+          "type": "STRING",
+          "value": "get_byte"
+        },
+        {
+          "type": "STRING",
+          "value": "get_char"
+        },
+        {
+          "type": "STRING",
+          "value": "get_code"
+        },
+        {
+          "type": "STRING",
+          "value": "getcwd"
+        },
+        {
+          "type": "STRING",
+          "value": "get_depth_limit"
+        },
+        {
+          "type": "STRING",
+          "value": "getenv"
+        },
+        {
+          "type": "STRING",
+          "value": "get_module"
+        },
+        {
+          "type": "STRING",
+          "value": "get_mutable"
+        },
+        {
+          "type": "STRING",
+          "value": "get_string_code"
+        },
+        {
+          "type": "STRING",
+          "value": "get_time"
+        },
+        {
+          "type": "STRING",
+          "value": "get_value"
+        },
+        {
+          "type": "STRING",
+          "value": "global_trie_statistics"
+        },
+        {
+          "type": "STRING",
+          "value": "goal_expansion"
+        },
+        {
+          "type": "STRING",
+          "value": "'_ground'"
+        },
+        {
+          "type": "STRING",
+          "value": "ground"
+        },
+        {
+          "type": "STRING",
+          "value": "ground_type"
+        },
+        {
+          "type": "STRING",
+          "value": "grow_heap"
+        },
+        {
+          "type": "STRING",
+          "value": "grow_stack"
+        },
+        {
+          "type": "STRING",
+          "value": "halt"
+        },
+        {
+          "type": "STRING",
+          "value": "handle_port"
+        },
+        {
+          "type": "STRING",
+          "value": "handle_priv_port"
+        },
+        {
+          "type": "STRING",
+          "value": "has_type"
+        },
+        {
+          "type": "STRING",
+          "value": "heap_space_info"
+        },
+        {
+          "type": "STRING",
+          "value": "hide"
+        },
+        {
+          "type": "STRING",
+          "value": "hide_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "hide_predicate"
+        },
+        {
+          "type": "STRING",
+          "value": "hostname_address"
+        },
+        {
+          "type": "STRING",
+          "value": "if"
+        },
+        {
+          "type": "STRING",
+          "value": "ignore"
+        },
+        {
+          "type": "STRING",
+          "value": "import_module"
+        },
+        {
+          "type": "STRING",
+          "value": "include"
+        },
+        {
+          "type": "STRING",
+          "value": "increase_reference_count"
+        },
+        {
+          "type": "STRING",
+          "value": "initialization"
+        },
+        {
+          "type": "STRING",
+          "value": "initialize_prolog"
+        },
+        {
+          "type": "STRING",
+          "value": "init_prolog"
+        },
+        {
+          "type": "STRING",
+          "value": "init_random_state"
+        },
+        {
+          "type": "STRING",
+          "value": "inline"
+        },
+        {
+          "type": "STRING",
+          "value": "instance"
+        },
+        {
+          "type": "STRING",
+          "value": "instance_property"
+        },
+        {
+          "type": "STRING",
+          "value": "instantiation_error"
+        },
+        {
+          "type": "STRING",
+          "value": "int_action"
+        },
+        {
+          "type": "STRING",
+          "value": "integer"
+        },
+        {
+          "type": "STRING",
+          "value": "is"
+        },
+        {
+          "type": "STRING",
+          "value": "is_absolute_file_name"
+        },
+        {
+          "type": "STRING",
+          "value": "is_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "is_boolean"
+        },
+        {
+          "type": "STRING",
+          "value": "is_bound"
+        },
+        {
+          "type": "STRING",
+          "value": "is_callable"
+        },
+        {
+          "type": "STRING",
+          "value": "is_cyclic_term"
+        },
+        {
+          "type": "STRING",
+          "value": "isinf"
+        },
+        {
+          "type": "STRING",
+          "value": "is_list"
+        },
+        {
+          "type": "STRING",
+          "value": "is_list_or_partial_list"
+        },
+        {
+          "type": "STRING",
+          "value": "is_mutable"
+        },
+        {
+          "type": "STRING",
+          "value": "isnan"
+        },
+        {
+          "type": "STRING",
+          "value": "is_nonvar"
+        },
+        {
+          "type": "STRING",
+          "value": "is_not"
+        },
+        {
+          "type": "STRING",
+          "value": "is_of_type"
+        },
+        {
+          "type": "STRING",
+          "value": "is_tabled"
+        },
+        {
+          "type": "STRING",
+          "value": "key_erased_statistics"
+        },
+        {
+          "type": "STRING",
+          "value": "keysort"
+        },
+        {
+          "type": "STRING",
+          "value": "key_statistics"
+        },
+        {
+          "type": "STRING",
+          "value": "leash"
+        },
+        {
+          "type": "STRING",
+          "value": "length"
+        },
+        {
+          "type": "STRING",
+          "value": "libraries_directories"
+        },
+        {
+          "type": "STRING",
+          "value": "line_count"
+        },
+        {
+          "type": "STRING",
+          "value": "list_directory"
+        },
+        {
+          "type": "STRING",
+          "value": "listing"
+        },
+        {
+          "type": "STRING",
+          "value": "live"
+        },
+        {
+          "type": "STRING",
+          "value": "live__"
+        },
+        {
+          "type": "STRING",
+          "value": "load_absolute_foreign_files"
+        },
+        {
+          "type": "STRING",
+          "value": "load_db"
+        },
+        {
+          "type": "STRING",
+          "value": "load_exofacts"
+        },
+        {
+          "type": "STRING",
+          "value": "load_facts"
+        },
+        {
+          "type": "STRING",
+          "value": "load_files"
+        },
+        {
+          "type": "STRING",
+          "value": "load_foreign_files"
+        },
+        {
+          "type": "STRING",
+          "value": "load_mega_clause"
+        },
+        {
+          "type": "STRING",
+          "value": "log_event"
+        },
+        {
+          "type": "STRING",
+          "value": "logsum"
+        },
+        {
+          "type": "STRING",
+          "value": "ls"
+        },
+        {
+          "type": "STRING",
+          "value": "ls_imports"
+        },
+        {
+          "type": "STRING",
+          "value": "make"
+        },
+        {
+          "type": "STRING",
+          "value": "make_directory"
+        },
+        {
+          "type": "STRING",
+          "value": "make_library_index"
+        },
+        {
+          "type": "STRING",
+          "value": "maplist"
+        },
+        {
+          "type": "STRING",
+          "value": "mapnodes"
+        },
+        {
+          "type": "STRING",
+          "value": "mapnodes_list"
+        },
+        {
+          "type": "STRING",
+          "value": "may_bind_to_type"
+        },
+        {
+          "type": "STRING",
+          "value": "message"
+        },
+        {
+          "type": "STRING",
+          "value": "message_queue_create"
+        },
+        {
+          "type": "STRING",
+          "value": "message_queue_destroy"
+        },
+        {
+          "type": "STRING",
+          "value": "message_queue_property"
+        },
+        {
+          "type": "STRING",
+          "value": "message_to_string"
+        },
+        {
+          "type": "STRING",
+          "value": "meta_predicate"
+        },
+        {
+          "type": "STRING",
+          "value": "mksys"
+        },
+        {
+          "type": "STRING",
+          "value": "mmapped_array"
+        },
+        {
+          "type": "STRING",
+          "value": "module"
+        },
+        {
+          "type": "STRING",
+          "value": "module_property"
+        },
+        {
+          "type": "STRING",
+          "value": "module_state"
+        },
+        {
+          "type": "STRING",
+          "value": "msort"
+        },
+        {
+          "type": "STRING",
+          "value": "mtrace"
+        },
+        {
+          "type": "STRING",
+          "value": "multifile"
+        },
+        {
+          "type": "STRING",
+          "value": "must_be"
+        },
+        {
+          "type": "STRING",
+          "value": "must_be_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "must_be_boolean"
+        },
+        {
+          "type": "STRING",
+          "value": "must_be_bound"
+        },
+        {
+          "type": "STRING",
+          "value": "must_be_callable"
+        },
+        {
+          "type": "STRING",
+          "value": "must_be_ground"
+        },
+        {
+          "type": "STRING",
+          "value": "must_be_instantiated"
+        },
+        {
+          "type": "STRING",
+          "value": "must_be_list"
+        },
+        {
+          "type": "STRING",
+          "value": "must_be_of_type"
+        },
+        {
+          "type": "STRING",
+          "value": "must_be_predicate_indicator"
+        },
+        {
+          "type": "STRING",
+          "value": "must_bind_to_type"
+        },
+        {
+          "type": "STRING",
+          "value": "mutex_create"
+        },
+        {
+          "type": "STRING",
+          "value": "mutex_property"
+        },
+        {
+          "type": "STRING",
+          "value": "mutex_unlock_all"
+        },
+        {
+          "type": "STRING",
+          "value": "name"
+        },
+        {
+          "type": "STRING",
+          "value": "nb_create"
+        },
+        {
+          "type": "STRING",
+          "value": "nb_current"
+        },
+        {
+          "type": "STRING",
+          "value": "nb_delete"
+        },
+        {
+          "type": "STRING",
+          "value": "nb_getval"
+        },
+        {
+          "type": "STRING",
+          "value": "nb_linkarg"
+        },
+        {
+          "type": "STRING",
+          "value": "nb_linkval"
+        },
+        {
+          "type": "STRING",
+          "value": "nb_setarg"
+        },
+        {
+          "type": "STRING",
+          "value": "nb_set_bit"
+        },
+        {
+          "type": "STRING",
+          "value": "nb_set_shared_arg"
+        },
+        {
+          "type": "STRING",
+          "value": "nb_set_shared_val"
+        },
+        {
+          "type": "STRING",
+          "value": "nb_setval"
+        },
+        {
+          "type": "STRING",
+          "value": "new_system_module"
+        },
+        {
+          "type": "STRING",
+          "value": "nl"
+        },
+        {
+          "type": "STRING",
+          "value": "nodebug"
+        },
+        {
+          "type": "STRING",
+          "value": "nofileerrors"
+        },
+        {
+          "type": "STRING",
+          "value": "nogc"
+        },
+        {
+          "type": "STRING",
+          "value": "non_det_atom_concat"
+        },
+        {
+          "type": "STRING",
+          "value": "non_ground"
+        },
+        {
+          "type": "STRING",
+          "value": "nonvar"
+        },
+        {
+          "type": "STRING",
+          "value": "no_source"
+        },
+        {
+          "type": "STRING",
+          "value": "nospy"
+        },
+        {
+          "type": "STRING",
+          "value": "nospyall"
+        },
+        {
+          "type": "STRING",
+          "value": "no_style_check"
+        },
+        {
+          "type": "STRING",
+          "value": "not"
+        },
+        {
+          "type": "STRING",
+          "value": "not_a_list"
+        },
+        {
+          "type": "STRING",
+          "value": "not_a_rational"
+        },
+        {
+          "type": "STRING",
+          "value": "notrace"
+        },
+        {
+          "type": "STRING",
+          "value": "nth_clause"
+        },
+        {
+          "type": "STRING",
+          "value": "nth_instance"
+        },
+        {
+          "type": "STRING",
+          "value": "number"
+        },
+        {
+          "type": "STRING",
+          "value": "number_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "number_chars"
+        },
+        {
+          "type": "STRING",
+          "value": "number_codes"
+        },
+        {
+          "type": "STRING",
+          "value": "number_string"
+        },
+        {
+          "type": "STRING",
+          "value": "numbervars"
+        },
+        {
+          "type": "STRING",
+          "value": "once"
+        },
+        {
+          "type": "STRING",
+          "value": "on_exception"
+        },
+        {
+          "type": "STRING",
+          "value": "on_signal"
+        },
+        {
+          "type": "STRING",
+          "value": "op"
+        },
+        {
+          "type": "STRING",
+          "value": "opaque"
+        },
+        {
+          "type": "STRING",
+          "value": "op_cases"
+        },
+        {
+          "type": "STRING",
+          "value": "opdec"
+        },
+        {
+          "type": "STRING",
+          "value": "open"
+        },
+        {
+          "type": "STRING",
+          "value": "open_mem_read_stream"
+        },
+        {
+          "type": "STRING",
+          "value": "open_mem_write_stream"
+        },
+        {
+          "type": "STRING",
+          "value": "open_pipe_stream"
+        },
+        {
+          "type": "STRING",
+          "value": "open_shared_object"
+        },
+        {
+          "type": "STRING",
+          "value": "opt_statistics"
+        },
+        {
+          "type": "STRING",
+          "value": "or_statistics"
+        },
+        {
+          "type": "STRING",
+          "value": "otherwise"
+        },
+        {
+          "type": "STRING",
+          "value": "parallel"
+        },
+        {
+          "type": "STRING",
+          "value": "parallel_findall"
+        },
+        {
+          "type": "STRING",
+          "value": "parallel_findfirst"
+        },
+        {
+          "type": "STRING",
+          "value": "parallel_once"
+        },
+        {
+          "type": "STRING",
+          "value": "partition"
+        },
+        {
+          "type": "STRING",
+          "value": "path"
+        },
+        {
+          "type": "STRING",
+          "value": "path_concat"
+        },
+        {
+          "type": "STRING",
+          "value": "peek"
+        },
+        {
+          "type": "STRING",
+          "value": "peek_byte"
+        },
+        {
+          "type": "STRING",
+          "value": "peek_char"
+        },
+        {
+          "type": "STRING",
+          "value": "peek_code"
+        },
+        {
+          "type": "STRING",
+          "value": "peek_mem_write_stream"
+        },
+        {
+          "type": "STRING",
+          "value": "permission_error"
+        },
+        {
+          "type": "STRING",
+          "value": "phrase"
+        },
+        {
+          "type": "STRING",
+          "value": "phrase_"
+        },
+        {
+          "type": "STRING",
+          "value": "plus"
+        },
+        {
+          "type": "STRING",
+          "value": "portray_clause"
+        },
+        {
+          "type": "STRING",
+          "value": "predicate_erased_statistics"
+        },
+        {
+          "type": "STRING",
+          "value": "predicate_property"
+        },
+        {
+          "type": "STRING",
+          "value": "predicate_statistics"
+        },
+        {
+          "type": "STRING",
+          "value": "predmerge"
+        },
+        {
+          "type": "STRING",
+          "value": "pred_name"
+        },
+        {
+          "type": "STRING",
+          "value": "predsort"
+        },
+        {
+          "type": "STRING",
+          "value": "primitive"
+        },
+        {
+          "type": "STRING",
+          "value": "print"
+        },
+        {
+          "type": "STRING",
+          "value": "print_exception"
+        },
+        {
+          "type": "STRING",
+          "value": "print_message"
+        },
+        {
+          "type": "STRING",
+          "value": "print_message_lines"
+        },
+        {
+          "type": "STRING",
+          "value": "private"
+        },
+        {
+          "type": "STRING",
+          "value": "procedure"
+        },
+        {
+          "type": "STRING",
+          "value": "profalt"
+        },
+        {
+          "type": "STRING",
+          "value": "profend"
+        },
+        {
+          "type": "STRING",
+          "value": "profile_data"
+        },
+        {
+          "type": "STRING",
+          "value": "profile_reset"
+        },
+        {
+          "type": "STRING",
+          "value": "profinit"
+        },
+        {
+          "type": "STRING",
+          "value": "profoff"
+        },
+        {
+          "type": "STRING",
+          "value": "profon"
+        },
+        {
+          "type": "STRING",
+          "value": "prolog"
+        },
+        {
+          "type": "STRING",
+          "value": "prolog_current_frame"
+        },
+        {
+          "type": "STRING",
+          "value": "prolog_file_name"
+        },
+        {
+          "type": "STRING",
+          "value": "prolog_file_type"
+        },
+        {
+          "type": "STRING",
+          "value": "prolog_flag"
+        },
+        {
+          "type": "STRING",
+          "value": "prolog_flag_property"
+        },
+        {
+          "type": "STRING",
+          "value": "prolog_initialization"
+        },
+        {
+          "type": "STRING",
+          "value": "prolog_library"
+        },
+        {
+          "type": "STRING",
+          "value": "prolog_load_context"
+        },
+        {
+          "type": "STRING",
+          "value": "prolog_to_os_filename"
+        },
+        {
+          "type": "STRING",
+          "value": "prompt"
+        },
+        {
+          "type": "STRING",
+          "value": "prompt1"
+        },
+        {
+          "type": "STRING",
+          "value": "protected_exodb_add_fact"
+        },
+        {
+          "type": "STRING",
+          "value": "put"
+        },
+        {
+          "type": "STRING",
+          "value": "put_att"
+        },
+        {
+          "type": "STRING",
+          "value": "put_attr"
+        },
+        {
+          "type": "STRING",
+          "value": "put_attrs"
+        },
+        {
+          "type": "STRING",
+          "value": "put_byte"
+        },
+        {
+          "type": "STRING",
+          "value": "put_char"
+        },
+        {
+          "type": "STRING",
+          "value": "put_char1"
+        },
+        {
+          "type": "STRING",
+          "value": "put_code"
+        },
+        {
+          "type": "STRING",
+          "value": "putenv"
+        },
+        {
+          "type": "STRING",
+          "value": "pwd"
+        },
+        {
+          "type": "STRING",
+          "value": "qend_program"
+        },
+        {
+          "type": "STRING",
+          "value": "qload_file"
+        },
+        {
+          "type": "STRING",
+          "value": "qload_module"
+        },
+        {
+          "type": "STRING",
+          "value": "qpack_clean_up_to_disjunction"
+        },
+        {
+          "type": "STRING",
+          "value": "qsave_file"
+        },
+        {
+          "type": "STRING",
+          "value": "qsave_module"
+        },
+        {
+          "type": "STRING",
+          "value": "qsave_program"
+        },
+        {
+          "type": "STRING",
+          "value": "query_to_answer"
+        },
+        {
+          "type": "STRING",
+          "value": "raise_exception"
+        },
+        {
+          "type": "STRING",
+          "value": "rational"
+        },
+        {
+          "type": "STRING",
+          "value": "rational_term_to_forest"
+        },
+        {
+          "type": "STRING",
+          "value": "rational_term_to_tree"
+        },
+        {
+          "type": "STRING",
+          "value": "read"
+        },
+        {
+          "type": "STRING",
+          "value": "read_clause"
+        },
+        {
+          "type": "STRING",
+          "value": "read_from_chars"
+        },
+        {
+          "type": "STRING",
+          "value": "read_sig"
+        },
+        {
+          "type": "STRING",
+          "value": "read_term"
+        },
+        {
+          "type": "STRING",
+          "value": "read_term_from_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "read_term_from__atomic"
+        },
+        {
+          "type": "STRING",
+          "value": "read_term_from_chars"
+        },
+        {
+          "type": "STRING",
+          "value": "read_term_from_codes"
+        },
+        {
+          "type": "STRING",
+          "value": "read_term_from_string"
+        },
+        {
+          "type": "STRING",
+          "value": "reconsult"
+        },
+        {
+          "type": "STRING",
+          "value": "recorda"
+        },
+        {
+          "type": "STRING",
+          "value": "recorda_at"
+        },
+        {
+          "type": "STRING",
+          "value": "recordaifnot"
+        },
+        {
+          "type": "STRING",
+          "value": "recorded"
+        },
+        {
+          "type": "STRING",
+          "value": "recordz"
+        },
+        {
+          "type": "STRING",
+          "value": "recordz_at"
+        },
+        {
+          "type": "STRING",
+          "value": "recordzifnot"
+        },
+        {
+          "type": "STRING",
+          "value": "release_random_state"
+        },
+        {
+          "type": "STRING",
+          "value": "remove_from_path"
+        },
+        {
+          "type": "STRING",
+          "value": "rename"
+        },
+        {
+          "type": "STRING",
+          "value": "repeat"
+        },
+        {
+          "type": "STRING",
+          "value": "representation_error"
+        },
+        {
+          "type": "STRING",
+          "value": "reset_static_array"
+        },
+        {
+          "type": "STRING",
+          "value": "reset_total_choicepoints"
+        },
+        {
+          "type": "STRING",
+          "value": "resize_static_array"
+        },
+        {
+          "type": "STRING",
+          "value": "restore"
+        },
+        {
+          "type": "STRING",
+          "value": "retract"
+        },
+        {
+          "type": "STRING",
+          "value": "retractall"
+        },
+        {
+          "type": "STRING",
+          "value": "rm_att"
+        },
+        {
+          "type": "STRING",
+          "value": "rmdir"
+        },
+        {
+          "type": "STRING",
+          "value": "s"
+        },
+        {
+          "type": "STRING",
+          "value": "same_file"
+        },
+        {
+          "type": "STRING",
+          "value": "save_program"
+        },
+        {
+          "type": "STRING",
+          "value": "scanl"
+        },
+        {
+          "type": "STRING",
+          "value": "scanl_"
+        },
+        {
+          "type": "STRING",
+          "value": "scan_to_list"
+        },
+        {
+          "type": "STRING",
+          "value": "see"
+        },
+        {
+          "type": "STRING",
+          "value": "seeing"
+        },
+        {
+          "type": "STRING",
+          "value": "seen"
+        },
+        {
+          "type": "STRING",
+          "value": "selectlist"
+        },
+        {
+          "type": "STRING",
+          "value": "selectlists"
+        },
+        {
+          "type": "STRING",
+          "value": "setarg"
+        },
+        {
+          "type": "STRING",
+          "value": "set_base_module"
+        },
+        {
+          "type": "STRING",
+          "value": "setenv"
+        },
+        {
+          "type": "STRING",
+          "value": "set_error"
+        },
+        {
+          "type": "STRING",
+          "value": "set_input"
+        },
+        {
+          "type": "STRING",
+          "value": "set_module_property"
+        },
+        {
+          "type": "STRING",
+          "value": "setof"
+        },
+        {
+          "type": "STRING",
+          "value": "set_output"
+        },
+        {
+          "type": "STRING",
+          "value": "set_prolog_flag"
+        },
+        {
+          "type": "STRING",
+          "value": "set_random_state"
+        },
+        {
+          "type": "STRING",
+          "value": "set_source_module"
+        },
+        {
+          "type": "STRING",
+          "value": "set_stream"
+        },
+        {
+          "type": "STRING",
+          "value": "set_stream_position"
+        },
+        {
+          "type": "STRING",
+          "value": "setup_call_catcher_cleanup"
+        },
+        {
+          "type": "STRING",
+          "value": "setup_call_cleanup"
+        },
+        {
+          "type": "STRING",
+          "value": "set_value"
+        },
+        {
+          "type": "STRING",
+          "value": "sformat"
+        },
+        {
+          "type": "STRING",
+          "value": "sh"
+        },
+        {
+          "type": "STRING",
+          "value": "show_all_local_tables"
+        },
+        {
+          "type": "STRING",
+          "value": "show_all_tables"
+        },
+        {
+          "type": "STRING",
+          "value": "show_global_trie"
+        },
+        {
+          "type": "STRING",
+          "value": "show_low_level_trace"
+        },
+        {
+          "type": "STRING",
+          "value": "showprofres"
+        },
+        {
+          "type": "STRING",
+          "value": "show_table"
+        },
+        {
+          "type": "STRING",
+          "value": "show_tabled_predicates"
+        },
+        {
+          "type": "STRING",
+          "value": "simple"
+        },
+        {
+          "type": "STRING",
+          "value": "skip"
+        },
+        {
+          "type": "STRING",
+          "value": "skip_list"
+        },
+        {
+          "type": "STRING",
+          "value": "sleep"
+        },
+        {
+          "type": "STRING",
+          "value": "socket"
+        },
+        {
+          "type": "STRING",
+          "value": "socket_accept"
+        },
+        {
+          "type": "STRING",
+          "value": "socket_bind"
+        },
+        {
+          "type": "STRING",
+          "value": "socket_close"
+        },
+        {
+          "type": "STRING",
+          "value": "socket_connect"
+        },
+        {
+          "type": "STRING",
+          "value": "socket_listen"
+        },
+        {
+          "type": "STRING",
+          "value": "sort"
+        },
+        {
+          "type": "STRING",
+          "value": "sort2"
+        },
+        {
+          "type": "STRING",
+          "value": "source"
+        },
+        {
+          "type": "STRING",
+          "value": "source_file"
+        },
+        {
+          "type": "STRING",
+          "value": "source_location"
+        },
+        {
+          "type": "STRING",
+          "value": "source_mode"
+        },
+        {
+          "type": "STRING",
+          "value": "source_module"
+        },
+        {
+          "type": "STRING",
+          "value": "split_path_file"
+        },
+        {
+          "type": "STRING",
+          "value": "spy"
+        },
+        {
+          "type": "STRING",
+          "value": "srandom"
+        },
+        {
+          "type": "STRING",
+          "value": "start_low_level_trace"
+        },
+        {
+          "type": "STRING",
+          "value": "stash_predicate"
+        },
+        {
+          "type": "STRING",
+          "value": "static_array"
+        },
+        {
+          "type": "STRING",
+          "value": "static_array_location"
+        },
+        {
+          "type": "STRING",
+          "value": "static_array_properties"
+        },
+        {
+          "type": "STRING",
+          "value": "static_array_to_term"
+        },
+        {
+          "type": "STRING",
+          "value": "statistics"
+        },
+        {
+          "type": "STRING",
+          "value": "stop_low_level_trace"
+        },
+        {
+          "type": "STRING",
+          "value": "stream_position"
+        },
+        {
+          "type": "STRING",
+          "value": "stream_position_data"
+        },
+        {
+          "type": "STRING",
+          "value": "stream_property"
+        },
+        {
+          "type": "STRING",
+          "value": "stream_select"
+        },
+        {
+          "type": "STRING",
+          "value": "string"
+        },
+        {
+          "type": "STRING",
+          "value": "string_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "string_chars"
+        },
+        {
+          "type": "STRING",
+          "value": "string_code"
+        },
+        {
+          "type": "STRING",
+          "value": "string_codes"
+        },
+        {
+          "type": "STRING",
+          "value": "string_concat"
+        },
+        {
+          "type": "STRING",
+          "value": "string_length"
+        },
+        {
+          "type": "STRING",
+          "value": "string_number"
+        },
+        {
+          "type": "STRING",
+          "value": "string_to_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "string_to__atomic"
+        },
+        {
+          "type": "STRING",
+          "value": "string_to_list"
+        },
+        {
+          "type": "STRING",
+          "value": "string_to_term"
+        },
+        {
+          "type": "STRING",
+          "value": "strip_module"
+        },
+        {
+          "type": "STRING",
+          "value": "style_check"
+        },
+        {
+          "type": "STRING",
+          "value": "sub_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "sub_string"
+        },
+        {
+          "type": "STRING",
+          "value": "subsumes_term"
+        },
+        {
+          "type": "STRING",
+          "value": "sub_term"
+        },
+        {
+          "type": "STRING",
+          "value": "sub_text"
+        },
+        {
+          "type": "STRING",
+          "value": "succ"
+        },
+        {
+          "type": "STRING",
+          "value": "sumlist"
+        },
+        {
+          "type": "STRING",
+          "value": "sumnodes"
+        },
+        {
+          "type": "STRING",
+          "value": "sumnodes_body"
+        },
+        {
+          "type": "STRING",
+          "value": "sys_debug"
+        },
+        {
+          "type": "STRING",
+          "value": "system"
+        },
+        {
+          "type": "STRING",
+          "value": "system_library"
+        },
+        {
+          "type": "STRING",
+          "value": "system_module"
+        },
+        {
+          "type": "STRING",
+          "value": "system_module_"
+        },
+        {
+          "type": "STRING",
+          "value": "system_predicate"
+        },
+        {
+          "type": "STRING",
+          "value": "tab"
+        },
+        {
+          "type": "STRING",
+          "value": "table"
+        },
+        {
+          "type": "STRING",
+          "value": "table_statistics"
+        },
+        {
+          "type": "STRING",
+          "value": "tabling_mode"
+        },
+        {
+          "type": "STRING",
+          "value": "tabling_statistics"
+        },
+        {
+          "type": "STRING",
+          "value": "t_body"
+        },
+        {
+          "type": "STRING",
+          "value": "tell"
+        },
+        {
+          "type": "STRING",
+          "value": "telling"
+        },
+        {
+          "type": "STRING",
+          "value": "term_attterms"
+        },
+        {
+          "type": "STRING",
+          "value": "term_attvars"
+        },
+        {
+          "type": "STRING",
+          "value": "term_factorized"
+        },
+        {
+          "type": "STRING",
+          "value": "term_hash"
+        },
+        {
+          "type": "STRING",
+          "value": "term_string"
+        },
+        {
+          "type": "STRING",
+          "value": "term_to_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "term_to_codes"
+        },
+        {
+          "type": "STRING",
+          "value": "term_to_string"
+        },
+        {
+          "type": "STRING",
+          "value": "term_variable_occurrences"
+        },
+        {
+          "type": "STRING",
+          "value": "term_variables"
+        },
+        {
+          "type": "STRING",
+          "value": "text"
+        },
+        {
+          "type": "STRING",
+          "value": "t_head"
+        },
+        {
+          "type": "STRING",
+          "value": "t_hgoal"
+        },
+        {
+          "type": "STRING",
+          "value": "t_hlist"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_at_exit"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_cancel"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_create"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_default"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_defaults"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_detach"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_exit"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_get_message"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_join"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_local"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_peek_message"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_property"
+        },
+        {
+          "type": "STRING",
+          "value": "threads"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_self"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_send_message"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_set_default"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_set_defaults"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_signal"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_sleep"
+        },
+        {
+          "type": "STRING",
+          "value": "thread_statistics"
+        },
+        {
+          "type": "STRING",
+          "value": "throw"
+        },
+        {
+          "type": "STRING",
+          "value": "throw_error"
+        },
+        {
+          "type": "STRING",
+          "value": "throw_file_error"
+        },
+        {
+          "type": "STRING",
+          "value": "time"
+        },
+        {
+          "type": "STRING",
+          "value": "time_file"
+        },
+        {
+          "type": "STRING",
+          "value": "time_file64"
+        },
+        {
+          "type": "STRING",
+          "value": "told"
+        },
+        {
+          "type": "STRING",
+          "value": "tolower"
+        },
+        {
+          "type": "STRING",
+          "value": "total_choicepoints"
+        },
+        {
+          "type": "STRING",
+          "value": "total_erased"
+        },
+        {
+          "type": "STRING",
+          "value": "toupper"
+        },
+        {
+          "type": "STRING",
+          "value": "trace"
+        },
+        {
+          "type": "STRING",
+          "value": "trace_error"
+        },
+        {
+          "type": "STRING",
+          "value": "trace_goal"
+        },
+        {
+          "type": "STRING",
+          "value": "trace_goal_"
+        },
+        {
+          "type": "STRING",
+          "value": "true"
+        },
+        {
+          "type": "STRING",
+          "value": "true_file_name"
+        },
+        {
+          "type": "STRING",
+          "value": "tthread_peek_message"
+        },
+        {
+          "type": "STRING",
+          "value": "t_tidy"
+        },
+        {
+          "type": "STRING",
+          "value": "ttyget"
+        },
+        {
+          "type": "STRING",
+          "value": "ttyget0"
+        },
+        {
+          "type": "STRING",
+          "value": "ttynl"
+        },
+        {
+          "type": "STRING",
+          "value": "ttyput"
+        },
+        {
+          "type": "STRING",
+          "value": "ttyskip"
+        },
+        {
+          "type": "STRING",
+          "value": "type_error"
+        },
+        {
+          "type": "STRING",
+          "value": "udi"
+        },
+        {
+          "type": "STRING",
+          "value": "unhide_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "unify_with_occurs_check"
+        },
+        {
+          "type": "STRING",
+          "value": "unix"
+        },
+        {
+          "type": "STRING",
+          "value": "unknown"
+        },
+        {
+          "type": "STRING",
+          "value": "unload_file"
+        },
+        {
+          "type": "STRING",
+          "value": "unload_module"
+        },
+        {
+          "type": "STRING",
+          "value": "unnumbervars"
+        },
+        {
+          "type": "STRING",
+          "value": "upcase_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "upcase_text_to_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "upcase_text_to_chars"
+        },
+        {
+          "type": "STRING",
+          "value": "upcase_text_to_codes"
+        },
+        {
+          "type": "STRING",
+          "value": "upcase_text_to_string"
+        },
+        {
+          "type": "STRING",
+          "value": "update_array"
+        },
+        {
+          "type": "STRING",
+          "value": "update_mutable"
+        },
+        {
+          "type": "STRING",
+          "value": "update_whole_array"
+        },
+        {
+          "type": "STRING",
+          "value": "use_module"
+        },
+        {
+          "type": "STRING",
+          "value": "user_defined_directive"
+        },
+        {
+          "type": "STRING",
+          "value": "use_system_module"
+        },
+        {
+          "type": "STRING",
+          "value": "var"
+        },
+        {
+          "type": "STRING",
+          "value": "variables_in_any_term"
+        },
+        {
+          "type": "STRING",
+          "value": "variables_in_both_terms"
+        },
+        {
+          "type": "STRING",
+          "value": "variables_in_term"
+        },
+        {
+          "type": "STRING",
+          "value": "varnumbers"
+        },
+        {
+          "type": "STRING",
+          "value": "version"
+        },
+        {
+          "type": "STRING",
+          "value": "virtual_alarm"
+        },
+        {
+          "type": "STRING",
+          "value": "volatile"
+        },
+        {
+          "type": "STRING",
+          "value": "vsc_go"
+        },
+        {
+          "type": "STRING",
+          "value": "vsc_wait"
+        },
+        {
+          "type": "STRING",
+          "value": "wait"
+        },
+        {
+          "type": "STRING",
+          "value": "wake_choice_point"
+        },
+        {
+          "type": "STRING",
+          "value": "watch_goal"
+        },
+        {
+          "type": "STRING",
+          "value": "when"
+        },
+        {
+          "type": "STRING",
+          "value": "with_mutex"
+        },
+        {
+          "type": "STRING",
+          "value": "with_output_to"
+        },
+        {
+          "type": "STRING",
+          "value": "working_directory"
+        },
+        {
+          "type": "STRING",
+          "value": "write"
+        },
+        {
+          "type": "STRING",
+          "value": "write_canonical"
+        },
+        {
+          "type": "STRING",
+          "value": "write_depth"
+        },
+        {
+          "type": "STRING",
+          "value": "writeln"
+        },
+        {
+          "type": "STRING",
+          "value": "writeq"
+        },
+        {
+          "type": "STRING",
+          "value": "write_term"
+        },
+        {
+          "type": "STRING",
+          "value": "yap_flag"
         }
       ]
     },
@@ -427,8 +3544,8 @@
             "name": "_scoped_term"
           },
           {
-            "type": "STRING",
-            "value": ")"
+            "type": "SYMBOL",
+            "name": "close_b"
           }
         ]
       }
@@ -492,8 +3609,8 @@
                   "name": "_scoped_term"
                 },
                 {
-                  "type": "STRING",
-                  "value": ";"
+                  "type": "SYMBOL",
+                  "name": "semic"
                 },
                 {
                   "type": "SYMBOL",
@@ -605,9 +3722,30 @@
       "type": "PATTERN",
       "value": "[A-Z_][a-zA-Z0-9_]*"
     },
+    "functor": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_atom"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[0-9][0-9]?"
+        }
+      ]
+    },
     "_compound_term": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "functor"
+        },
         {
           "type": "SEQ",
           "members": [
@@ -624,7 +3762,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "args"
+              "name": "_args"
             },
             {
               "type": "STRING",
@@ -670,7 +3808,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "args"
+          "name": "_args"
         },
         {
           "type": "STRING",
@@ -698,7 +3836,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "args"
+          "name": "_args"
         },
         {
           "type": "STRING",
@@ -770,7 +3908,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "args"
+                  "name": "_args"
                 },
                 {
                   "type": "STRING",
@@ -3392,17 +6530,8 @@
         "type": "CHOICE",
         "members": [
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "%"
-              },
-              {
-                "type": "PATTERN",
-                "value": ".*"
-              }
-            ]
+            "type": "PATTERN",
+            "value": "%.*"
           },
           {
             "type": "SEQ",
@@ -3431,15 +6560,15 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "STRING",
-            "value": "["
+            "type": "SYMBOL",
+            "name": "open_list"
           },
           {
             "type": "CHOICE",
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "args"
+                "name": "_args"
               },
               {
                 "type": "BLANK"
@@ -3447,11 +6576,19 @@
             ]
           },
           {
-            "type": "STRING",
-            "value": "]"
+            "type": "SYMBOL",
+            "name": "close_list"
           }
         ]
       }
+    },
+    "open_list": {
+      "type": "STRING",
+      "value": "["
+    },
+    "close_list": {
+      "type": "STRING",
+      "value": "]"
     },
     "curly_bracket_term": {
       "type": "PREC_RIGHT",
@@ -3525,7 +6662,7 @@
         ]
       }
     },
-    "_arg": {
+    "arg": {
       "type": "PREC_LEFT",
       "value": 0,
       "content": {
@@ -3538,16 +6675,12 @@
         ]
       }
     },
-    "args": {
+    "_args": {
       "type": "PREC_RIGHT",
       "value": 0,
       "content": {
         "type": "SEQ",
         "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_arg"
-          },
           {
             "type": "REPEAT",
             "content": {
@@ -3557,16 +6690,20 @@
                 "type": "SEQ",
                 "members": [
                   {
-                    "type": "STRING",
-                    "value": ","
+                    "type": "SYMBOL",
+                    "name": "arg"
                   },
                   {
-                    "type": "SYMBOL",
-                    "name": "_arg"
+                    "type": "STRING",
+                    "value": ","
                   }
                 ]
               }
             }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "arg"
           }
         ]
       }
@@ -3606,6 +6743,10 @@
     [
       "builtin",
       "head_atom"
+    ],
+    [
+      "functor",
+      "_atomic"
     ],
     [
       "call_atom",

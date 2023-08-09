@@ -37,12 +37,14 @@
 (declare-function treesit-node-start "treesit.c")
 (declare-function treesit-node-type "treesit.c")
 
-(defcustom prolog-ts-mode-indent-offset 2
+(defcustom prolog-ts-mode-indent-offset 4
   "Number of spaces for each indentation step in `prolog-ts-mode'."
   :version "29.1"
   :type 'integer
   :safe 'integerp
   :group 'prolog)
+
+
 
 (defvar prolog-ts-mode--syntax-table
   (let ((table (make-syntax-table)))
@@ -65,79 +67,38 @@
   "Syntax table for `prolog-ts-mode'.")
 
 
+(defvar prolog-ts-mode--operators
+  '("=" "-" "*" "/" "+" "%" "~" "|" "&" "^" "<<" ">>" "->"
+    "." "<" "<=" ">=" ">" "==" "!=" "!" "&&" "||" "-="
+    "+=" "*=" "/=" "%=" "|=" "&=" "^=" ">>=" "<<=" "--" "++")
+  "Prolog operators for tree-sitter font-locking.")
 
-(defun c-ts-mode--anchor-prev-sibling (node parent bol &rest _)
-  "Return the start of the previous named sibling of NODE.
-
-This anchor handles the special case where the previous sibling
-is a labeled_statement, in that case, return the child of the
-labeled statement instead.  (Actually, recursively go down until
-the node isn't a labeled_statement.)  Eg,
-
-label:
-  int x = 1;
-  int y = 2;
-
-The anchor of \"int y = 2;\" should be \"int x = 1;\" rather than
-the labeled_statement.
-
-Return nil if a) there is no prev-sibling, or 2) prev-sibling
-doesn't have a child.
-
-PARENT and BOL are like other anchor functions."
-  (when-let ((prev-sibling
-              (or (treesit-node-prev-sibling node t)
-                  (treesit-node-prev-sibling
-                   (treesit-node-first-child-for-pos parent bol) t)
-                  (treesit-node-child parent -1 t)))
-             (continue t))
-    (save-excursion
-      (while (and prev-sibling continue)
-        (pcase (treesit-node-type prev-sibling)
-          ;; Get the statement in the label.
-          ("labeled_statement"
-           (setq prev-sibling (treesit-node-child prev-sibling 2)))
-          ;; Get the last statement in the preproc.  Tested by
-          ;; "Prev-Sibling When Prev-Sibling is Preproc" test.
-          ((or "preproc_if" "preproc_ifdef")
-           (setq prev-sibling (treesit-node-child prev-sibling -2)))
-          ((or "preproc_elif" "preproc_else")
-           (setq prev-sibling (treesit-node-child prev-sibling -1)))
-          ((or "#elif" "#else")
-           (setq prev-sibling (treesit-node-prev-sibling
-                               (treesit-node-parent prev-sibling) t)))
-          ;; If the start of the previous sibling isn't at the
-          ;; beginning of a line, something's probably not quite
-          ;; right, go a step further.
-          (_ (goto-char (treesit-node-start prev-sibling))
-             (if (looking-back (rx bol (* whitespace))
-                               (line-beginning-position))
-                 (setq continue nil)
-               (setq prev-sibling
-                     (treesit-node-prev-sibling prev-sibling)))))))
-    ;; This could be nil if a) there is no prev-sibling or b)
-    ;; prev-sibling doesn't have a child.
-    (treesit-nobbxde-start prev-sibling)))
+(defvar prolog-ts-mode--brackets
+  '("{" "}" "," ";" "[" "]" "(" ")")
+  "Prolog operators for tree-sitter font-locking.")
 
 (defvar prolog-ts-mode--indent-rules
   `((prolog
-     ((parent-is "(") parent-bol 2)
-     ((parent-is "head_atom") point-min 7)
-     ((node-is "{") parent-bol 2)
-     ((node-is "call_atom") parent-bol 0)
-     ((node-is ",") parent-bol 0)
-     ((node-is ")") parent-bol 0)
-     ((parent-is "eot") point-min 0)
-          ((node-is "body" point-min 4)
-	  ;;     ((parent-is "call_atom")  point-min prolog-ts-mode-indent-offset)
-	   )))
+     ((node-is "predicate_definition") column-0 0)
+     ((node-is "directive") column-0 0)
+     ((parent-is "predicate_definition") parent-bol prolog-ts-mode-indent-offset)
+     ((node-is "semic")  parent 0)
+     ((node-is "rghtarrow")   parent 0)
+     ((node-is "close_b")   parent 0)
+     ((parent-is "disj")  parent 2)
+     ((parent-is "bracketed_term")  parent 2)
+     ((node-is "goal")  parent-bol prolog-ts-mode-indent-offset)
+     ((parent-is "list")  parent-bol 2)
+     ((parent-is "arg")  parent-bol 0)
+     ((node-is "close_list")  first-sibling 1)
+     ))
     "Tree-sitter indent rules for `prolog-ts-mode'.")
 
 (defvar prolog-ts-mode--font-lock-settings
   (treesit-font-lock-rules
    :language 'prolog
    :feature 'bracket
-   '((["(" "{" "[" "]" "}" ")"]) @font-lock-bracket-face)
+   '((["(" "{"  "}" ")"]) @font-lock-bracket-face)
 
    ;; :language 'prolog
    ;; :feature 'builtin
@@ -161,6 +122,15 @@ PARENT and BOL are like other anchor functions."
    '((comment) @font-lock-comment-face)
 
    ;; :language 'prolog
+   ;; :feature 'operator
+   ;; `([,@prolog-ts-mode--operators] @font-lock-bracket-face)
+
+   ;; :language 'prolog
+   ;; :feature 'bracket
+   ;; `([,@prolog-ts-mode--brackets] @font-lock-bracket-face)
+
+
+   ;; :language 'prolog
    ;; :feature 'constant
    ;; `(((argument) @font-lock-constant-face
    ;;    (:match ,(rx-to-string
@@ -169,19 +139,27 @@ PARENT and BOL are like other anchor functions."
    ;;                    eol))
    ;;            @font-lock-constant-face)))
 
+   ;; :language 'prolog
+   ;; :feature 'functor
+   ;; '((functor) @font-lock-constant-face)
+  
    :language 'prolog
    :feature 'function-call
    '((call_atom) @font-lock-function-call-face)
   
-   :language 'prolog
-   :feature 'function
-   '((head_atom) @font-lock-function-name-face)
+   ;; :language 'prolog
+   ;; :feature 'function
+   ;; '((head_atom) @font-lock-function-name-face)
 
    :language 'prolog
-   :feature 'keyword
-   `((eot) @font-lock-keyword-face)
+   :feature 'eot
+   `((eot) @font-lock-warning-face)
 
    :language 'prolog
+   :feature 'builtin
+   `((builtin) @font-lock-builtin-face)
+
+   :language  'prolog
    :feature 'number
    '((number) @font-lock-number-face)
 
@@ -195,14 +173,14 @@ PARENT and BOL are like other anchor functions."
    ;; '((escape_sequence) @font-lock-escape-face)
 
    :language 'prolog
-   :feature 'misc-punctuation
+   :feature 'function
    ;; Don't override strings.
-   :override 'nil
-   '(([":-" "-->" "->" "<" ">"]) @font-lock-misc-punctuation-face)
+   :override t
+   '((head_atom) @font-lock-keyword-face)
 
    :language 'prolog
    :feature 'variable
-   '((variable) @font-lock-variable-use-face)
+   '((variable) @font-lock-variable-face)
 
    :language 'prolog
    :feature 'error
@@ -224,9 +202,39 @@ nil
 
 
 ;; Imenu.
-  (setq-local treesit-defun-name-function #'treesit-node-text)
-  (setq-local treesit-simple-imenu-settings
-              '(("Predicates" "\\'head\\'" nil nil)))
+;;  (setq-local treesit-defun-type-regexp
+    ;;  (regexp-opt '("head")))
+
+(defun yap-ts-mode--imenu ()
+  "Return Imenu alist for the current buffer."
+  (let* ((node (treesit-buffer-root-node))
+         (pred-tree (treesit-induce-sparse-tree
+                     node "head_atom" nil 1000))
+         (pred-index (yap-ts-mode--imenu-1 pred-tree)))
+    (append
+     (when pred-index `(("Predicates" . ,pred-index))))))
+
+(defun yap-ts-mode--imenu-1 (node)
+  "Helper for `yap-ts-mode--imenu'.
+Find string representation for NODE and set marker, then recurse
+the subtrees."
+  (let* ((ts-node (car node))
+         (children (cdr node))
+         (subtrees (mapcan #'yap-ts-mode--imenu-1
+                           children))
+         (name (when ts-node
+                    (treesit-node-text ts-node)
+		    )
+		   )
+         (marker (when ts-node
+                   (set-marker (make-marker)
+                               (treesit-node-start ts-node)))))
+    (cond
+     ((or (null ts-node) (null name)) subtrees)
+     (subtrees
+      `((,name ,(cons name marker) ,@subtrees)))
+     (t
+      `((,name . ,marker))))))
 
 
   ;; Comments.f
@@ -235,17 +243,24 @@ nil
     (setq-local comment-start-skip (rx "%" (* (syntax whitespace))))
 
     ;; Indent.
+    ;; Indent.
     (setq-local treesit-simple-indent-rules prolog-ts-mode--indent-rules)
+
+
+    ;; Imenu.
+    (setq-local imenu-create-index-function #'yap-ts-mode--imenu)
+    (setq-local which-func-functions nil)
+
 
     ;; Font-lock.
     (setq-local treesit-font-lock-settings prolog-ts-mode--font-lock-settings)
-    (setq-local treesit-font-lock-feature-list
-                '((comment function string keyword)
-                  ;; 'function' and 'variable' here play slightly
+     (setq-local treesit-font-lock-feature-list
+                '((comment function string  builtin error eot)
+                  ;; 'function' and 'variable' here play 
                   ;; different roles than in other ts modes, so we
                   ;; kept them at level 3.
-                  ( function-call misc-punctuation)
-                  (number variable bracket error)))
+                  ( function-call misc-punctuation functor)
+                  (number variable bracket operator)))
 
     (treesit-major-mode-setup)))
 
@@ -260,7 +275,7 @@ nil
     (add-to-list 'auto-mode-alist
           '("\\.prolog\\'"  . prolog-ts-mode))
     )
-
 (provide 'prolog-ts-mode)
+
 
 ;;; yap-ts-mode.el ends here

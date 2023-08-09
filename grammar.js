@@ -15,6 +15,7 @@ module.exports = grammar({
 	[$.builtin, $._atomic],
 	[$.builtin, $.call_atom],
 	[$.builtin, $.head_atom],
+	[$.functor, $._atomic],
 	[$.call_atom, $._atomic],
 	[$.head_atom,$ ._atomic],
 	[$.call_atom, $._compound_term],
@@ -63,16 +64,24 @@ module.exports = grammar({
 	choice(
 
 	    prec.right(-1100,
-		       seq($._body,';',$._body)),
+		       seq($._body,$.semic,$._body)),
 	    prec.right(-1000,
 		       seq($._body,',',$._body)),
 	    prec.right(-1050,
-		       seq($._body,'->',$._body)),
+		       seq($._body,$.rghtarrow,$._body)),
 	    prec.right(-1050,
-		       seq($._body,'*->',$._body)),
-	    seq('(', $._body, ')'),
-	    seq('{', $._body, '}'),
+		       seq($._body,$.stararrow,$._body)),
+	    $.disj,
 	    $.goal
+	),
+	semic: $ => ";",
+	rghtarrow: $ => "->",
+	stararrow: $ => "*->",
+	close_b: $ => ")",
+	disj: $ =>
+	choice(
+	    seq('(', $._body, $.close_b),
+	    seq('{', $._body, '}')
 	),
 	goal: $=>
 	choice(
@@ -108,6 +117,7 @@ module.exports = grammar({
 	    "=..",
 	    "=:=",
 	    "=<",
+
 	    "==",
 	    "=@=",
 	    "=\\=",
@@ -122,9 +132,7 @@ module.exports = grammar({
 	    "\\+",
 	    "\\=",
 	    "\\==",
-	    "^"
-	),
-	/*
+	    "^",
 	    "{}",
 	    "abolish",
 	    "abolish_all_tables",
@@ -898,7 +906,7 @@ module.exports = grammar({
 	    "writeq",
 	    "write_term",
 	    "yap_flag",
-	),*/
+	),
 
 
 	_term: $ => prec(1, choice(
@@ -912,7 +920,7 @@ module.exports = grammar({
 
 	bracketed_term: $ =>
 	prec(-1200,
-	     seq('(', $._scoped_term, ')')
+	     seq('(', $._scoped_term, $.close_b)
 	    )
 	     		    ,
 	_scoped_term: $=>
@@ -920,7 +928,7 @@ module.exports = grammar({
 	    choice(
 		prec(-1199, seq($._scoped_term,':-',$._scoped_term)),
 		prec(-1199, seq($._scoped_term,'-->',$._scoped_term)),
-		prec.right(-1100, seq($._scoped_term,';',$._scoped_term)),
+		prec.right(-1100, seq($._scoped_term,$.semic,$._scoped_term)),
 		prec.right(-1000, seq($._scoped_term,",",$._scoped_term)),
 		$._term
 	    )
@@ -952,10 +960,17 @@ module.exports = grammar({
 	// Define Veriable
 	    /[A-Z_][a-zA-Z0-9_]*/,
 
+    functor: $ =>
+    seq(
+	$._atom,
+	"/",
+	/[0-9][0-9]?/),
+	    
 	_compound_term: $ =>  choice(
+	    	$.functor,
 	    seq($._atom,
 		token.immediate('('),
-		$.args,
+		$._args,
 		')'
 	       ),
 	    $._functional_notation,
@@ -970,7 +985,7 @@ module.exports = grammar({
 		    ),
 	       
 	    token.immediate('('),
-	    $.args,
+	    $._args,
 	    ')'
 	   ),
 
@@ -980,7 +995,7 @@ module.exports = grammar({
 		    ),
 	       
 	    token.immediate('('),
-	    $.args,
+	    $._args,
 	    ')'
 	   ),
 
@@ -1000,7 +1015,7 @@ module.exports = grammar({
 	    repeat1( $.method),
 	    optional(
 		seq('(',//$.open_ct,
-		    $.args,
+		    $._args,
 		    ')'//$.close_ct
 		   ))),
 	
@@ -1225,7 +1240,7 @@ module.exports = grammar({
 	codes: $ => token(seq('\"', /.*/, '\"')),
 
 	comment: $ => token(choice(
-	    seq('%', /.*/),
+	    /%.*/,
 	    seq(
 		'/*',
 		/[^*]*\*+([^/*][^*]*\*+)*/,
@@ -1234,10 +1249,13 @@ module.exports = grammar({
 	)),
 
 	list: $ => prec.right(seq(
-	    '[',
-	    optional(	    $.args ),
-	    ']'
+	    $.open_list,
+	    optional(	    $._args ),
+	    $.close_list,
 	)),
+
+	open_list: $ => "\[",
+	close_list: $ => "\]",
 
 	curly_bracket_term: $ => prec.right(seq(
 	    field('open_cb', alias('{', $.curly_bracket)),
@@ -1251,17 +1269,18 @@ module.exports = grammar({
 	    field('close_cb', alias('}', $.curly_bracket))
 	)),
 
-	_arg: $ => prec.left(choice(
+	arg: $ => prec.left(choice(
 	    $._term
 	)),
 
-	args: $ => prec.right(seq(
-	    $._arg,
+	_args: $ => prec.right(seq(
 	    repeat(
-		prec.left(seq( // TODO: Work out if correct
-		    ',',
-		    $._arg        ))
+			prec.left(seq( // TODO: Work out if correct
+		$.arg,
+	    ',',
+		      ))
 	    ),
+	    $.arg
 	)),
 	
     },

@@ -1,5 +1,7 @@
 ; highlights.scm
 
+(comment) @comment
+
 (integer) @number
 (float) @number
 (code) @number
@@ -8,23 +10,23 @@
 
 (call_atom) @function.call
 
-
-(comment) @comment
+(functor) @constant
 
 (quoted_atom) @string.special
 
 (string) @string
 (codes) @string
 
-(eot) @keyword
+(eot) @function.builtin
 
-(builtin) @constant.builtin
+
+(builtin) @function.builtin
 
 (curly_bracket) @operator
 
-(cut) @function.built
+(cut) @function.builtin
 
-(variable) @variable.builtin
+(variable) @variable
 
 (operator) @operator
 
