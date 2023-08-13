@@ -1,5 +1,5 @@
 {
-  "name": "tree-sitter-prolog",
+  "name": "tree-sitter-yap",
   "version": "1.1.0",
   "description": "Tree Sitter Prolog",
   "main": "bindings/node",

@@ -1,0 +1,35 @@
+name: 'YAP'
+scopeName: 'source.prolog'
+type: 'tree-sitter'
+parser: 'tree-sitter-yap'
+'fileTypes': [
+  'pl'
+  'yap'
+  'prolog'
+]
+firstLineRegex: [
+  # shebang line
+  '^#![ \\t]*/.*\\byap[\\d\\.]*\\b'
+
+  # vim modeline
+  'vim\\b.*\\bset\\b.*\\b(filetype|ft|syntax)=python'
+]
+
+'
+]
+'fir'firname: 'C'
+scopeName: 'source.c'
+type: 'modern-tree-sitter'
+parser: 'tree-sitter-yap'
+
+treeSitter:
+  grammar: 'tree-sitter-c/tree-sitter-c.wasm'
+  highlightsQuery: 'highlight.scm'
+  tagsQuery: '../queries/tags.scm'
+  indentsQuery: '../queries/indents.scm'
+
+fileTypes: [
+  'h'
+  'c'
+  'h.in'
+]
