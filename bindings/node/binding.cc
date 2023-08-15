@@ -4,7 +4,7 @@
 
 using namespace v8;
 
-extern "C" TSLanguage * tree_sitter_YOUR_LANGUAGE_NAME();
+extern "C" TSLanguage * tree_sitter_yap();
 
 namespace {
 
@@ -23,6 +23,6 @@ void Init(Local<Object> exports, Local<Object> module) {
   Nan::Set(module, Nan::New("exports").ToLocalChecked(), instance);
 }
 
-NODE_MODULE(tree_sitter_YOUR_LANGUAGE_NAME_binding, Init)
+NODE_MODULE(tree_sitter_yap_binding, Init)
 
 }  // namespace
