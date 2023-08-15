@@ -5,9 +5,6 @@ includes YAP extensions, more grammar constructs, built-ins and an
 interface to emacs-29 treesitter package.
 
 
-
-![Main Build](https://travis-ci.com/Rukiza/tree-sitter-prolog.svg?branch=main)
-
 ## How to use
 
 To include in your project.
@@ -45,3 +42,7 @@ To include in your project.
 
 Ensure that you have the latest version of tree-sitter-yap as
 **"tree-sitter-cli": "^0.15.3"** is required.
+
+## vsc updates
+
++ to use in emacs-29 enable

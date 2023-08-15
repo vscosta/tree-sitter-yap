@@ -1,4 +1,4 @@
-;;; prolog~-ts-mode.el --- tree-sitter support for Prolog  -*- lexical-binding: t; -*-
+;;; yap~-ts-mode.el --- tree-sitter support for Yap  -*- lexical-binding: t; -*-
 
 
 ;; Copyright (C) 2022-2023 Free Software Foundation, Inc.
@@ -6,7 +6,7 @@
 ;; Author     : Randy Taylor <dev@rjt.dev>
 ;; Maintainer : Randy Taylor <dev@rjt.dev>
 ;; Created    : December 2022
-;; Keywords   : prolog languages tree-sitter
+;; Keywords   : yap languages tree-sitter
 
 ;; This file is part of GNU Emacs.
 
@@ -37,8 +37,8 @@
 (declare-function treesit-node-start "treesit.c")
 (declare-function treesit-node-type "treesit.c")
 
-(defcustom prolog-ts-mode-indent-offset 4
-  "Number of spaces for each indentation step in `prolog-ts-mode'."
+(defcustom yap-ts-mode-indent-offset 4
+  "Number of spaces for each indentation step in `yap-ts-mode'."
   :version "29.1"
   :type 'integer
   :safe 'integerp
@@ -46,7 +46,7 @@
 
 
 
-(defvar prolog-ts-mode--syntax-table
+(defvar yap-ts-mode--syntax-table
   (let ((table (make-syntax-table)))
     (modify-syntax-entry ?+ "." table)
     (modify-syntax-entry ?- "." table)
@@ -64,73 +64,73 @@
       (modify-syntax-entry ?* ". 23b" table)
       (modify-syntax-entry ?/ ". 14" table)
     table)
-  "Syntax table for `prolog-ts-mode'.")
+  "Syntax table for `yap-ts-mode'.")
 
 
-(defvar prolog-ts-mode--operators
+(defvar yap-ts-mode--operators
   '("=" "-" "*" "/" "+" "%" "~" "|" "&" "^" "<<" ">>" "->"
     "." "<" "<=" ">=" ">" "==" "!=" "!" "&&" "||" "-="
     "+=" "*=" "/=" "%=" "|=" "&=" "^=" ">>=" "<<=" "--" "++")
-  "Prolog operators for tree-sitter font-locking.")
+  "Yap operators for tree-sitter font-locking.")
 
-(defvar prolog-ts-mode--brackets
+(defvar yap-ts-mode--brackets
   '("{" "}" "," ";" "[" "]" "(" ")")
-  "Prolog operators for tree-sitter font-locking.")
+  "Yap operators for tree-sitter font-locking.")
 
-(defvar prolog-ts-mode--indent-rules
-  `((prolog
+(defvar yap-ts-mode--indent-rules
+  `((yap
      ((node-is "predicate_definition") column-0 0)
      ((node-is "directive") column-0 0)
-     ((parent-is "predicate_definition") parent-bol prolog-ts-mode-indent-offset)
+     ((parent-is "predicate_definition") parent-bol yap-ts-mode-indent-offset)
      ((node-is "semic")  parent 0)
      ((node-is "rghtarrow")   parent 0)
      ((node-is "close_b")   parent 0)
      ((parent-is "disj")  parent 2)
      ((parent-is "bracketed_term")  parent 2)
-     ((node-is "goal")  parent-bol prolog-ts-mode-indent-offset)
+     ((node-is "goal")  parent-bol yap-ts-mode-indent-offset)
      ((parent-is "list")  parent-bol 2)
      ((parent-is "arg")  parent-bol 0)
      ((node-is "close_list")  first-sibling 1)
      ))
-    "Tree-sitter indent rules for `prolog-ts-mode'.")
+    "Tree-sitter indent rules for `yap-ts-mode'.")
 
-(defvar prolog-ts-mode--font-lock-settings
+(defvar yap-ts-mode--font-lock-settings
   (treesit-font-lock-rules
-   :language 'prolog
+   :language 'yap
    :feature 'bracket
    '((["(" "{"  "}" ")"]) @font-lock-bracket-face)
 
-   ;; :language 'prolog
+   ;; :language 'yap
    ;; :feature 'builtin
    ;; `(((foreach_command
    ;;     ((argument) @font-lock-constant-face
    ;;      (:match ,(rx-to-string
    ;;                `(seq bol
-   ;;                      (or ,@prolog-ts-mode--foreach-options)
+   ;;                      (or ,@yap-ts-mode--foreach-options)
    ;;                      eol))
    ;;              @font-lock-constant-face))))
    ;;   ((if_command
    ;;     ((argument) @font-lock-constant-face
    ;;      (:match ,(rx-to-string
    ;;                `(seq bol
-   ;;                      (or ,@prolog-ts-mode--if-conditions)
+   ;;                      (or ,@yap-ts-mode--if-conditions)
    ;;                      eol))
    ;;              @font-lock-constant-face)))))
 
-   :language 'prolog
+   :language 'yap
    :feature 'comment
    '((comment) @font-lock-comment-face)
 
-   ;; :language 'prolog
+   ;; :language 'yap
    ;; :feature 'operator
    ;; `([,@prolog-ts-mode--operators] @font-lock-bracket-face)
 
-   ;; :language 'prolog
+   ;; :language 'yap
    ;; :feature 'bracket
    ;; `([,@prolog-ts-mode--brackets] @font-lock-bracket-face)
 
 
-   ;; :language 'prolog
+   ;; :language 'yap
    ;; :feature 'constant
    ;; `(((argument) @font-lock-constant-face
    ;;    (:match ,(rx-to-string
@@ -139,50 +139,50 @@
    ;;                    eol))
    ;;            @font-lock-constant-face)))
 
-   ;; :language 'prolog
+   ;; :language 'yap
    ;; :feature 'functor
    ;; '((functor) @font-lock-constant-face)
   
-   :language 'prolog
+   :language 'yap
    :feature 'function-call
    '((call_atom) @font-lock-function-call-face)
   
-   ;; :language 'prolog
+   ;; :language 'yap
    ;; :feature 'function
    ;; '((head_atom) @font-lock-function-name-face)
 
-   :language 'prolog
+   :language 'yap
    :feature 'eot
    `((eot) @font-lock-warning-face)
 
-   :language 'prolog
+   :language 'yap
    :feature 'builtin
    `((builtin) @font-lock-builtin-face)
 
-   :language  'prolog
+   :language  'yap
    :feature 'number
    '((number) @font-lock-number-face)
 
-   :language 'prolog
+   :language 'yap
    :feature 'string
    '([(quoted_atom) (string) (codes)] @font-lock-string-face)
 
-   ;; :language 'prolog
+   ;; :language 'yap
    ;; :feature 'escape-sequence
    ;; :override t
    ;; '((escape_sequence) @font-lock-escape-face)
 
-   :language 'prolog
+   :language 'yap
    :feature 'function
    ;; Don't override strings.
    :override t
    '((head_atom) @font-lock-keyword-face)
 
-   :language 'prolog
+   :language 'yap
    :feature 'variable
    '((variable) @font-lock-variable-face)
 
-   :language 'prolog
+   :language 'yap
    :feature 'error
    :override t
    '((ERROR) @font-lock-warning-face)
@@ -192,13 +192,13 @@
 nil
 
 ;;;###autoload
-(define-derived-mode prolog-ts-mode prog-mode "Prolog"
+(define-derived-mode yap-ts-mode prog-mode "Prolog"
   "Major mode for editing Prolog files, powered by tree-sitter."
   :group 'prolog
-  :syntax-table prolog-ts-mode--syntax-table
+  :syntax-table yap-ts-mode--syntax-table
 
-  (when (treesit-ready-p 'prolog)
-    (treesit-parser-create 'prolog)
+  (when (treesit-ready-p 'yap)
+    (treesit-parser-create 'yap)
 
 
 ;; Imenu.
@@ -244,16 +244,15 @@ the subtrees."
 
     ;; Indent.
     ;; Indent.
-    (setq-local treesit-simple-indent-rules prolog-ts-mode--indent-rules)
+    (setq-local treesit-simple-indent-rules yap-ts-mode--indent-rules)
 
 
     ;; Imenu.
     (setq-local imenu-create-index-function #'yap-ts-mode--imenu)
     (setq-local which-func-functions nil)
-
-
+    
     ;; Font-lock.
-    (setq-local treesit-font-lock-settings prolog-ts-mode--font-lock-settings)
+    (setq-local treesit-font-lock-settings yap-ts-mode--font-lock-settings)
      (setq-local treesit-font-lock-feature-list
                 '((comment function string  builtin error eot)
                   ;; 'function' and 'variable' here play 
@@ -264,18 +263,18 @@ the subtrees."
 
     (treesit-major-mode-setup)))
 
-(if (treesit-ready-p 'prolog)
+(if (treesit-ready-p 'yap)
   
     (add-to-list 'auto-mode-alist
-          '("\\.yap\\'"  . prolog-ts-mode))
+          '("\\.yap\\'"  . yap-ts-mode))
     (add-to-list 'auto-mode-alist
-          '("\\.ypp\\'"  . prolog-ts-mode))
+          '("\\.ypp\\'"  . yap-ts-mode))
     (add-to-list 'auto-mode-alist
-          '("\\.pl\\'"  . prolog-ts-mode))
+          '("\\.pl\\'"  . yap-ts-mode))
     (add-to-list 'auto-mode-alist
-          '("\\.prolog\\'"  . prolog-ts-mode))
+          '("\\.prolog\\'"  . yap-ts-mode))
     )
-(provide 'prolog-ts-mode)
+(provide 'yap-ts-mode)
 
 
 ;;; yap-ts-mode.el ends here
