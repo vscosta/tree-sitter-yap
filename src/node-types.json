@@ -915,12 +915,11 @@
     }
   },
   {
-    "type": "stararrow",
-    "named": true,
-    "fields": {}
+    "type": "!",
+    "named": false
   },
   {
-    "type": "!",
+    "type": "'C'",
     "named": false
   },
   {
@@ -929,10 +928,6 @@
   },
   {
     "type": ")",
-    "named": false
-  },
-  {
-    "type": "*->",
     "named": false
   },
   {
@@ -964,83 +959,191 @@
     "named": false
   },
   {
-    "type": "<",
+    "type": "_atomic",
     "named": false
   },
   {
-    "type": "=",
+    "type": "_atomic_concat",
     "named": false
   },
   {
-    "type": "=..",
+    "type": "_atomic_length",
     "named": false
   },
   {
-    "type": "=:=",
+    "type": "_atomic_list_concat",
     "named": false
   },
   {
-    "type": "=<",
+    "type": "_atomic_to_string",
     "named": false
   },
   {
-    "type": "==",
+    "type": "_atomic_to_term",
     "named": false
   },
   {
-    "type": "=@=",
+    "type": "_atomics_to_string",
     "named": false
   },
   {
-    "type": "=\\=",
+    "type": "abolish",
     "named": false
   },
   {
-    "type": ">",
+    "type": "abolish_table",
     "named": false
   },
   {
-    "type": ">=",
+    "type": "abort",
     "named": false
   },
   {
-    "type": "?-",
+    "type": "absolute_file_name",
     "named": false
   },
   {
-    "type": "@<",
+    "type": "access",
     "named": false
   },
   {
-    "type": "@=<",
+    "type": "acyclic_term",
     "named": false
   },
   {
-    "type": "@>",
+    "type": "alarm",
     "named": false
   },
   {
-    "type": "@>=",
+    "type": "all",
     "named": false
   },
   {
-    "type": "[]",
+    "type": "arg",
     "named": false
   },
   {
-    "type": "\\+",
+    "type": "assert",
     "named": false
   },
   {
-    "type": "\\=",
+    "type": "assert_in_program",
     "named": false
   },
   {
-    "type": "\\==",
+    "type": "assert_static",
     "named": false
   },
   {
-    "type": "^",
+    "type": "asserta",
+    "named": false
+  },
+  {
+    "type": "assertz",
+    "named": false
+  },
+  {
+    "type": "atom",
+    "named": false
+  },
+  {
+    "type": "atom_chars",
+    "named": false
+  },
+  {
+    "type": "atom_codes",
+    "named": false
+  },
+  {
+    "type": "atom_concat",
+    "named": false
+  },
+  {
+    "type": "atom_length",
+    "named": false
+  },
+  {
+    "type": "atom_number",
+    "named": false
+  },
+  {
+    "type": "atom_string",
+    "named": false
+  },
+  {
+    "type": "atom_to_string",
+    "named": false
+  },
+  {
+    "type": "atom_to_term",
+    "named": false
+  },
+  {
+    "type": "attvar",
+    "named": false
+  },
+  {
+    "type": "aux_preds",
+    "named": false
+  },
+  {
+    "type": "b_setval",
+    "named": false
+  },
+  {
+    "type": "bagof",
+    "named": false
+  },
+  {
+    "type": "bind_attvar",
+    "named": false
+  },
+  {
+    "type": "break",
+    "named": false
+  },
+  {
+    "type": "call",
+    "named": false
+  },
+  {
+    "type": "call_wo_mod",
+    "named": false
+  },
+  {
+    "type": "catch",
+    "named": false
+  },
+  {
+    "type": "cd",
+    "named": false
+  },
+  {
+    "type": "char_code",
+    "named": false
+  },
+  {
+    "type": "char_type",
+    "named": false
+  },
+  {
+    "type": "char_type_alnum",
+    "named": false
+  },
+  {
+    "type": "char_type_punct",
+    "named": false
+  },
+  {
+    "type": "chars",
+    "named": false
+  },
+  {
+    "type": "clause",
+    "named": false
+  },
+  {
+    "type": "close",
     "named": false
   },
   {
@@ -1052,12 +1155,48 @@
     "named": true
   },
   {
+    "type": "codes",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true
   },
   {
+    "type": "comment_hook",
+    "named": false
+  },
+  {
+    "type": "compare",
+    "named": false
+  },
+  {
+    "type": "compile",
+    "named": false
+  },
+  {
+    "type": "compound",
+    "named": false
+  },
+  {
+    "type": "consult_depth",
+    "named": false
+  },
+  {
+    "type": "copy_term",
+    "named": false
+  },
+  {
+    "type": "create_mutable",
+    "named": false
+  },
+  {
     "type": "curly_bracket",
     "named": true
+  },
+  {
+    "type": "current_source_module",
+    "named": false
   },
   {
     "type": "cut",
@@ -1096,19 +1235,55 @@
     "named": true
   },
   {
+    "type": "stararrow",
+    "named": true
+  },
+  {
     "type": "string",
     "named": true
+  },
+  {
+    "type": "throw",
+    "named": false
+  },
+  {
+    "type": "var",
+    "named": false
   },
   {
     "type": "variable",
     "named": true
   },
   {
-    "type": "{",
+    "type": "when",
     "named": false
   },
   {
-    "type": "{}",
+    "type": "write",
+    "named": false
+  },
+  {
+    "type": "write_canonical",
+    "named": false
+  },
+  {
+    "type": "write_depth",
+    "named": false
+  },
+  {
+    "type": "write_term",
+    "named": false
+  },
+  {
+    "type": "writeln",
+    "named": false
+  },
+  {
+    "type": "writeq",
+    "named": false
+  },
+  {
+    "type": "{",
     "named": false
   },
   {

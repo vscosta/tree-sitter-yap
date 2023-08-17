@@ -100,8 +100,9 @@
    :feature 'bracket
    '((["(" "{"  "}" ")"]) @font-lock-bracket-face)
 
-   ;; :language 'yap
-   ;; :feature 'builtin
+   :language 'yap
+   :feature 'builtin
+   '((builtin) @font-lock-comment-face)
    ;; `(((foreach_command
    ;;     ((argument) @font-lock-constant-face
    ;;      (:match ,(rx-to-string
@@ -121,13 +122,13 @@
    :feature 'comment
    '((comment) @font-lock-comment-face)
 
-   ;; :language 'yap
-   ;; :feature 'operator
-   ;; `([,@prolog-ts-mode--operators] @font-lock-bracket-face)
+   :language 'yap
+   :feature 'operator
+   `(operator: (_) @font-lock-bracket-face)
 
    ;; :language 'yap
    ;; :feature 'bracket
-   ;; `([,@prolog-ts-mode--brackets] @font-lock-bracket-face)
+   ;; `([,@yap-ts-mode--brackets] @font-lock-bracket-face)
 
 
    ;; :language 'yap
@@ -139,9 +140,9 @@
    ;;                    eol))
    ;;            @font-lock-constant-face)))
 
-   ;; :language 'yap
-   ;; :feature 'functor
-   ;; '((functor) @font-lock-constant-face)
+   :language 'yap
+   :feature 'functor
+   '((functor) @font-lock-constant-face)
   
    :language 'yap
    :feature 'function-call

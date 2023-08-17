@@ -324,91 +324,267 @@
         },
         {
           "type": "STRING",
-          "value": "*->"
+          "value": "abolish"
         },
         {
           "type": "STRING",
-          "value": "<"
+          "value": "abolish_table"
         },
         {
           "type": "STRING",
-          "value": "="
+          "value": "abort"
         },
         {
           "type": "STRING",
-          "value": "=.."
+          "value": "absolute_file_name"
         },
         {
           "type": "STRING",
-          "value": "=:="
+          "value": "access"
         },
         {
           "type": "STRING",
-          "value": "=<"
+          "value": "acyclic_term"
         },
         {
           "type": "STRING",
-          "value": "=="
+          "value": "alarm"
         },
         {
           "type": "STRING",
-          "value": "=@="
+          "value": "all"
         },
         {
           "type": "STRING",
-          "value": "=\\="
+          "value": "arg"
         },
         {
           "type": "STRING",
-          "value": ">"
+          "value": "assert"
         },
         {
           "type": "STRING",
-          "value": ">="
+          "value": "asserta"
         },
         {
           "type": "STRING",
-          "value": "?-"
+          "value": "assert_in_program"
         },
         {
           "type": "STRING",
-          "value": "@<"
+          "value": "assert_static"
         },
         {
           "type": "STRING",
-          "value": "@=<"
+          "value": "assertz"
         },
         {
           "type": "STRING",
-          "value": "@>"
+          "value": "atom"
         },
         {
           "type": "STRING",
-          "value": "@>="
+          "value": "atom_chars"
         },
         {
           "type": "STRING",
-          "value": "[]"
+          "value": "atom_codes"
         },
         {
           "type": "STRING",
-          "value": "\\+"
+          "value": "atom_concat"
         },
         {
           "type": "STRING",
-          "value": "\\="
+          "value": "_atomic"
         },
         {
           "type": "STRING",
-          "value": "\\=="
+          "value": "_atomic_concat"
         },
         {
           "type": "STRING",
-          "value": "^"
+          "value": "_atomic_length"
         },
         {
           "type": "STRING",
-          "value": "{}"
+          "value": "_atomic_list_concat"
+        },
+        {
+          "type": "STRING",
+          "value": "_atomics_to_string"
+        },
+        {
+          "type": "STRING",
+          "value": "_atomic_to_string"
+        },
+        {
+          "type": "STRING",
+          "value": "_atomic_to_term"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_length"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_number"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_string"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_to_string"
+        },
+        {
+          "type": "STRING",
+          "value": "atom_to_term"
+        },
+        {
+          "type": "STRING",
+          "value": "attvar"
+        },
+        {
+          "type": "STRING",
+          "value": "aux_preds"
+        },
+        {
+          "type": "STRING",
+          "value": "bagof"
+        },
+        {
+          "type": "STRING",
+          "value": "bind_attvar"
+        },
+        {
+          "type": "STRING",
+          "value": "break"
+        },
+        {
+          "type": "STRING",
+          "value": "b_setval"
+        },
+        {
+          "type": "STRING",
+          "value": "'C'"
+        },
+        {
+          "type": "STRING",
+          "value": "call"
+        },
+        {
+          "type": "STRING",
+          "value": "call_wo_mod"
+        },
+        {
+          "type": "STRING",
+          "value": "catch"
+        },
+        {
+          "type": "STRING",
+          "value": "cd"
+        },
+        {
+          "type": "STRING",
+          "value": "char_code"
+        },
+        {
+          "type": "STRING",
+          "value": "chars"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_alnum"
+        },
+        {
+          "type": "STRING",
+          "value": "char_type_punct"
+        },
+        {
+          "type": "STRING",
+          "value": "clause"
+        },
+        {
+          "type": "STRING",
+          "value": "close"
+        },
+        {
+          "type": "STRING",
+          "value": "codes"
+        },
+        {
+          "type": "STRING",
+          "value": "comment_hook"
+        },
+        {
+          "type": "STRING",
+          "value": "compare"
+        },
+        {
+          "type": "STRING",
+          "value": "compile"
+        },
+        {
+          "type": "STRING",
+          "value": "compound"
+        },
+        {
+          "type": "STRING",
+          "value": "consult_depth"
+        },
+        {
+          "type": "STRING",
+          "value": "copy_term"
+        },
+        {
+          "type": "STRING",
+          "value": "create_mutable"
+        },
+        {
+          "type": "STRING",
+          "value": "current_source_module"
+        },
+        {
+          "type": "STRING",
+          "value": "throw"
+        },
+        {
+          "type": "STRING",
+          "value": "var"
+        },
+        {
+          "type": "STRING",
+          "value": "when"
+        },
+        {
+          "type": "STRING",
+          "value": "write"
+        },
+        {
+          "type": "STRING",
+          "value": "write_canonical"
+        },
+        {
+          "type": "STRING",
+          "value": "write_depth"
+        },
+        {
+          "type": "STRING",
+          "value": "writeln"
+        },
+        {
+          "type": "STRING",
+          "value": "writeq"
+        },
+        {
+          "type": "STRING",
+          "value": "write_term"
         }
       ]
     },
@@ -3633,6 +3809,10 @@
     {
       "type": "STRING",
       "value": "\r"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment"
     }
   ],
   "conflicts": [
