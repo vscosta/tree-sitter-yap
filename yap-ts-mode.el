@@ -83,7 +83,7 @@
      ((node-is "directive") column-0 0)
      ((parent-is "predicate_definition") parent-bol prolog-ts-mode-indent-offset)
      ((node-is "semic")  parent 0)
-     ((node-is "rghtarrow")   parent 0)
+     ((node-is "rightarrow")   parent 0)
      ((node-is "close_b")   parent 0)
      ((parent-is "disj")  parent 2)
      ((parent-is "bracketed_term")  parent 2)

@@ -6,9 +6,12 @@
 (float) @number
 (code) @number
 
-(head_atom) @function
 
-(call_atom) @function.call
+
+(head  (atom)  @function)
+(goal: (atom)  @function.call)
+(goal: (builtin)  @function.call)
+
 
 (functor) @constant
 
@@ -18,9 +21,6 @@
 (codes) @string
 
 (eot) @function.builtin
-
-
-(builtin) @function.builtin
 
 (curly_bracket) @operator
 

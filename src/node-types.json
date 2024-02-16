@@ -3,6 +3,126 @@
     "type": "arg",
     "named": true,
     "fields": {
+      "atom_term": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "arguments",
+            "named": true
+          },
+          {
+            "type": "atom",
+            "named": true
+          }
+        ]
+      },
+      "l_operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "?-",
+            "named": false
+          },
+          {
+            "type": "\\",
+            "named": false
+          },
+          {
+            "type": "\\+",
+            "named": false
+          },
+          {
+            "type": "array",
+            "named": false
+          },
+          {
+            "type": "block",
+            "named": false
+          },
+          {
+            "type": "discontiguous",
+            "named": false
+          },
+          {
+            "type": "dynamic",
+            "named": false
+          },
+          {
+            "type": "initialization",
+            "named": false
+          },
+          {
+            "type": "matrix",
+            "named": false
+          },
+          {
+            "type": "meta_predicate",
+            "named": false
+          },
+          {
+            "type": "mode",
+            "named": false
+          },
+          {
+            "type": "module_transparent",
+            "named": false
+          },
+          {
+            "type": "multifile",
+            "named": false
+          },
+          {
+            "type": "nospy",
+            "named": false
+          },
+          {
+            "type": "not",
+            "named": false
+          },
+          {
+            "type": "public",
+            "named": false
+          },
+          {
+            "type": "spy",
+            "named": false
+          },
+          {
+            "type": "table",
+            "named": false
+          },
+          {
+            "type": "thread_local",
+            "named": false
+          },
+          {
+            "type": "volatile",
+            "named": false
+          }
+        ]
+      },
       "operator": {
         "multiple": true,
         "required": false,
@@ -19,85 +139,11 @@
       "required": false,
       "types": [
         {
-          "type": "arg",
+          "type": "arguments",
           "named": true
         },
         {
-          "type": "bracketed_term",
-          "named": true
-        },
-        {
-          "type": "codes",
-          "named": true
-        },
-        {
-          "type": "curly_bracket_term",
-          "named": true
-        },
-        {
-          "type": "cut",
-          "named": true
-        },
-        {
-          "type": "dict",
-          "named": true
-        },
-        {
-          "type": "functor",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "method",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "quoted_atom",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "variable",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "bracketed_term",
-    "named": true,
-    "fields": {
-      "operator": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "operator",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "arg",
-          "named": true
-        },
-        {
-          "type": "bracketed_term",
+          "type": "atom",
           "named": true
         },
         {
@@ -113,7 +159,233 @@
           "named": true
         },
         {
+          "type": "dict",
+          "named": true
+        },
+        {
+          "type": "functor",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "arguments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arg",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "atom",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
           "type": "cut",
+          "named": true
+        },
+        {
+          "type": "quoted_atom",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "body",
+    "named": true,
+    "fields": {
+      "atom_term": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "arguments",
+            "named": true
+          },
+          {
+            "type": "atom",
+            "named": true
+          }
+        ]
+      },
+      "goal": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "literal",
+            "named": true
+          }
+        ]
+      },
+      "l_operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "?-",
+            "named": false
+          },
+          {
+            "type": "\\",
+            "named": false
+          },
+          {
+            "type": "\\+",
+            "named": false
+          },
+          {
+            "type": "array",
+            "named": false
+          },
+          {
+            "type": "block",
+            "named": false
+          },
+          {
+            "type": "discontiguous",
+            "named": false
+          },
+          {
+            "type": "dynamic",
+            "named": false
+          },
+          {
+            "type": "initialization",
+            "named": false
+          },
+          {
+            "type": "matrix",
+            "named": false
+          },
+          {
+            "type": "meta_predicate",
+            "named": false
+          },
+          {
+            "type": "mode",
+            "named": false
+          },
+          {
+            "type": "module_transparent",
+            "named": false
+          },
+          {
+            "type": "multifile",
+            "named": false
+          },
+          {
+            "type": "nospy",
+            "named": false
+          },
+          {
+            "type": "not",
+            "named": false
+          },
+          {
+            "type": "public",
+            "named": false
+          },
+          {
+            "type": "spy",
+            "named": false
+          },
+          {
+            "type": "table",
+            "named": false
+          },
+          {
+            "type": "thread_local",
+            "named": false
+          },
+          {
+            "type": "volatile",
+            "named": false
+          }
+        ]
+      },
+      "operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "arguments",
+          "named": true
+        },
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "close_b",
+          "named": true
+        },
+        {
+          "type": "codes",
+          "named": true
+        },
+        {
+          "type": "curly_bracket_term",
           "named": true
         },
         {
@@ -129,19 +401,19 @@
           "named": true
         },
         {
-          "type": "method",
-          "named": true
-        },
-        {
           "type": "number",
           "named": true
         },
         {
-          "type": "quoted_atom",
+          "type": "rightarrow",
           "named": true
         },
         {
           "type": "semic",
+          "named": true
+        },
+        {
+          "type": "stararrow",
           "named": true
         },
         {
@@ -161,25 +433,6 @@
     "fields": {}
   },
   {
-    "type": "call_atom",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "builtin",
-          "named": true
-        },
-        {
-          "type": "quoted_atom",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "close_b",
     "named": true,
     "fields": {}
@@ -193,6 +446,32 @@
     "type": "curly_bracket_term",
     "named": true,
     "fields": {
+      "atom_term": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "arguments",
+            "named": true
+          },
+          {
+            "type": "atom",
+            "named": true
+          }
+        ]
+      },
       "close_cb": {
         "multiple": false,
         "required": true,
@@ -200,6 +479,100 @@
           {
             "type": "curly_bracket",
             "named": true
+          }
+        ]
+      },
+      "l_operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "?-",
+            "named": false
+          },
+          {
+            "type": "\\",
+            "named": false
+          },
+          {
+            "type": "\\+",
+            "named": false
+          },
+          {
+            "type": "array",
+            "named": false
+          },
+          {
+            "type": "block",
+            "named": false
+          },
+          {
+            "type": "discontiguous",
+            "named": false
+          },
+          {
+            "type": "dynamic",
+            "named": false
+          },
+          {
+            "type": "initialization",
+            "named": false
+          },
+          {
+            "type": "matrix",
+            "named": false
+          },
+          {
+            "type": "meta_predicate",
+            "named": false
+          },
+          {
+            "type": "mode",
+            "named": false
+          },
+          {
+            "type": "module_transparent",
+            "named": false
+          },
+          {
+            "type": "multifile",
+            "named": false
+          },
+          {
+            "type": "nospy",
+            "named": false
+          },
+          {
+            "type": "not",
+            "named": false
+          },
+          {
+            "type": "public",
+            "named": false
+          },
+          {
+            "type": "spy",
+            "named": false
+          },
+          {
+            "type": "table",
+            "named": false
+          },
+          {
+            "type": "thread_local",
+            "named": false
+          },
+          {
+            "type": "volatile",
+            "named": false
           }
         ]
       },
@@ -229,11 +602,15 @@
       "required": false,
       "types": [
         {
-          "type": "arg",
+          "type": "arguments",
           "named": true
         },
         {
-          "type": "bracketed_term",
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "close_b",
           "named": true
         },
         {
@@ -242,10 +619,6 @@
         },
         {
           "type": "curly_bracket_term",
-          "named": true
-        },
-        {
-          "type": "cut",
           "named": true
         },
         {
@@ -261,15 +634,7 @@
           "named": true
         },
         {
-          "type": "method",
-          "named": true
-        },
-        {
           "type": "number",
-          "named": true
-        },
-        {
-          "type": "quoted_atom",
           "named": true
         },
         {
@@ -292,11 +657,11 @@
       "required": true,
       "types": [
         {
-          "type": "dict_value",
+          "type": "atom",
           "named": true
         },
         {
-          "type": "quoted_atom",
+          "type": "dict_value",
           "named": true
         },
         {
@@ -310,6 +675,126 @@
     "type": "dict_value",
     "named": true,
     "fields": {
+      "atom_term": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "arguments",
+            "named": true
+          },
+          {
+            "type": "atom",
+            "named": true
+          }
+        ]
+      },
+      "l_operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "?-",
+            "named": false
+          },
+          {
+            "type": "\\",
+            "named": false
+          },
+          {
+            "type": "\\+",
+            "named": false
+          },
+          {
+            "type": "array",
+            "named": false
+          },
+          {
+            "type": "block",
+            "named": false
+          },
+          {
+            "type": "discontiguous",
+            "named": false
+          },
+          {
+            "type": "dynamic",
+            "named": false
+          },
+          {
+            "type": "initialization",
+            "named": false
+          },
+          {
+            "type": "matrix",
+            "named": false
+          },
+          {
+            "type": "meta_predicate",
+            "named": false
+          },
+          {
+            "type": "mode",
+            "named": false
+          },
+          {
+            "type": "module_transparent",
+            "named": false
+          },
+          {
+            "type": "multifile",
+            "named": false
+          },
+          {
+            "type": "nospy",
+            "named": false
+          },
+          {
+            "type": "not",
+            "named": false
+          },
+          {
+            "type": "public",
+            "named": false
+          },
+          {
+            "type": "spy",
+            "named": false
+          },
+          {
+            "type": "table",
+            "named": false
+          },
+          {
+            "type": "thread_local",
+            "named": false
+          },
+          {
+            "type": "volatile",
+            "named": false
+          }
+        ]
+      },
       "operator": {
         "multiple": true,
         "required": false,
@@ -323,14 +808,18 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "arg",
+          "type": "arguments",
           "named": true
         },
         {
-          "type": "bracketed_term",
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "close_b",
           "named": true
         },
         {
@@ -339,10 +828,6 @@
         },
         {
           "type": "curly_bracket_term",
-          "named": true
-        },
-        {
-          "type": "cut",
           "named": true
         },
         {
@@ -358,15 +843,7 @@
           "named": true
         },
         {
-          "type": "method",
-          "named": true
-        },
-        {
           "type": "number",
-          "named": true
-        },
-        {
-          "type": "quoted_atom",
           "named": true
         },
         {
@@ -383,95 +860,134 @@
   {
     "type": "directive",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "disj",
-          "named": true
-        },
-        {
-          "type": "goal",
-          "named": true
-        },
-        {
-          "type": "rghtarrow",
-          "named": true
-        },
-        {
-          "type": "semic",
-          "named": true
-        },
-        {
-          "type": "stararrow",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "disj",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "close_b",
-          "named": true
-        },
-        {
-          "type": "disj",
-          "named": true
-        },
-        {
-          "type": "goal",
-          "named": true
-        },
-        {
-          "type": "rghtarrow",
-          "named": true
-        },
-        {
-          "type": "semic",
-          "named": true
-        },
-        {
-          "type": "stararrow",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "functor",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "quoted_atom",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "goal",
-    "named": true,
     "fields": {
-      "goal": {
-        "multiple": false,
+      "atom_term": {
+        "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "call_atom",
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "arguments",
             "named": true
+          },
+          {
+            "type": "atom",
+            "named": true
+          }
+        ]
+      },
+      "goal": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "literal",
+            "named": true
+          }
+        ]
+      },
+      "l_operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "?-",
+            "named": false
+          },
+          {
+            "type": "\\",
+            "named": false
+          },
+          {
+            "type": "\\+",
+            "named": false
+          },
+          {
+            "type": "array",
+            "named": false
+          },
+          {
+            "type": "block",
+            "named": false
+          },
+          {
+            "type": "discontiguous",
+            "named": false
+          },
+          {
+            "type": "dynamic",
+            "named": false
+          },
+          {
+            "type": "initialization",
+            "named": false
+          },
+          {
+            "type": "matrix",
+            "named": false
+          },
+          {
+            "type": "meta_predicate",
+            "named": false
+          },
+          {
+            "type": "mode",
+            "named": false
+          },
+          {
+            "type": "module_transparent",
+            "named": false
+          },
+          {
+            "type": "multifile",
+            "named": false
+          },
+          {
+            "type": "nospy",
+            "named": false
+          },
+          {
+            "type": "not",
+            "named": false
+          },
+          {
+            "type": "public",
+            "named": false
+          },
+          {
+            "type": "spy",
+            "named": false
+          },
+          {
+            "type": "table",
+            "named": false
+          },
+          {
+            "type": "thread_local",
+            "named": false
+          },
+          {
+            "type": "volatile",
+            "named": false
           }
         ]
       },
@@ -484,28 +1000,22 @@
             "named": true
           }
         ]
-      },
-      "predicate": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "call_atom",
-            "named": true
-          }
-        ]
       }
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "arg",
+          "type": "arguments",
           "named": true
         },
         {
-          "type": "bracketed_term",
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "close_b",
           "named": true
         },
         {
@@ -517,11 +1027,11 @@
           "named": true
         },
         {
-          "type": "cut",
+          "type": "dict",
           "named": true
         },
         {
-          "type": "dict",
+          "type": "eot",
           "named": true
         },
         {
@@ -533,15 +1043,19 @@
           "named": true
         },
         {
-          "type": "method",
-          "named": true
-        },
-        {
           "type": "number",
           "named": true
         },
         {
-          "type": "quoted_atom",
+          "type": "rightarrow",
+          "named": true
+        },
+        {
+          "type": "semic",
+          "named": true
+        },
+        {
+          "type": "stararrow",
           "named": true
         },
         {
@@ -556,19 +1070,41 @@
     }
   },
   {
-    "type": "head_atom",
+    "type": "functor",
+    "named": true,
+    "fields": {
+      "module": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "head",
     "named": true,
     "fields": {},
     "children": {
       "multiple": false,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "builtin",
-          "named": true
-        },
-        {
-          "type": "quoted_atom",
+          "type": "literal",
           "named": true
         }
       ]
@@ -583,7 +1119,7 @@
       "required": true,
       "types": [
         {
-          "type": "arg",
+          "type": "arguments",
           "named": true
         },
         {
@@ -598,9 +1134,50 @@
     }
   },
   {
-    "type": "method",
+    "type": "literal",
     "named": true,
-    "fields": {}
+    "fields": {
+      "goal_functor": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "builtin",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "arguments",
+          "named": true
+        },
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "number",
@@ -628,260 +1205,21 @@
   {
     "type": "predicate_definition",
     "named": true,
-    "fields": {
-      "head": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "head_atom",
-            "named": true
-          }
-        ]
-      },
-      "operator": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "operator",
-            "named": true
-          }
-        ]
-      },
-      "predicate": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "head_atom",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "arg",
+          "type": "body",
           "named": true
         },
         {
-          "type": "bracketed_term",
+          "type": "eot",
           "named": true
         },
         {
-          "type": "codes",
-          "named": true
-        },
-        {
-          "type": "curly_bracket_term",
-          "named": true
-        },
-        {
-          "type": "cut",
-          "named": true
-        },
-        {
-          "type": "dict",
-          "named": true
-        },
-        {
-          "type": "disj",
-          "named": true
-        },
-        {
-          "type": "functor",
-          "named": true
-        },
-        {
-          "type": "goal",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "method",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "quoted_atom",
-          "named": true
-        },
-        {
-          "type": "rghtarrow",
-          "named": true
-        },
-        {
-          "type": "semic",
-          "named": true
-        },
-        {
-          "type": "stararrow",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "variable",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "prefix_operator",
-    "named": true,
-    "fields": {
-      "operator": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "operator",
-            "named": true
-          }
-        ]
-      },
-      "right": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": "arg",
-            "named": true
-          },
-          {
-            "type": "bracketed_term",
-            "named": true
-          },
-          {
-            "type": "codes",
-            "named": true
-          },
-          {
-            "type": "curly_bracket_term",
-            "named": true
-          },
-          {
-            "type": "cut",
-            "named": true
-          },
-          {
-            "type": "dict",
-            "named": true
-          },
-          {
-            "type": "functor",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "method",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "operator",
-            "named": true
-          },
-          {
-            "type": "quoted_atom",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "variable",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "arg",
-          "named": true
-        },
-        {
-          "type": "bracketed_term",
-          "named": true
-        },
-        {
-          "type": "codes",
-          "named": true
-        },
-        {
-          "type": "curly_bracket_term",
-          "named": true
-        },
-        {
-          "type": "cut",
-          "named": true
-        },
-        {
-          "type": "dict",
-          "named": true
-        },
-        {
-          "type": "functor",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "method",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "quoted_atom",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "variable",
+          "type": "head",
           "named": true
         }
       ]
@@ -896,15 +1234,7 @@
       "required": false,
       "types": [
         {
-          "type": "comment",
-          "named": true
-        },
-        {
           "type": "directive",
-          "named": true
-        },
-        {
-          "type": "eot",
           "named": true
         },
         {
@@ -918,10 +1248,6 @@
     "type": "stararrow",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "!",
-    "named": false
   },
   {
     "type": "'C'",
@@ -948,7 +1274,15 @@
     "named": false
   },
   {
+    "type": "+",
+    "named": false
+  },
+  {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
     "named": false
   },
   {
@@ -1037,6 +1371,10 @@
   },
   {
     "type": "[]",
+    "named": false
+  },
+  {
+    "type": "\\",
     "named": false
   },
   {
@@ -1309,6 +1647,10 @@
   },
   {
     "type": "bind_attvar",
+    "named": false
+  },
+  {
+    "type": "block",
     "named": false
   },
   {
@@ -1629,11 +1971,11 @@
   },
   {
     "type": "codes",
-    "named": false
+    "named": true
   },
   {
     "type": "codes",
-    "named": true
+    "named": false
   },
   {
     "type": "comma",
@@ -2137,11 +2479,11 @@
   },
   {
     "type": "float",
-    "named": false
+    "named": true
   },
   {
     "type": "float",
-    "named": true
+    "named": false
   },
   {
     "type": "flush_output",
@@ -2421,11 +2763,11 @@
   },
   {
     "type": "integer",
-    "named": false
+    "named": true
   },
   {
     "type": "integer",
-    "named": true
+    "named": false
   },
   {
     "type": "is",
@@ -2604,6 +2946,10 @@
     "named": false
   },
   {
+    "type": "matrix",
+    "named": false
+  },
+  {
     "type": "may_bind_to_type",
     "named": false
   },
@@ -2640,6 +2986,10 @@
     "named": false
   },
   {
+    "type": "mode",
+    "named": false
+  },
+  {
     "type": "module",
     "named": false
   },
@@ -2649,6 +2999,10 @@
   },
   {
     "type": "module_state",
+    "named": false
+  },
+  {
+    "type": "module_transparent",
     "named": false
   },
   {
@@ -3132,6 +3486,10 @@
     "named": false
   },
   {
+    "type": "public",
+    "named": false
+  },
+  {
     "type": "put",
     "named": false
   },
@@ -3340,7 +3698,7 @@
     "named": false
   },
   {
-    "type": "rghtarrow",
+    "type": "rightarrow",
     "named": true
   },
   {
@@ -3629,11 +3987,11 @@
   },
   {
     "type": "string",
-    "named": true
+    "named": false
   },
   {
     "type": "string",
-    "named": false
+    "named": true
   },
   {
     "type": "string_atom",
@@ -3988,10 +4346,6 @@
     "named": false
   },
   {
-    "type": "tthread_peek_message",
-    "named": false
-  },
-  {
     "type": "ttyget",
     "named": false
   },
@@ -4144,7 +4498,7 @@
     "named": false
   },
   {
-    "type": "watch_goal",
+    "type": "watch_goa",
     "named": false
   },
   {

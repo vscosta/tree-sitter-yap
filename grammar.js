@@ -1,115 +1,96 @@
-
-
-
 module.exports = grammar({
     name: 'prolog',
 
     extras: $ => [
 	/\s/, '\n', '\r',
-	//    $.comment
+	$.comment
     ],
 
     conflicts: $ => [
 	[$._infix_operator, $._infix_operator],
 	[$._infix_operator, $._prefix_non_associative],
-	[$.builtin, $._atomic],
-	[$.builtin, $.call_atom],
-	[$.builtin, $.head_atom],
-	[$.functor, $._atomic],
-	[$.call_atom, $._atomic],
-	[$.head_atom,$ ._atomic],
-	[$.call_atom, $._compound_term],
-	[$.head_atom,$ ._compound_term],
-	[$.goal,$ ._compound_term],
-	[$.goal,$ ._operator_notation],
-	[$.goal,$ ._functional_notation],
-	//[$.__infix_non_associative, $.__infix_non_associative]
+	[$.builtin, $.atom],
+	[$.goal_name, $.term_name],
+	[$._goal, $._extension_term],
+//	[$.__infix_non_associative, $.__infix_non_associative]
     ],
 
-    superTypes: $ => [
-	$._atomic,
-	$.variable,
-	$._compound_term,
-	$.bracketed_term
+   superTypes: $ => [
+//	$.atomic,
+//	$.variable,
+//	$._bracketed_term
     ],
 
 
-    rules: {
+    rules:
+    {
 	// TODO: add the actual grammar rules
 	source_file: $ =>
-	seq(
-	    repeat(
-		choice(
-		    $.comment,
-		    seq(
-			choice(
-			    $.directive,
-			    $.predicate_definition
-			),
-			$.eot
-		    )
-		)
-	    )
+	repeat(
+	    prec.right(-1200,
+		 choice(
+		     $.directive,
+		     $.predicate_definition
+		 )
+	)
 	),
-	
+	directive: $ =>
+		   seq(
+		       ":-",
+		       $._goal,
+		       $.eot
 
-	directive: $ => 
-      	$._directive,
-
+	),
+	    
 	predicate_definition: $ =>
+		       seq(
+			   
+			   $.head,
+			   optional(	
+$.body
+			   ),
+		       $.eot
+		      ),
 
-	prec(-1200,seq($._head,optional(seq(choice(':-','-->'),$._body)))),
+	body: $=>
+			       seq(
 
-	_body: $ =>
+				   choice (':-','-->'),
+			   	    prec.right(-1100,
+					       $._goal)
+
+			       ) ,
+	_goal: $ =>
 	choice(
-
-	    prec.right(-1100,
-		       seq($._body,$.semic,$._body)),
+    prec.right(-1050,
+		       seq($._goal,$.semic,$._goal))  ,
 	    prec.right(-1000,
-		       seq($._body,',',$._body)),
+		       seq($._goal,',',$._goal)),
 	    prec.right(-1050,
-		       seq($._body,$.rghtarrow,$._body)),
+		       seq($._goal,$.rightarrow,$._goal)),
 	    prec.right(-1050,
-		       seq($._body,$.stararrow,$._body)),
-	    $.disj,
-	    $.goal
+		       seq($._goal,$.stararrow,$._goal)),
+	    field("goal", $.literal),
+	    $._functional_notation,
+	    $._operator_notation,
+	    $._list_notation,
+	    $._curly_bracketed_notation,
+	    $._bracketed_term,
+
 	),
 	semic: $ => ";",
-	rghtarrow: $ => "->",
+	rightarrow: $ => "->",
 	stararrow: $ => "*->",
 	close_b: $ => ")",
 	disj: $ =>
 	choice(
-	    seq('(', $._body, $.close_b),
-	    seq('{', $._body, '}')
-	),
-	goal: $=>
-	choice(
-	    $._compound_goal,
-	    $._functional_notation,
-	    $._operator_notation,
-	    field("goal",
-		  $.call_atom
-		 )     ),
-	
-	_head: $=>
-	choice(
-	    $._compound_head,
-	    $._operator_notation,
-	    field("head",
-		  $.head_atom
-		 )
+	    seq('(', $._goal, $.close_b),
+	    seq('{', $._goal, '}'
+	       )
 	),
 	
-	call_atom: $  =>
-	choice($.builtin,$._atom),
-	head_atom: $  =>
-	choice($.builtin,$._atom),
 	builtin: $ =>
-
 	choice(
-
-	    "!",
 	    "|",
 	    "*->",
 	    "<",
@@ -855,7 +836,7 @@ module.exports = grammar({
 	    "trace_goal_",
 	    "true",
 	    "true_file_name",
-	    "tthread_peek_message",
+	    "thread_peek_message",
 	    "t_tidy",
 	    "ttyget",
 	    "ttyget0",
@@ -894,7 +875,7 @@ module.exports = grammar({
 	    "vsc_wait",
 	    "wait",
 	    "wake_choice_point",
-	    "watch_goal",
+	    "watch_goa",
 	    "when",
 	    "with_mutex",
 	    "with_output_to",
@@ -909,30 +890,79 @@ module.exports = grammar({
 	),
 
 
-	_term: $ => prec(1, choice(
-	    // Define Term
-	    $._atomic,
-	    $.variable,
-	    $._compound_term,
-	    $.bracketed_term,
-	    $.dict
-	)),
-
-	bracketed_term: $ =>
-	prec(-1200,
-	     seq('(', $._scoped_term, $.close_b)
-	    )
-	     		    ,
-	_scoped_term: $=>
-	prec.right(
-	    choice(
-		prec(-1199, seq($._scoped_term,':-',$._scoped_term)),
-		prec(-1199, seq($._scoped_term,'-->',$._scoped_term)),
-		prec.right(-1100, seq($._scoped_term,$.semic,$._scoped_term)),
-		prec.right(-1000, seq($._scoped_term,",",$._scoped_term)),
-		$._term
-	    )
+	goal_name: $ =>
+	$._goal_functor_name,
+	head: $=> $.literal,
+	goal: $=> $.literal,
+	literal: $ =>
+	choice(
+	    $.builtin,
+	    $.atom,
+	    seq(
+		field("goal_functor", $._goal_functor_name),
+		$.arguments,
+		    ')'
+		)
 	),
+	_term: $ =>  choice(
+	    // Define Term
+	    $.number,
+	    //$.negaltive_number,
+	    $.codes,
+	    $.string,
+	    $.atom,
+	    $.variable,
+	    $.functor,
+	    $._extension_term
+	),
+	term_name:$=> $.atom,
+
+	
+
+	_extension_term: $=>
+	choice(
+	    $._functional_notation,
+	    $._operator_notation,
+	    $._list_notation,
+	    $._curly_bracketed_notation,
+	    $._bracketed_term,
+	    $.dict
+	),
+	
+	_method_term: $ =>
+	prec(1,
+	     choice(
+		 $._dot_atom,
+		 seq(
+	    // Define Term
+		    field("atom_term", $._dot_atom_functor),
+		     $.arguments,
+		    ')'
+		)
+	     )
+	    ),
+
+	_initial_method_term: $ =>
+	prec(1,
+	     choice(
+		 $.atom,
+		 seq(
+	    // Define Term
+		     field("atom_term", $._term_functor_name),
+		    $.arguments,
+		    ')'
+		)
+	     )
+	    ),
+
+	_bracketed_term: $ =>
+	
+	seq(
+	    '(',
+	    prec(-1200,
+		 $._term)
+	    , $.close_b),
+
 
 	eot: $ =>
 	    /\.[\s\n]/,
@@ -942,8 +972,7 @@ module.exports = grammar({
 	    //$.negaltive_number,
 	    $.codes,
 	    $.string,
-	    $._atom,
-	    alias('!', $.cut)
+	    $.atom,
 	)),
 
 	number: $ =>
@@ -953,101 +982,53 @@ module.exports = grammar({
 	    $.float
 	),
 	
-	method: $ => seq(token.immediate('.'),/[A-Za-z_][A-Za-z0-9_]*/),
-	
-
 	variable: $ =>
 	// Define Veriable
 	    /[A-Z_][a-zA-Z0-9_]*/,
 
-    functor: $ =>
-    seq(
-	$._atom,
-	"/",
-	/[0-9][0-9]?/),
-	    
-	_compound_term: $ =>  choice(
-	    	$.functor,
-	    seq($._atom,
-		token.immediate('('),
-		$._args,
-		')'
-	       ),
-	    $._functional_notation,
-	    $._operator_notation,
-	    $._list_notation,
-	    $._curly_bracketed_notation,
-	),
+	functor: $ =>
+	prec.left(-400,
+		  seq(
+		      optional(
+			  seq(
+			      field("module",$.atom),
+			      ":"
+			  )
+		      ),
+		      $.atom,
+		      "/",
+		      /[0-9][0-9]?/)
+		 ),
 
-	_compound_head: $ => 
-	seq(   field("predicate",
-	  $.head_atom
-		    ),
-	       
-	    token.immediate('('),
-	    $._args,
-	    ')'
-	   ),
 
-	_compound_goal: $ => 
-	seq(   field("predicate",
-	  $.call_atom
-		    ),
-	       
-	    token.immediate('('),
-	    $._args,
-	    ')'
-	   ),
 
-	predicate: $ => $._atom,
 	
-	
+	_functional_notation: $ => 
+	prec.right(-120,
+		   seq(
+		       
+		       optional(  $._method_term),
+		       repeat1(
+			   seq(
+			       ".",
+			       ($._method_term),
+			   )
+		       ),
+		       optional(  $._term)
+		   )
+	    ),
+    
 
-	_directive: $ => prec(-1200,
-			      seq(
-				  ':-',$._body)),
-	
-	
-	_functional_notation: $ => seq(
-
-	    
-	    optional(  choice($._atom,$.variable)),
-	    repeat1( $.method),
-	    optional(
-		seq('(',//$.open_ct,
-		    $._args,
-		    ')'//$.close_ct
-		   ))),
-	
-	_operator_notation: $ => choice(
-//	    $._prefixqq_notation,
-	    $._infix_notation,
-	    $._postfix_notation
+	    _operator_notation: $ => choice(
+	    $._prefix_non_associative,          // fx
+	    $._prefix_right_associative,         // fy
+		$._infix_operator
 	    //'thing that should not be matched'
 	),
 
 	_list_notation: $ => $.list,
 
 	_curly_bracketed_notation: $ => $.curly_bracket_term,
-
-	_prefix_notation: $ => field('prefix', alias(choice(
-	    // Define prefx notation`
-	    $._prefix_non_associative,          // fx
-	    $._prefix_right_associative         // fy
-	), $.prefix_operator)),
-
-	_infix_notation: $ => (
-	    // Define infix notation
-	    $._infix_operator
-	),
-
-	_postfix_notation: $ => field('postfix', alias(choice(
-	    // Define postfix notation - Non in SWI spec I can see
-	    // Need dynamic defintion of operators
-	    //$._postfix_non_associative,         // xf
-	    //$._postfix_left_associative         // yf
-	), $.postfix_operator)),
-
 
 	_infix_operator: $ => 
 	{ // xfx
@@ -1082,7 +1063,7 @@ module.exports = grammar({
 		[prec,700,"\\="],
 		[prec,700,"="],
 		//  [prec,1200,"-->"],
-		//  [prec,1200,":-"],
+		//		[prec,1200,":-"],
 		[prec.right,200,"^"],
 		[prec.right,600,":"],
 		//	    [prec.right,1000,","],
@@ -1111,7 +1092,8 @@ module.exports = grammar({
 
 	    return choice(...table.map(([fn, precedence, operator]) => fn(-precedence, seq(
 		$._term,
-		field('operator', alias(operator, $.operator)),
+		field("operator"
+		      , alias(operator, $.operator)),
 		$._term
 	    ))))
 	},
@@ -1136,12 +1118,12 @@ module.exports = grammar({
 		[1150,"initialization"],
 		[1150,"thread_local"],
 		[1150,"dynamic"],
-		[1201,"?-"],
-		//  [1201,":-"]
+		[1199,"?-"],
+//		[1199,":-"]
 	    ];
 
-	    return choice(...table.map(([precedence, operator]) => prec(-precedence, seq(
-		field('operator', alias(operator, $.operator)),
+	    return choice(...table.map(([precidence, operator]) => prec.left(-precidence, seq(
+		field('l_operator', operator),
 		$._term
 	    ))))
 	},
@@ -1156,15 +1138,15 @@ module.exports = grammar({
 		[900,"not"]
 	    ];
 
-	    return choice(...table.map(([precidence, operator]) => prec.right(-precidence, seq(
-		field('operator', alias(operator, $.operator)),
-		field('right', $._term)
+	    return choice(...table.map(([precidence, operator]) => prec.right(-precidence+1, seq(
+		field('l_operator', operator),
+		$._term
 	    ))))
 	},
 
 	dict: $ => seq(
 	    choice(
-		$._atom,
+		$.atom,
 		$.variable
 	    ),
 	    '{',
@@ -1180,7 +1162,7 @@ module.exports = grammar({
 	),
 
 	dict_value: $ => seq(
-	    $._atom,
+	    $.atom,
 	    token.immediate(':'),
 	    $._term
 	),
@@ -1223,16 +1205,61 @@ module.exports = grammar({
 	   ),
 	
 	
-	_atom: $ => 
+	atom: $ => 
 	choice(
-	    /[a-z][a-zA-Z0-9_]*/ ,
-	    $.quoted_atom
+	    /[a-z][a-zA-Z0-9\v_]*/ ,
+	    $.quoted_atom,
+	    $.cut
 	),
 
-
+	cut:$ => '!',
 	
+	    _head_functor_name: $ =>
+	    seq(
+		repeat(seq($.atom,":")),
+		    $.atom,
+		token.immediate("(" )
+	    ),
+	    _goal_functor_name: $ =>
+	    seq(
+		repeat(seq($.atom,":")),
+		choice(
+		    $.atom,
+		    $.builtin
+		),
+		token.immediate("(" )
+	    ),
+	
+	    _term_functor_name: $ =>
+	    seq(
+		$.atom,
+		token.immediate("(" )
+	    ),
+
+	atom: $ => 
+	choice(
+	    /[a-z][a-zA-Z0-9\v_]*/ ,
+	    $.quoted_atom,
+	    $.cut
+	),
+
+	cut:$ => '!',
+	
+	    _head_functor_name: $ =>
+	    seq(
+		repeat(seq($.atom,":")),
+		choice(
+		    $.atom,
+		    $.builtin
+		),
+		token.immediate("(" )
+	    ),
 
 
+
+	_dot_atom: $ => seq(".", ($.atom)),
+	
+	_dot_atom_functor: $ => seq(".", $._term_functor_name, $.arguments, ")" ),
 
 	quoted_atom: $ => token(seq('\'', /.*/, '\'')),
 
@@ -1240,17 +1267,18 @@ module.exports = grammar({
 	codes: $ => token(seq('\"', /.*/, '\"')),
 
 	comment: $ => token(choice(
-	    /%.*/,
+	    seq('%',/.*/),
+	    
 	    seq(
-		'/*',
-		/[^*]*\*+([^/*][^*]*\*+)*/,
+		/[/][*][*]*/,
+               /[^*]*\*+([^/*][^*]*\*+)*/,
 		'/'
 	    )
 	)),
 
 	list: $ => prec.right(seq(
 	    $.open_list,
-	    optional(	    $._args ),
+	    optional(	    $.arguments ),
 	    $.close_list,
 	)),
 
@@ -1269,25 +1297,19 @@ module.exports = grammar({
 	    field('close_cb', alias('}', $.curly_bracket))
 	)),
 
-	arg: $ => prec.left(choice(
-	    $._term
-	)),
+	arg: $ =>
+	(
+	    prec.right(-1001, $._term )
+	),
 
-	_args: $ => prec.right(seq(
+	arguments: $ => seq(
+	    $.arg,
 	    repeat(
-			prec.left(seq( // TODO: Work out if correct
-		$.arg,
-	    ',',
-		      ))
-	    ),
-	    $.arg
-	)),
-	
-    },
-    user_defined_operators: $ => {
-
+		seq(
+		    ',',
+		    $.arg
+		)
+	    )
+	)
     }
-
 });
-
-
