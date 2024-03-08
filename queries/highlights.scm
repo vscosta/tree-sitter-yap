@@ -1,4 +1,4 @@
-; highlights.scm
+
 
 (comment) @comment
 
@@ -8,9 +8,9 @@
 
 
 
-(head  (atom)  @function)
-(goal: (atom)  @function.call)
-(goal: (builtin)  @function.call)
+(head (literal goal_functor: (atom)  @function))
+(literal goal_functor: (atom)  @function.call)
+(literal goal_functor: (builtin)  @function.call)
 
 
 (functor) @constant
