@@ -11,7 +11,7 @@ add_custom_command(OUTPUT src/parser.c src/node.types src/tree-sitter.h
 cmake_minimum_required(VERSION 3.26)
 
 
-project(tree-sitter-yap)
+project(tree-sitter-prolog)
 
 
 #talk to python.pl

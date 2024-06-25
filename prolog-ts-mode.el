@@ -1,4 +1,4 @@
-;;; prolog~-ts-mode.el --- tree-sitter support for Prolog  -*- lexical-binding: t; -*-
+;;; yap-ts-mode.el --- tree-sitter support for Prolog  -*- lexical-binding: t; -*-
 
 
 ;; Copyright (C) 2022-2023 Free Software Foundation, Inc.
@@ -77,20 +77,28 @@
   '("{" "}" "," ";" "[" "]" "(" ")")
   "Prolog operators for tree-sitter font-locking.")
 
+
 (defvar prolog-ts-mode--indent-rules
   `((prolog
      ((node-is "predicate_definition") column-0 0)
      ((node-is "directive") column-0 0)
      ((parent-is "predicate_definition") parent-bol prolog-ts-mode-indent-offset)
-     ((node-is "semic")  parent 0)
-     ((node-is "rightarrow")   parent 0)
-     ((node-is "close_b")   parent 0)
-     ((parent-is "disj")  parent 2)
-     ((parent-is "bracketed_term")  parent 2)
-     ((node-is "goal")  parent-bol prolog-ts-mode-indent-offset)
-     ((parent-is "list")  parent-bol 2)
-     ((parent-is "arg")  parent-bol 0)
-     ((node-is "close_list")  first-sibling 1)
+     ((parent-is "inner_goal") parent-bol 2)
+     ;;     ((grandparent-is "inner_goal") parent-bol 2)
+     ((node-is "inner_goal") parent-bol 2)
+     ((parent-is "body") parent-bol 0)
+
+    ;; ((node-is "goal") prev-line 0)
+    ;;  ((node-is "semic")  parent 0)
+    ;;  ((node-is "rightarrow")   parent 0)
+    ;;  ((node-is "close_b")   parent 0)
+    ;;  ((parent-is "disj")  parent 2)
+    ;;  ((node-is "bracketed_term")  parent 2)
+    ;;  ((node-is "body")  parent-bol prolog-ts-mode-indent-offset)
+    ;;  ((parent-is "list")  parent-bol 2)
+    ;;  ((parent-is "arg")  parent-bol 0)
+    ;;  ((node-is "close_list")  first-sibling 1)
+     ((catch-all)   prolog-ts-mode-indent-offset 0)
      ))
     "Tree-sitter indent rules for `prolog-ts-mode'.")
 
@@ -142,10 +150,11 @@
    ;; :language 'prolog
    ;; :feature 'functor
    ;; '((functor) @font-lock-constant-face)
-  
+
+   
    :language 'prolog
    :feature 'function-call
-   '((call_atom) @font-lock-function-call-face)
+   '((pred_name) @font-lock-function-call-face)
   
    ;; :language 'prolog
    ;; :feature 'function
@@ -176,7 +185,7 @@
    :feature 'function
    ;; Don't override strings.
    :override t
-   '((head_atom) @font-lock-keyword-face)
+   '((head (goal (pred-name))) @font-lock-keyword-face)
 
    :language 'prolog
    :feature 'variable
@@ -189,7 +198,7 @@
    )
   "Tree-sitter font-lock settings for `prolog-ts-mode'."
   )
-nil
+
 
 ;;;###autoload
 (define-derived-mode prolog-ts-mode prog-mode "Prolog"
@@ -205,22 +214,22 @@ nil
 ;;  (setq-local treesit-defun-type-regexp
     ;;  (regexp-opt '("head")))
 
-(defun yap-ts-mode--imenu ()
+(defun prolog-ts-mode--imenu ()
   "Return Imenu alist for the current buffer."
   (let* ((node (treesit-buffer-root-node))
          (pred-tree (treesit-induce-sparse-tree
                      node "head_atom" nil 1000))
-         (pred-index (yap-ts-mode--imenu-1 pred-tree)))
+         (pred-index (prolog-ts-mode--imenu-1 pred-tree)))
     (append
      (when pred-index `(("Predicates" . ,pred-index))))))
 
-(defun yap-ts-mode--imenu-1 (node)
-  "Helper for `yap-ts-mode--imenu'.
+(defun prolog-ts-mode--imenu-1 (node)
+  "Helper for `prolog-ts-mode--imenu'.
 Find string representation for NODE and set marker, then recurse
 the subtrees."
   (let* ((ts-node (car node))
          (children (cdr node))
-         (subtrees (mapcan #'yap-ts-mode--imenu-1
+         (subtrees (mapcan #'prolog-ts-mode--imenu-1
                            children))
          (name (when ts-node
                     (treesit-node-text ts-node)
@@ -248,34 +257,38 @@ the subtrees."
 
 
     ;; Imenu.
-    (setq-local imenu-create-index-function #'yap-ts-mode--imenu)
+    (setq-local imenu-create-index-function #'prolog-ts-mode--imenu)
     (setq-local which-func-functions nil)
 
 
     ;; Font-lock.
     (setq-local treesit-font-lock-settings prolog-ts-mode--font-lock-settings)
      (setq-local treesit-font-lock-feature-list
-                '((comment function string  builtin error eot)
+                '((comment function string error eot)
                   ;; 'function' and 'variable' here play 
                   ;; different roles than in other ts modes, so we
                   ;; kept them at level 3.
                   ( function-call misc-punctuation functor)
-                  (number variable bracket operator)))
 
-    (treesit-major-mode-setup)))
+
+		  (number variable bracket operator))
+		  )
+	       
+   
+     (treesit-major-mode-setup)))
 
 (if (treesit-ready-p 'prolog)
   
     (add-to-list 'auto-mode-alist
-          '("\\.yap\\'"  . prolog-ts-mode))
-    (add-to-list 'auto-mode-alist
-          '("\\.ypp\\'"  . prolog-ts-mode))
+		 '("\\.yap\\'"  . prolog-ts-mode))
+  (add-to-list 'auto-mode-alist
+		 '("\\.ypp\\'"  . prolog-ts-mode))
     (add-to-list 'auto-mode-alist
           '("\\.pl\\'"  . prolog-ts-mode))
     (add-to-list 'auto-mode-alist
-          '("\\.prolog\\'"  . prolog-ts-mode))
+		 '("\\.prolog\\'"  . prolog-ts-mode))
     )
 (provide 'prolog-ts-mode)
 
 
-;;; yap-ts-mode.el ends here
+;;; prolog-ts-mode.el ends here

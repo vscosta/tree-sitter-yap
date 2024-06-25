@@ -8,12 +8,28 @@
 
 
 
-(head (literal goal_functor: (atom)  @function))
-(literal goal_functor: (atom)  @function.call)
-(literal goal_functor: (builtin)  @function.call)
 
 
-(functor) @constant
+(head predicate:      (goal (pred_name ))) @function
+
+ (pred_name) @function.call
+
+[
+  ";"
+  "."
+  ","  
+] @punctuation.delimiter
+
+
+(operator) @operator
+
+[
+  "("
+  ")"
+  "{"
+  "}"
+]  @punctuation.bracket
+
 
 (quoted_atom) @string.special
 
@@ -22,8 +38,6 @@
 
 (eot) @function.builtin
 
-(curly_bracket) @operator
-
 (cut) @function.builtin
 
 (variable) @variable
@@ -31,3 +45,7 @@
 (operator) @operator
 
 (ERROR) @error
+
+
+(predicate_indicator) @constant
+

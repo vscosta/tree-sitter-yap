@@ -3,32 +3,6 @@
     "type": "arg",
     "named": true,
     "fields": {
-      "atom_term": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": ".",
-            "named": false
-          },
-          {
-            "type": "arguments",
-            "named": true
-          },
-          {
-            "type": "atom",
-            "named": true
-          }
-        ]
-      },
       "l_operator": {
         "multiple": true,
         "required": false,
@@ -39,6 +13,10 @@
           },
           {
             "type": "-",
+            "named": false
+          },
+          {
+            "type": ":=",
             "named": false
           },
           {
@@ -139,7 +117,7 @@
       "required": false,
       "types": [
         {
-          "type": "arguments",
+          "type": "args",
           "named": true
         },
         {
@@ -147,7 +125,7 @@
           "named": true
         },
         {
-          "type": "close_b",
+          "type": "bracketed_term",
           "named": true
         },
         {
@@ -159,11 +137,163 @@
           "named": true
         },
         {
-          "type": "dict",
+          "type": "list",
           "named": true
         },
         {
-          "type": "functor",
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "predicate_indicator",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "args",
+    "named": true,
+    "fields": {
+      "l_operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": ":=",
+            "named": false
+          },
+          {
+            "type": "?-",
+            "named": false
+          },
+          {
+            "type": "\\",
+            "named": false
+          },
+          {
+            "type": "\\+",
+            "named": false
+          },
+          {
+            "type": "array",
+            "named": false
+          },
+          {
+            "type": "block",
+            "named": false
+          },
+          {
+            "type": "discontiguous",
+            "named": false
+          },
+          {
+            "type": "dynamic",
+            "named": false
+          },
+          {
+            "type": "initialization",
+            "named": false
+          },
+          {
+            "type": "matrix",
+            "named": false
+          },
+          {
+            "type": "meta_predicate",
+            "named": false
+          },
+          {
+            "type": "mode",
+            "named": false
+          },
+          {
+            "type": "module_transparent",
+            "named": false
+          },
+          {
+            "type": "multifile",
+            "named": false
+          },
+          {
+            "type": "nospy",
+            "named": false
+          },
+          {
+            "type": "not",
+            "named": false
+          },
+          {
+            "type": "public",
+            "named": false
+          },
+          {
+            "type": "spy",
+            "named": false
+          },
+          {
+            "type": "table",
+            "named": false
+          },
+          {
+            "type": "thread_local",
+            "named": false
+          },
+          {
+            "type": "volatile",
+            "named": false
+          }
+        ]
+      },
+      "operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "args",
+          "named": true
+        },
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "bracketed_term",
+          "named": true
+        },
+        {
+          "type": "codes",
+          "named": true
+        },
+        {
+          "type": "curly_bracket_term",
           "named": true
         },
         {
@@ -172,6 +302,10 @@
         },
         {
           "type": "number",
+          "named": true
+        },
+        {
+          "type": "predicate_indicator",
           "named": true
         },
         {
@@ -222,186 +356,25 @@
   {
     "type": "body",
     "named": true,
-    "fields": {
-      "atom_term": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": ".",
-            "named": false
-          },
-          {
-            "type": "arguments",
-            "named": true
-          },
-          {
-            "type": "atom",
-            "named": true
-          }
-        ]
-      },
-      "goal": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "literal",
-            "named": true
-          }
-        ]
-      },
-      "l_operator": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "+",
-            "named": false
-          },
-          {
-            "type": "-",
-            "named": false
-          },
-          {
-            "type": "?-",
-            "named": false
-          },
-          {
-            "type": "\\",
-            "named": false
-          },
-          {
-            "type": "\\+",
-            "named": false
-          },
-          {
-            "type": "array",
-            "named": false
-          },
-          {
-            "type": "block",
-            "named": false
-          },
-          {
-            "type": "discontiguous",
-            "named": false
-          },
-          {
-            "type": "dynamic",
-            "named": false
-          },
-          {
-            "type": "initialization",
-            "named": false
-          },
-          {
-            "type": "matrix",
-            "named": false
-          },
-          {
-            "type": "meta_predicate",
-            "named": false
-          },
-          {
-            "type": "mode",
-            "named": false
-          },
-          {
-            "type": "module_transparent",
-            "named": false
-          },
-          {
-            "type": "multifile",
-            "named": false
-          },
-          {
-            "type": "nospy",
-            "named": false
-          },
-          {
-            "type": "not",
-            "named": false
-          },
-          {
-            "type": "public",
-            "named": false
-          },
-          {
-            "type": "spy",
-            "named": false
-          },
-          {
-            "type": "table",
-            "named": false
-          },
-          {
-            "type": "thread_local",
-            "named": false
-          },
-          {
-            "type": "volatile",
-            "named": false
-          }
-        ]
-      },
-      "operator": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "operator",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
-        {
-          "type": "arguments",
-          "named": true
-        },
-        {
-          "type": "atom",
-          "named": true
-        },
         {
           "type": "close_b",
           "named": true
         },
         {
-          "type": "codes",
+          "type": "comma",
           "named": true
         },
         {
-          "type": "curly_bracket_term",
+          "type": "goal",
           "named": true
         },
         {
-          "type": "dict",
-          "named": true
-        },
-        {
-          "type": "functor",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "number",
+          "type": "inner_goal",
           "named": true
         },
         {
@@ -415,22 +388,48 @@
         {
           "type": "stararrow",
           "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "variable",
-          "named": true
         }
       ]
     }
   },
   {
-    "type": "builtin",
+    "type": "bracketed_term",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "close_b",
+          "named": true
+        },
+        {
+          "type": "comma",
+          "named": true
+        },
+        {
+          "type": "goal",
+          "named": true
+        },
+        {
+          "type": "inner_goal",
+          "named": true
+        },
+        {
+          "type": "rightarrow",
+          "named": true
+        },
+        {
+          "type": "semic",
+          "named": true
+        },
+        {
+          "type": "stararrow",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "close_b",
@@ -443,35 +442,14 @@
     "fields": {}
   },
   {
+    "type": "comma",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "curly_bracket_term",
     "named": true,
     "fields": {
-      "atom_term": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": ".",
-            "named": false
-          },
-          {
-            "type": "arguments",
-            "named": true
-          },
-          {
-            "type": "atom",
-            "named": true
-          }
-        ]
-      },
       "close_cb": {
         "multiple": false,
         "required": true,
@@ -492,6 +470,10 @@
           },
           {
             "type": "-",
+            "named": false
+          },
+          {
+            "type": ":=",
             "named": false
           },
           {
@@ -602,7 +584,7 @@
       "required": false,
       "types": [
         {
-          "type": "arguments",
+          "type": "args",
           "named": true
         },
         {
@@ -610,7 +592,7 @@
           "named": true
         },
         {
-          "type": "close_b",
+          "type": "bracketed_term",
           "named": true
         },
         {
@@ -622,19 +604,15 @@
           "named": true
         },
         {
-          "type": "dict",
-          "named": true
-        },
-        {
-          "type": "functor",
-          "named": true
-        },
-        {
           "type": "list",
           "named": true
         },
         {
           "type": "number",
+          "named": true
+        },
+        {
+          "type": "predicate_indicator",
           "named": true
         },
         {
@@ -649,58 +627,9 @@
     }
   },
   {
-    "type": "dict",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "atom",
-          "named": true
-        },
-        {
-          "type": "dict_value",
-          "named": true
-        },
-        {
-          "type": "variable",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "dict_value",
     "named": true,
     "fields": {
-      "atom_term": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": ".",
-            "named": false
-          },
-          {
-            "type": "arguments",
-            "named": true
-          },
-          {
-            "type": "atom",
-            "named": true
-          }
-        ]
-      },
       "l_operator": {
         "multiple": true,
         "required": false,
@@ -711,6 +640,10 @@
           },
           {
             "type": "-",
+            "named": false
+          },
+          {
+            "type": ":=",
             "named": false
           },
           {
@@ -811,7 +744,7 @@
       "required": true,
       "types": [
         {
-          "type": "arguments",
+          "type": "args",
           "named": true
         },
         {
@@ -819,7 +752,7 @@
           "named": true
         },
         {
-          "type": "close_b",
+          "type": "bracketed_term",
           "named": true
         },
         {
@@ -831,19 +764,15 @@
           "named": true
         },
         {
-          "type": "dict",
-          "named": true
-        },
-        {
-          "type": "functor",
-          "named": true
-        },
-        {
           "type": "list",
           "named": true
         },
         {
           "type": "number",
+          "named": true
+        },
+        {
+          "type": "predicate_indicator",
           "named": true
         },
         {
@@ -860,43 +789,50 @@
   {
     "type": "directive",
     "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "close_b",
+          "named": true
+        },
+        {
+          "type": "comma",
+          "named": true
+        },
+        {
+          "type": "eot",
+          "named": true
+        },
+        {
+          "type": "goal",
+          "named": true
+        },
+        {
+          "type": "inner_goal",
+          "named": true
+        },
+        {
+          "type": "rightarrow",
+          "named": true
+        },
+        {
+          "type": "semic",
+          "named": true
+        },
+        {
+          "type": "stararrow",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "goal",
+    "named": true,
     "fields": {
-      "atom_term": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": ".",
-            "named": false
-          },
-          {
-            "type": "arguments",
-            "named": true
-          },
-          {
-            "type": "atom",
-            "named": true
-          }
-        ]
-      },
-      "goal": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "literal",
-            "named": true
-          }
-        ]
-      },
       "l_operator": {
         "multiple": true,
         "required": false,
@@ -907,6 +843,229 @@
           },
           {
             "type": "-",
+            "named": false
+          },
+          {
+            "type": ":=",
+            "named": false
+          },
+          {
+            "type": "?-",
+            "named": false
+          },
+          {
+            "type": "\\",
+            "named": false
+          },
+          {
+            "type": "\\+",
+            "named": false
+          },
+          {
+            "type": "array",
+            "named": false
+          },
+          {
+            "type": "block",
+            "named": false
+          },
+          {
+            "type": "discontiguous",
+            "named": false
+          },
+          {
+            "type": "dynamic",
+            "named": false
+          },
+          {
+            "type": "initialization",
+            "named": false
+          },
+          {
+            "type": "matrix",
+            "named": false
+          },
+          {
+            "type": "meta_predicate",
+            "named": false
+          },
+          {
+            "type": "mode",
+            "named": false
+          },
+          {
+            "type": "module_transparent",
+            "named": false
+          },
+          {
+            "type": "multifile",
+            "named": false
+          },
+          {
+            "type": "nospy",
+            "named": false
+          },
+          {
+            "type": "not",
+            "named": false
+          },
+          {
+            "type": "public",
+            "named": false
+          },
+          {
+            "type": "spy",
+            "named": false
+          },
+          {
+            "type": "table",
+            "named": false
+          },
+          {
+            "type": "thread_local",
+            "named": false
+          },
+          {
+            "type": "volatile",
+            "named": false
+          }
+        ]
+      },
+      "operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "args",
+          "named": true
+        },
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "bracketed_term",
+          "named": true
+        },
+        {
+          "type": "codes",
+          "named": true
+        },
+        {
+          "type": "curly_bracket_term",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "pred_name",
+          "named": true
+        },
+        {
+          "type": "predicate_indicator",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "head",
+    "named": true,
+    "fields": {
+      "predicate": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "goal",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "inner_goal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "close_b",
+          "named": true
+        },
+        {
+          "type": "comma",
+          "named": true
+        },
+        {
+          "type": "goal",
+          "named": true
+        },
+        {
+          "type": "inner_goal",
+          "named": true
+        },
+        {
+          "type": "rightarrow",
+          "named": true
+        },
+        {
+          "type": "semic",
+          "named": true
+        },
+        {
+          "type": "stararrow",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list",
+    "named": true,
+    "fields": {
+      "l_operator": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": ":=",
             "named": false
           },
           {
@@ -1007,7 +1166,7 @@
       "required": true,
       "types": [
         {
-          "type": "arguments",
+          "type": "args",
           "named": true
         },
         {
@@ -1015,7 +1174,11 @@
           "named": true
         },
         {
-          "type": "close_b",
+          "type": "bracketed_term",
+          "named": true
+        },
+        {
+          "type": "close_list",
           "named": true
         },
         {
@@ -1027,18 +1190,6 @@
           "named": true
         },
         {
-          "type": "dict",
-          "named": true
-        },
-        {
-          "type": "eot",
-          "named": true
-        },
-        {
-          "type": "functor",
-          "named": true
-        },
-        {
           "type": "list",
           "named": true
         },
@@ -1047,15 +1198,11 @@
           "named": true
         },
         {
-          "type": "rightarrow",
+          "type": "open_list",
           "named": true
         },
         {
-          "type": "semic",
-          "named": true
-        },
-        {
-          "type": "stararrow",
+          "type": "predicate_indicator",
           "named": true
         },
         {
@@ -1064,116 +1211,6 @@
         },
         {
           "type": "variable",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "functor",
-    "named": true,
-    "fields": {
-      "module": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "atom",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "atom",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "head",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "list",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "arguments",
-          "named": true
-        },
-        {
-          "type": "close_list",
-          "named": true
-        },
-        {
-          "type": "open_list",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "literal",
-    "named": true,
-    "fields": {
-      "goal_functor": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ":",
-            "named": false
-          },
-          {
-            "type": "atom",
-            "named": true
-          },
-          {
-            "type": "builtin",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "arguments",
-          "named": true
-        },
-        {
-          "type": "atom",
-          "named": true
-        },
-        {
-          "type": "builtin",
           "named": true
         }
       ]
@@ -1203,6 +1240,25 @@
     }
   },
   {
+    "type": "pred_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "cut",
+          "named": true
+        },
+        {
+          "type": "quoted_atom",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "predicate_definition",
     "named": true,
     "fields": {},
@@ -1224,6 +1280,35 @@
         }
       ]
     }
+  },
+  {
+    "type": "predicate_indicator",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "rightarrow",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "semic",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "source_file",
@@ -1251,14 +1336,6 @@
   },
   {
     "type": "'C'",
-    "named": false
-  },
-  {
-    "type": "'_cut_by'",
-    "named": false
-  },
-  {
-    "type": "'_ground'",
     "named": false
   },
   {
@@ -1290,11 +1367,19 @@
     "named": false
   },
   {
+    "type": "->",
+    "named": false
+  },
+  {
     "type": ".",
     "named": false
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": "//",
     "named": false
   },
   {
@@ -1310,67 +1395,15 @@
     "named": false
   },
   {
-    "type": "<",
+    "type": ":=",
     "named": false
   },
   {
-    "type": "=",
-    "named": false
-  },
-  {
-    "type": "=..",
-    "named": false
-  },
-  {
-    "type": "=:=",
-    "named": false
-  },
-  {
-    "type": "=<",
-    "named": false
-  },
-  {
-    "type": "==",
-    "named": false
-  },
-  {
-    "type": "=@=",
-    "named": false
-  },
-  {
-    "type": "=\\=",
-    "named": false
-  },
-  {
-    "type": ">",
-    "named": false
-  },
-  {
-    "type": ">=",
+    "type": ";",
     "named": false
   },
   {
     "type": "?-",
-    "named": false
-  },
-  {
-    "type": "@<",
-    "named": false
-  },
-  {
-    "type": "@=<",
-    "named": false
-  },
-  {
-    "type": "@>",
-    "named": false
-  },
-  {
-    "type": "@>=",
-    "named": false
-  },
-  {
-    "type": "[]",
     "named": false
   },
   {
@@ -1379,18 +1412,6 @@
   },
   {
     "type": "\\+",
-    "named": false
-  },
-  {
-    "type": "\\=",
-    "named": false
-  },
-  {
-    "type": "\\==",
-    "named": false
-  },
-  {
-    "type": "^",
     "named": false
   },
   {
@@ -1426,18 +1447,6 @@
     "named": false
   },
   {
-    "type": "abolish_all_tables",
-    "named": false
-  },
-  {
-    "type": "abolish_frozen_choice_points",
-    "named": false
-  },
-  {
-    "type": "abolish_module",
-    "named": false
-  },
-  {
     "type": "abolish_table",
     "named": false
   },
@@ -1446,19 +1455,7 @@
     "named": false
   },
   {
-    "type": "absf_trace",
-    "named": false
-  },
-  {
-    "type": "absf_trace_compogtnent",
-    "named": false
-  },
-  {
     "type": "absolute_file_name",
-    "named": false
-  },
-  {
-    "type": "absolute_file_system_path",
     "named": false
   },
   {
@@ -1466,23 +1463,7 @@
     "named": false
   },
   {
-    "type": "access_file",
-    "named": false
-  },
-  {
     "type": "acyclic_term",
-    "named": false
-  },
-  {
-    "type": "add_import_module",
-    "named": false
-  },
-  {
-    "type": "add_to_array_element",
-    "named": false
-  },
-  {
-    "type": "add_to_path",
     "named": false
   },
   {
@@ -1494,35 +1475,11 @@
     "named": false
   },
   {
-    "type": "all_attvars",
-    "named": false
-  },
-  {
-    "type": "always_prompt_user",
-    "named": false
-  },
-  {
-    "type": "append",
-    "named": false
-  },
-  {
-    "type": "append_args",
-    "named": false
-  },
-  {
-    "type": "arena_size",
-    "named": false
-  },
-  {
     "type": "arg",
     "named": false
   },
   {
     "type": "array",
-    "named": false
-  },
-  {
-    "type": "array_element",
     "named": false
   },
   {
@@ -1542,31 +1499,7 @@
     "named": false
   },
   {
-    "type": "asserta_static",
-    "named": false
-  },
-  {
     "type": "assertz",
-    "named": false
-  },
-  {
-    "type": "assertz_static",
-    "named": false
-  },
-  {
-    "type": "at_end_of_line",
-    "named": false
-  },
-  {
-    "type": "at_end_of_stream",
-    "named": false
-  },
-  {
-    "type": "at_end_of_stream_0",
-    "named": false
-  },
-  {
-    "type": "at_halt",
     "named": false
   },
   {
@@ -1614,35 +1547,11 @@
     "named": false
   },
   {
-    "type": "b_getval",
-    "named": false
-  },
-  {
     "type": "b_setval",
     "named": false
   },
   {
     "type": "bagof",
-    "named": false
-  },
-  {
-    "type": "bb_delete",
-    "named": false
-  },
-  {
-    "type": "bb_get",
-    "named": false
-  },
-  {
-    "type": "bb_put",
-    "named": false
-  },
-  {
-    "type": "bb_update",
-    "named": false
-  },
-  {
-    "type": "between",
     "named": false
   },
   {
@@ -1658,55 +1567,11 @@
     "named": false
   },
   {
-    "type": "build_body",
-    "named": false
-  },
-  {
     "type": "call",
     "named": false
   },
   {
-    "type": "call_cleanup",
-    "named": false
-  },
-  {
-    "type": "call_count",
-    "named": false
-  },
-  {
-    "type": "call_count_data",
-    "named": false
-  },
-  {
-    "type": "call_count_reset",
-    "named": false
-  },
-  {
-    "type": "call_in_mod",
-    "named": false
-  },
-  {
-    "type": "call_residue",
-    "named": false
-  },
-  {
-    "type": "call_residue_vars",
-    "named": false
-  },
-  {
-    "type": "call_shared_object_function",
-    "named": false
-  },
-  {
-    "type": "call_with_args",
-    "named": false
-  },
-  {
     "type": "call_wo_mod",
-    "named": false
-  },
-  {
-    "type": "callable",
     "named": false
   },
   {
@@ -1722,10 +1587,6 @@
     "named": false
   },
   {
-    "type": "char_conversion",
-    "named": false
-  },
-  {
     "type": "char_type",
     "named": false
   },
@@ -1734,95 +1595,7 @@
     "named": false
   },
   {
-    "type": "char_type_alpha",
-    "named": false
-  },
-  {
-    "type": "char_type_ascii",
-    "named": false
-  },
-  {
-    "type": "char_type_cntrl",
-    "named": false
-  },
-  {
-    "type": "char_type_csym",
-    "named": false
-  },
-  {
-    "type": "char_type_csymf",
-    "named": false
-  },
-  {
-    "type": "char_type_digit",
-    "named": false
-  },
-  {
-    "type": "char_type_end_of_file",
-    "named": false
-  },
-  {
-    "type": "char_type_end_of_line",
-    "named": false
-  },
-  {
-    "type": "char_type_graph",
-    "named": false
-  },
-  {
-    "type": "char_type_lower",
-    "named": false
-  },
-  {
-    "type": "char_type_newline",
-    "named": false
-  },
-  {
-    "type": "char_type_paren",
-    "named": false
-  },
-  {
-    "type": "char_type_period",
-    "named": false
-  },
-  {
-    "type": "char_type_prolog_atom_start",
-    "named": false
-  },
-  {
-    "type": "char_type_prolog_identifier_continue",
-    "named": false
-  },
-  {
-    "type": "char_type_prolog_prolog_symbol",
-    "named": false
-  },
-  {
-    "type": "char_type_prolog_var_start",
-    "named": false
-  },
-  {
     "type": "char_type_punct",
-    "named": false
-  },
-  {
-    "type": "char_type_quote",
-    "named": false
-  },
-  {
-    "type": "char_type_space",
-    "named": false
-  },
-  {
-    "type": "char_type_upper",
-    "named": false
-  },
-  {
-    "type": "char_type_white",
-    "named": false
-  },
-  {
-    "type": "char_type_xdigit",
     "named": false
   },
   {
@@ -1830,27 +1603,7 @@
     "named": false
   },
   {
-    "type": "check_dbload_stream",
-    "named": false
-  },
-  {
-    "type": "checklist",
-    "named": false
-  },
-  {
-    "type": "checknodes",
-    "named": false
-  },
-  {
-    "type": "checknodes_list",
-    "named": false
-  },
-  {
     "type": "clause",
-    "named": false
-  },
-  {
-    "type": "clause_property",
     "named": false
   },
   {
@@ -1862,124 +1615,12 @@
     "named": true
   },
   {
-    "type": "close_shared_object",
-    "named": false
-  },
-  {
-    "type": "close_static_array",
-    "named": false
-  },
-  {
-    "type": "code_type",
-    "named": false
-  },
-  {
-    "type": "code_type_alnum",
-    "named": false
-  },
-  {
-    "type": "code_type_alpha",
-    "named": false
-  },
-  {
-    "type": "code_type_ascii",
-    "named": false
-  },
-  {
-    "type": "code_type_cntrl",
-    "named": false
-  },
-  {
-    "type": "code_type_csym",
-    "named": false
-  },
-  {
-    "type": "code_type_csymf",
-    "named": false
-  },
-  {
-    "type": "code_type_digit",
-    "named": false
-  },
-  {
-    "type": "code_type_end_of_file",
-    "named": false
-  },
-  {
-    "type": "code_type_end_of_line",
-    "named": false
-  },
-  {
-    "type": "code_type_graph",
-    "named": false
-  },
-  {
-    "type": "code_type_lower",
-    "named": false
-  },
-  {
-    "type": "code_type_newline",
-    "named": false
-  },
-  {
-    "type": "code_type_paren",
-    "named": false
-  },
-  {
-    "type": "code_type_period",
-    "named": false
-  },
-  {
-    "type": "code_type_prolog_atom_start",
-    "named": false
-  },
-  {
-    "type": "code_type_prolog_identifier_continue",
-    "named": false
-  },
-  {
-    "type": "code_type_prolog_prolog_symbol",
-    "named": false
-  },
-  {
-    "type": "code_type_prolog_var_start",
-    "named": false
-  },
-  {
-    "type": "code_type_punct",
-    "named": false
-  },
-  {
-    "type": "code_type_quote",
-    "named": false
-  },
-  {
-    "type": "code_type_space",
-    "named": false
-  },
-  {
-    "type": "code_type_upper",
-    "named": false
-  },
-  {
-    "type": "code_type_white",
-    "named": false
-  },
-  {
-    "type": "code_type_xdigit",
+    "type": "codes",
     "named": false
   },
   {
     "type": "codes",
     "named": true
-  },
-  {
-    "type": "codes",
-    "named": false
-  },
-  {
-    "type": "comma",
-    "named": false
   },
   {
     "type": "comment",
@@ -1987,10 +1628,6 @@
   },
   {
     "type": "comment_hook",
-    "named": false
-  },
-  {
-    "type": "commons_library",
     "named": false
   },
   {
@@ -2002,31 +1639,7 @@
     "named": false
   },
   {
-    "type": "compile_clause",
-    "named": false
-  },
-  {
-    "type": "compile_clauses",
-    "named": false
-  },
-  {
-    "type": "compile_expressions",
-    "named": false
-  },
-  {
-    "type": "compile_predicates",
-    "named": false
-  },
-  {
     "type": "compound",
-    "named": false
-  },
-  {
-    "type": "constraining_variables",
-    "named": false
-  },
-  {
-    "type": "consult",
     "named": false
   },
   {
@@ -2034,19 +1647,7 @@
     "named": false
   },
   {
-    "type": "context_module",
-    "named": false
-  },
-  {
-    "type": "convlist",
-    "named": false
-  },
-  {
     "type": "copy_term",
-    "named": false
-  },
-  {
-    "type": "copy_term_nat",
     "named": false
   },
   {
@@ -2054,99 +1655,11 @@
     "named": false
   },
   {
-    "type": "create_prolog_flag",
-    "named": false
-  },
-  {
-    "type": "creep",
-    "named": false
-  },
-  {
-    "type": "creep_allowed",
-    "named": false
-  },
-  {
-    "type": "ctrace",
-    "named": false
-  },
-  {
     "type": "curly_bracket",
     "named": true
   },
   {
-    "type": "current_atom",
-    "named": false
-  },
-  {
-    "type": "current_char_conversion",
-    "named": false
-  },
-  {
-    "type": "current_choice_point",
-    "named": false
-  },
-  {
-    "type": "current_dollar_var",
-    "named": false
-  },
-  {
-    "type": "current_error",
-    "named": false
-  },
-  {
-    "type": "current_host",
-    "named": false
-  },
-  {
-    "type": "current_input",
-    "named": false
-  },
-  {
-    "type": "current_key",
-    "named": false
-  },
-  {
-    "type": "current_line_number",
-    "named": false
-  },
-  {
-    "type": "current_module",
-    "named": false
-  },
-  {
-    "type": "current_mutex",
-    "named": false
-  },
-  {
-    "type": "current_op",
-    "named": false
-  },
-  {
-    "type": "current_output",
-    "named": false
-  },
-  {
-    "type": "current_predicate",
-    "named": false
-  },
-  {
-    "type": "current_prolog_flag",
-    "named": false
-  },
-  {
-    "type": "current_reference_count",
-    "named": false
-  },
-  {
     "type": "current_source_module",
-    "named": false
-  },
-  {
-    "type": "current_stream",
-    "named": false
-  },
-  {
-    "type": "current_thread",
     "named": false
   },
   {
@@ -2154,155 +1667,7 @@
     "named": true
   },
   {
-    "type": "cut_at",
-    "named": false
-  },
-  {
-    "type": "cut_by",
-    "named": false
-  },
-  {
-    "type": "cut_to",
-    "named": false
-  },
-  {
-    "type": "cyclic_term",
-    "named": false
-  },
-  {
-    "type": "db_files",
-    "named": false
-  },
-  {
-    "type": "db_reference",
-    "named": false
-  },
-  {
-    "type": "dbload",
-    "named": false
-  },
-  {
-    "type": "dbload_add_fact",
-    "named": false
-  },
-  {
-    "type": "dbload_add_facts",
-    "named": false
-  },
-  {
-    "type": "dbload_count",
-    "named": false
-  },
-  {
-    "type": "dcg_extend",
-    "named": false
-  },
-  {
-    "type": "debug",
-    "named": false
-  },
-  {
-    "type": "debug_action_hook",
-    "named": false
-  },
-  {
-    "type": "debugging",
-    "named": false
-  },
-  {
-    "type": "decrease_reference_count",
-    "named": false
-  },
-  {
-    "type": "del_attr",
-    "named": false
-  },
-  {
-    "type": "del_attrs",
-    "named": false
-  },
-  {
-    "type": "delete_file",
-    "named": false
-  },
-  {
-    "type": "delete_import_module",
-    "named": false
-  },
-  {
-    "type": "depth_bound_call",
-    "named": false
-  },
-  {
-    "type": "det_atom_concat",
-    "named": false
-  },
-  {
-    "type": "dif",
-    "named": false
-  },
-  {
-    "type": "diff_list",
-    "named": false
-  },
-  {
-    "type": "digit_weight",
-    "named": false
-  },
-  {
-    "type": "directory_files",
-    "named": false
-  },
-  {
     "type": "discontiguous",
-    "named": false
-  },
-  {
-    "type": "display",
-    "named": false
-  },
-  {
-    "type": "do_dbload",
-    "named": false
-  },
-  {
-    "type": "do_not_compile_expressions",
-    "named": false
-  },
-  {
-    "type": "domain_error",
-    "named": false
-  },
-  {
-    "type": "downcase_atom",
-    "named": false
-  },
-  {
-    "type": "downcase_text_to_atom",
-    "named": false
-  },
-  {
-    "type": "downcase_text_to_chars",
-    "named": false
-  },
-  {
-    "type": "downcase_text_to_codes",
-    "named": false
-  },
-  {
-    "type": "downcase_text_to_string",
-    "named": false
-  },
-  {
-    "type": "dum",
-    "named": false
-  },
-  {
-    "type": "dump_active_goals",
-    "named": false
-  },
-  {
-    "type": "duplicate_term",
     "named": false
   },
   {
@@ -2310,667 +1675,23 @@
     "named": false
   },
   {
-    "type": "dynamic_predicate",
-    "named": false
-  },
-  {
-    "type": "dynamic_update_array",
-    "named": false
-  },
-  {
-    "type": "element_types",
-    "named": false
-  },
-  {
-    "type": "ensure_loaded",
-    "named": false
-  },
-  {
-    "type": "enter_compiler",
-    "named": false
-  },
-  {
     "type": "eot",
     "named": true
   },
   {
-    "type": "erase",
-    "named": false
-  },
-  {
-    "type": "eraseall",
-    "named": false
-  },
-  {
-    "type": "erased",
-    "named": false
-  },
-  {
-    "type": "error_handler",
-    "named": false
-  },
-  {
-    "type": "exclude",
-    "named": false
-  },
-  {
-    "type": "existence_error",
-    "named": false
-  },
-  {
-    "type": "exists",
-    "named": false
-  },
-  {
-    "type": "exists_directory",
-    "named": false
-  },
-  {
-    "type": "exists_file",
-    "named": false
-  },
-  {
-    "type": "exists_source",
-    "named": false
-  },
-  {
-    "type": "exo_files",
-    "named": false
-  },
-  {
-    "type": "exodb_add_fact",
-    "named": false
-  },
-  {
-    "type": "exodb_add_facts",
-    "named": false
-  },
-  {
-    "type": "expand_clause",
-    "named": false
-  },
-  {
-    "type": "expand_expr",
-    "named": false
-  },
-  {
-    "type": "expand_exprs",
-    "named": false
-  },
-  {
-    "type": "expand_file_name",
-    "named": false
-  },
-  {
-    "type": "expand_goal",
-    "named": false
-  },
-  {
-    "type": "expand_term",
-    "named": false
-  },
-  {
-    "type": "expects_dialect",
-    "named": false
-  },
-  {
-    "type": "export",
-    "named": false
-  },
-  {
-    "type": "export_from_prolog",
-    "named": false
-  },
-  {
-    "type": "export_list",
-    "named": false
-  },
-  {
-    "type": "export_resource",
-    "named": false
-  },
-  {
-    "type": "extensions_to_present_answer",
-    "named": false
-  },
-  {
-    "type": "fail",
-    "named": false
-  },
-  {
-    "type": "false",
-    "named": false
-  },
-  {
-    "type": "fast_get_for_int_vector",
-    "named": false
-  },
-  {
-    "type": "fast_set_for_int_vector",
-    "named": false
-  },
-  {
-    "type": "file_base_name",
-    "named": false
-  },
-  {
-    "type": "file_directory_name",
-    "named": false
-  },
-  {
-    "type": "file_exists",
-    "named": false
-  },
-  {
-    "type": "file_name_extension",
-    "named": false
-  },
-  {
-    "type": "file_size",
-    "named": false
-  },
-  {
-    "type": "fileerrors",
-    "named": false
-  },
-  {
-    "type": "findall",
-    "named": false
-  },
-  {
     "type": "float",
     "named": true
-  },
-  {
-    "type": "float",
-    "named": false
-  },
-  {
-    "type": "flush_output",
-    "named": false
-  },
-  {
-    "type": "foldl",
-    "named": false
-  },
-  {
-    "type": "foldl2",
-    "named": false
-  },
-  {
-    "type": "foldl2_",
-    "named": false
-  },
-  {
-    "type": "foldl3",
-    "named": false
-  },
-  {
-    "type": "foldl3_",
-    "named": false
-  },
-  {
-    "type": "foldl4",
-    "named": false
-  },
-  {
-    "type": "foldl4_",
-    "named": false
-  },
-  {
-    "type": "foldl_",
-    "named": false
-  },
-  {
-    "type": "forall",
-    "named": false
-  },
-  {
-    "type": "format",
-    "named": false
-  },
-  {
-    "type": "format_to_chars",
-    "named": false
-  },
-  {
-    "type": "free_att",
-    "named": false
-  },
-  {
-    "type": "free_variables_in_term",
-    "named": false
-  },
-  {
-    "type": "freeze",
-    "named": false
-  },
-  {
-    "type": "freeze_choice_point",
-    "named": false
-  },
-  {
-    "type": "frozen",
-    "named": false
-  },
-  {
-    "type": "fully_strip_module",
-    "named": false
-  },
-  {
-    "type": "functor",
-    "named": false
-  },
-  {
-    "type": "garbage_collect",
-    "named": false
-  },
-  {
-    "type": "garbage_collect_atoms",
-    "named": false
-  },
-  {
-    "type": "gated_call",
-    "named": false
-  },
-  {
-    "type": "gc",
-    "named": false
-  },
-  {
-    "type": "get",
-    "named": false
-  },
-  {
-    "type": "get0",
-    "named": false
-  },
-  {
-    "type": "get_all_swi_atts",
-    "named": false
-  },
-  {
-    "type": "get_att",
-    "named": false
-  },
-  {
-    "type": "get_attr",
-    "named": false
-  },
-  {
-    "type": "get_attrs",
-    "named": false
-  },
-  {
-    "type": "get_byte",
-    "named": false
-  },
-  {
-    "type": "get_char",
-    "named": false
-  },
-  {
-    "type": "get_code",
-    "named": false
-  },
-  {
-    "type": "get_depth_limit",
-    "named": false
-  },
-  {
-    "type": "get_module",
-    "named": false
-  },
-  {
-    "type": "get_mutable",
-    "named": false
-  },
-  {
-    "type": "get_string_code",
-    "named": false
-  },
-  {
-    "type": "get_time",
-    "named": false
-  },
-  {
-    "type": "get_value",
-    "named": false
-  },
-  {
-    "type": "getcwd",
-    "named": false
-  },
-  {
-    "type": "getenv",
-    "named": false
-  },
-  {
-    "type": "global_trie_statistics",
-    "named": false
-  },
-  {
-    "type": "goal_expansion",
-    "named": false
-  },
-  {
-    "type": "ground",
-    "named": false
-  },
-  {
-    "type": "ground_type",
-    "named": false
-  },
-  {
-    "type": "grow_heap",
-    "named": false
-  },
-  {
-    "type": "grow_stack",
-    "named": false
-  },
-  {
-    "type": "halt",
-    "named": false
-  },
-  {
-    "type": "handle_port",
-    "named": false
-  },
-  {
-    "type": "handle_priv_port",
-    "named": false
-  },
-  {
-    "type": "has_type",
-    "named": false
-  },
-  {
-    "type": "heap_space_info",
-    "named": false
-  },
-  {
-    "type": "hide",
-    "named": false
-  },
-  {
-    "type": "hide_atom",
-    "named": false
-  },
-  {
-    "type": "hide_predicate",
-    "named": false
-  },
-  {
-    "type": "hostname_address",
-    "named": false
-  },
-  {
-    "type": "if",
-    "named": false
-  },
-  {
-    "type": "ignore",
-    "named": false
-  },
-  {
-    "type": "import_module",
-    "named": false
-  },
-  {
-    "type": "include",
-    "named": false
-  },
-  {
-    "type": "increase_reference_count",
-    "named": false
-  },
-  {
-    "type": "init_prolog",
-    "named": false
-  },
-  {
-    "type": "init_random_state",
-    "named": false
   },
   {
     "type": "initialization",
     "named": false
   },
   {
-    "type": "initialize_prolog",
-    "named": false
-  },
-  {
-    "type": "inline",
-    "named": false
-  },
-  {
-    "type": "instance",
-    "named": false
-  },
-  {
-    "type": "instance_property",
-    "named": false
-  },
-  {
-    "type": "instantiation_error",
-    "named": false
-  },
-  {
-    "type": "int_action",
-    "named": false
-  },
-  {
     "type": "integer",
     "named": true
   },
   {
-    "type": "integer",
-    "named": false
-  },
-  {
-    "type": "is",
-    "named": false
-  },
-  {
-    "type": "is_absolute_file_name",
-    "named": false
-  },
-  {
-    "type": "is_atom",
-    "named": false
-  },
-  {
-    "type": "is_boolean",
-    "named": false
-  },
-  {
-    "type": "is_bound",
-    "named": false
-  },
-  {
-    "type": "is_callable",
-    "named": false
-  },
-  {
-    "type": "is_cyclic_term",
-    "named": false
-  },
-  {
-    "type": "is_list",
-    "named": false
-  },
-  {
-    "type": "is_list_or_partial_list",
-    "named": false
-  },
-  {
-    "type": "is_mutable",
-    "named": false
-  },
-  {
-    "type": "is_nonvar",
-    "named": false
-  },
-  {
-    "type": "is_not",
-    "named": false
-  },
-  {
-    "type": "is_of_type",
-    "named": false
-  },
-  {
-    "type": "is_tabled",
-    "named": false
-  },
-  {
-    "type": "isinf",
-    "named": false
-  },
-  {
-    "type": "isnan",
-    "named": false
-  },
-  {
-    "type": "key_erased_statistics",
-    "named": false
-  },
-  {
-    "type": "key_statistics",
-    "named": false
-  },
-  {
-    "type": "keysort",
-    "named": false
-  },
-  {
-    "type": "leash",
-    "named": false
-  },
-  {
-    "type": "length",
-    "named": false
-  },
-  {
-    "type": "libraries_directories",
-    "named": false
-  },
-  {
-    "type": "line_count",
-    "named": false
-  },
-  {
-    "type": "list_directory",
-    "named": false
-  },
-  {
-    "type": "listing",
-    "named": false
-  },
-  {
-    "type": "live",
-    "named": false
-  },
-  {
-    "type": "live__",
-    "named": false
-  },
-  {
-    "type": "load_absolute_foreign_files",
-    "named": false
-  },
-  {
-    "type": "load_db",
-    "named": false
-  },
-  {
-    "type": "load_exofacts",
-    "named": false
-  },
-  {
-    "type": "load_facts",
-    "named": false
-  },
-  {
-    "type": "load_files",
-    "named": false
-  },
-  {
-    "type": "load_foreign_files",
-    "named": false
-  },
-  {
-    "type": "load_mega_clause",
-    "named": false
-  },
-  {
-    "type": "log_event",
-    "named": false
-  },
-  {
-    "type": "logsum",
-    "named": false
-  },
-  {
-    "type": "ls",
-    "named": false
-  },
-  {
-    "type": "ls_imports",
-    "named": false
-  },
-  {
-    "type": "make",
-    "named": false
-  },
-  {
-    "type": "make_directory",
-    "named": false
-  },
-  {
-    "type": "make_library_index",
-    "named": false
-  },
-  {
-    "type": "maplist",
-    "named": false
-  },
-  {
-    "type": "mapnodes",
-    "named": false
-  },
-  {
-    "type": "mapnodes_list",
-    "named": false
-  },
-  {
     "type": "matrix",
-    "named": false
-  },
-  {
-    "type": "may_bind_to_type",
-    "named": false
-  },
-  {
-    "type": "message",
-    "named": false
-  },
-  {
-    "type": "message_queue_create",
-    "named": false
-  },
-  {
-    "type": "message_queue_destroy",
-    "named": false
-  },
-  {
-    "type": "message_queue_property",
-    "named": false
-  },
-  {
-    "type": "message_to_string",
     "named": false
   },
   {
@@ -2978,27 +1699,7 @@
     "named": false
   },
   {
-    "type": "mksys",
-    "named": false
-  },
-  {
-    "type": "mmapped_array",
-    "named": false
-  },
-  {
     "type": "mode",
-    "named": false
-  },
-  {
-    "type": "module",
-    "named": false
-  },
-  {
-    "type": "module_property",
-    "named": false
-  },
-  {
-    "type": "module_state",
     "named": false
   },
   {
@@ -3006,159 +1707,7 @@
     "named": false
   },
   {
-    "type": "msort",
-    "named": false
-  },
-  {
-    "type": "mtrace",
-    "named": false
-  },
-  {
     "type": "multifile",
-    "named": false
-  },
-  {
-    "type": "must_be",
-    "named": false
-  },
-  {
-    "type": "must_be_atom",
-    "named": false
-  },
-  {
-    "type": "must_be_boolean",
-    "named": false
-  },
-  {
-    "type": "must_be_bound",
-    "named": false
-  },
-  {
-    "type": "must_be_callable",
-    "named": false
-  },
-  {
-    "type": "must_be_ground",
-    "named": false
-  },
-  {
-    "type": "must_be_instantiated",
-    "named": false
-  },
-  {
-    "type": "must_be_list",
-    "named": false
-  },
-  {
-    "type": "must_be_of_type",
-    "named": false
-  },
-  {
-    "type": "must_be_predicate_indicator",
-    "named": false
-  },
-  {
-    "type": "must_bind_to_type",
-    "named": false
-  },
-  {
-    "type": "mutex_create",
-    "named": false
-  },
-  {
-    "type": "mutex_property",
-    "named": false
-  },
-  {
-    "type": "mutex_unlock_all",
-    "named": false
-  },
-  {
-    "type": "name",
-    "named": false
-  },
-  {
-    "type": "nb_create",
-    "named": false
-  },
-  {
-    "type": "nb_current",
-    "named": false
-  },
-  {
-    "type": "nb_delete",
-    "named": false
-  },
-  {
-    "type": "nb_getval",
-    "named": false
-  },
-  {
-    "type": "nb_linkarg",
-    "named": false
-  },
-  {
-    "type": "nb_linkval",
-    "named": false
-  },
-  {
-    "type": "nb_set_bit",
-    "named": false
-  },
-  {
-    "type": "nb_set_shared_arg",
-    "named": false
-  },
-  {
-    "type": "nb_set_shared_val",
-    "named": false
-  },
-  {
-    "type": "nb_setarg",
-    "named": false
-  },
-  {
-    "type": "nb_setval",
-    "named": false
-  },
-  {
-    "type": "new_system_module",
-    "named": false
-  },
-  {
-    "type": "nl",
-    "named": false
-  },
-  {
-    "type": "no_source",
-    "named": false
-  },
-  {
-    "type": "no_style_check",
-    "named": false
-  },
-  {
-    "type": "nodebug",
-    "named": false
-  },
-  {
-    "type": "nofileerrors",
-    "named": false
-  },
-  {
-    "type": "nogc",
-    "named": false
-  },
-  {
-    "type": "non_det_atom_concat",
-    "named": false
-  },
-  {
-    "type": "non_ground",
-    "named": false
-  },
-  {
-    "type": "nonvar",
     "named": false
   },
   {
@@ -3166,87 +1715,7 @@
     "named": false
   },
   {
-    "type": "nospyall",
-    "named": false
-  },
-  {
     "type": "not",
-    "named": false
-  },
-  {
-    "type": "not_a_list",
-    "named": false
-  },
-  {
-    "type": "not_a_rational",
-    "named": false
-  },
-  {
-    "type": "notrace",
-    "named": false
-  },
-  {
-    "type": "nth_clause",
-    "named": false
-  },
-  {
-    "type": "nth_instance",
-    "named": false
-  },
-  {
-    "type": "number",
-    "named": false
-  },
-  {
-    "type": "number_atom",
-    "named": false
-  },
-  {
-    "type": "number_chars",
-    "named": false
-  },
-  {
-    "type": "number_codes",
-    "named": false
-  },
-  {
-    "type": "number_string",
-    "named": false
-  },
-  {
-    "type": "numbervars",
-    "named": false
-  },
-  {
-    "type": "on_exception",
-    "named": false
-  },
-  {
-    "type": "on_signal",
-    "named": false
-  },
-  {
-    "type": "once",
-    "named": false
-  },
-  {
-    "type": "op",
-    "named": false
-  },
-  {
-    "type": "op_cases",
-    "named": false
-  },
-  {
-    "type": "opaque",
-    "named": false
-  },
-  {
-    "type": "opdec",
-    "named": false
-  },
-  {
-    "type": "open",
     "named": false
   },
   {
@@ -3254,311 +1723,11 @@
     "named": true
   },
   {
-    "type": "open_mem_read_stream",
-    "named": false
-  },
-  {
-    "type": "open_mem_write_stream",
-    "named": false
-  },
-  {
-    "type": "open_pipe_stream",
-    "named": false
-  },
-  {
-    "type": "open_shared_object",
-    "named": false
-  },
-  {
     "type": "operator",
     "named": true
   },
   {
-    "type": "opt_statistics",
-    "named": false
-  },
-  {
-    "type": "or_statistics",
-    "named": false
-  },
-  {
-    "type": "otherwise",
-    "named": false
-  },
-  {
-    "type": "parallel",
-    "named": false
-  },
-  {
-    "type": "parallel_findall",
-    "named": false
-  },
-  {
-    "type": "parallel_findfirst",
-    "named": false
-  },
-  {
-    "type": "parallel_once",
-    "named": false
-  },
-  {
-    "type": "partition",
-    "named": false
-  },
-  {
-    "type": "path",
-    "named": false
-  },
-  {
-    "type": "path_concat",
-    "named": false
-  },
-  {
-    "type": "peek",
-    "named": false
-  },
-  {
-    "type": "peek_byte",
-    "named": false
-  },
-  {
-    "type": "peek_char",
-    "named": false
-  },
-  {
-    "type": "peek_code",
-    "named": false
-  },
-  {
-    "type": "peek_mem_write_stream",
-    "named": false
-  },
-  {
-    "type": "permission_error",
-    "named": false
-  },
-  {
-    "type": "phrase",
-    "named": false
-  },
-  {
-    "type": "phrase_",
-    "named": false
-  },
-  {
-    "type": "plus",
-    "named": false
-  },
-  {
-    "type": "portray_clause",
-    "named": false
-  },
-  {
-    "type": "pred_name",
-    "named": false
-  },
-  {
-    "type": "predicate_erased_statistics",
-    "named": false
-  },
-  {
-    "type": "predicate_property",
-    "named": false
-  },
-  {
-    "type": "predicate_statistics",
-    "named": false
-  },
-  {
-    "type": "predmerge",
-    "named": false
-  },
-  {
-    "type": "predsort",
-    "named": false
-  },
-  {
-    "type": "primitive",
-    "named": false
-  },
-  {
-    "type": "print",
-    "named": false
-  },
-  {
-    "type": "print_exception",
-    "named": false
-  },
-  {
-    "type": "print_message",
-    "named": false
-  },
-  {
-    "type": "print_message_lines",
-    "named": false
-  },
-  {
-    "type": "private",
-    "named": false
-  },
-  {
-    "type": "procedure",
-    "named": false
-  },
-  {
-    "type": "profalt",
-    "named": false
-  },
-  {
-    "type": "profend",
-    "named": false
-  },
-  {
-    "type": "profile_data",
-    "named": false
-  },
-  {
-    "type": "profile_reset",
-    "named": false
-  },
-  {
-    "type": "profinit",
-    "named": false
-  },
-  {
-    "type": "profoff",
-    "named": false
-  },
-  {
-    "type": "profon",
-    "named": false
-  },
-  {
-    "type": "prolog",
-    "named": false
-  },
-  {
-    "type": "prolog_current_frame",
-    "named": false
-  },
-  {
-    "type": "prolog_file_name",
-    "named": false
-  },
-  {
-    "type": "prolog_file_type",
-    "named": false
-  },
-  {
-    "type": "prolog_flag",
-    "named": false
-  },
-  {
-    "type": "prolog_flag_property",
-    "named": false
-  },
-  {
-    "type": "prolog_initialization",
-    "named": false
-  },
-  {
-    "type": "prolog_library",
-    "named": false
-  },
-  {
-    "type": "prolog_load_context",
-    "named": false
-  },
-  {
-    "type": "prolog_to_os_filename",
-    "named": false
-  },
-  {
-    "type": "prompt",
-    "named": false
-  },
-  {
-    "type": "prompt1",
-    "named": false
-  },
-  {
-    "type": "protected_exodb_add_fact",
-    "named": false
-  },
-  {
     "type": "public",
-    "named": false
-  },
-  {
-    "type": "put",
-    "named": false
-  },
-  {
-    "type": "put_att",
-    "named": false
-  },
-  {
-    "type": "put_attr",
-    "named": false
-  },
-  {
-    "type": "put_attrs",
-    "named": false
-  },
-  {
-    "type": "put_byte",
-    "named": false
-  },
-  {
-    "type": "put_char",
-    "named": false
-  },
-  {
-    "type": "put_char1",
-    "named": false
-  },
-  {
-    "type": "put_code",
-    "named": false
-  },
-  {
-    "type": "putenv",
-    "named": false
-  },
-  {
-    "type": "pwd",
-    "named": false
-  },
-  {
-    "type": "qend_program",
-    "named": false
-  },
-  {
-    "type": "qload_file",
-    "named": false
-  },
-  {
-    "type": "qload_module",
-    "named": false
-  },
-  {
-    "type": "qpack_clean_up_to_disjunction",
-    "named": false
-  },
-  {
-    "type": "qsave_file",
-    "named": false
-  },
-  {
-    "type": "qsave_module",
-    "named": false
-  },
-  {
-    "type": "qsave_program",
-    "named": false
-  },
-  {
-    "type": "query_to_answer",
     "named": false
   },
   {
@@ -3566,671 +1735,15 @@
     "named": true
   },
   {
-    "type": "raise_exception",
-    "named": false
-  },
-  {
-    "type": "rational",
-    "named": false
-  },
-  {
-    "type": "rational_term_to_forest",
-    "named": false
-  },
-  {
-    "type": "rational_term_to_tree",
-    "named": false
-  },
-  {
-    "type": "read",
-    "named": false
-  },
-  {
-    "type": "read_clause",
-    "named": false
-  },
-  {
-    "type": "read_from_chars",
-    "named": false
-  },
-  {
-    "type": "read_sig",
-    "named": false
-  },
-  {
-    "type": "read_term",
-    "named": false
-  },
-  {
-    "type": "read_term_from__atomic",
-    "named": false
-  },
-  {
-    "type": "read_term_from_atom",
-    "named": false
-  },
-  {
-    "type": "read_term_from_chars",
-    "named": false
-  },
-  {
-    "type": "read_term_from_codes",
-    "named": false
-  },
-  {
-    "type": "read_term_from_string",
-    "named": false
-  },
-  {
-    "type": "reconsult",
-    "named": false
-  },
-  {
-    "type": "recorda",
-    "named": false
-  },
-  {
-    "type": "recorda_at",
-    "named": false
-  },
-  {
-    "type": "recordaifnot",
-    "named": false
-  },
-  {
-    "type": "recorded",
-    "named": false
-  },
-  {
-    "type": "recordz",
-    "named": false
-  },
-  {
-    "type": "recordz_at",
-    "named": false
-  },
-  {
-    "type": "recordzifnot",
-    "named": false
-  },
-  {
-    "type": "release_random_state",
-    "named": false
-  },
-  {
-    "type": "remove_from_path",
-    "named": false
-  },
-  {
-    "type": "rename",
-    "named": false
-  },
-  {
-    "type": "repeat",
-    "named": false
-  },
-  {
-    "type": "representation_error",
-    "named": false
-  },
-  {
-    "type": "reset_static_array",
-    "named": false
-  },
-  {
-    "type": "reset_total_choicepoints",
-    "named": false
-  },
-  {
-    "type": "resize_static_array",
-    "named": false
-  },
-  {
-    "type": "restore",
-    "named": false
-  },
-  {
-    "type": "retract",
-    "named": false
-  },
-  {
-    "type": "retractall",
-    "named": false
-  },
-  {
-    "type": "rightarrow",
-    "named": true
-  },
-  {
-    "type": "rm_att",
-    "named": false
-  },
-  {
-    "type": "rmdir",
-    "named": false
-  },
-  {
-    "type": "s",
-    "named": false
-  },
-  {
-    "type": "same_file",
-    "named": false
-  },
-  {
-    "type": "save_program",
-    "named": false
-  },
-  {
-    "type": "scan_to_list",
-    "named": false
-  },
-  {
-    "type": "scanl",
-    "named": false
-  },
-  {
-    "type": "scanl_",
-    "named": false
-  },
-  {
-    "type": "see",
-    "named": false
-  },
-  {
-    "type": "seeing",
-    "named": false
-  },
-  {
-    "type": "seen",
-    "named": false
-  },
-  {
-    "type": "selectlist",
-    "named": false
-  },
-  {
-    "type": "selectlists",
-    "named": false
-  },
-  {
-    "type": "semic",
-    "named": true
-  },
-  {
-    "type": "set_base_module",
-    "named": false
-  },
-  {
-    "type": "set_error",
-    "named": false
-  },
-  {
-    "type": "set_input",
-    "named": false
-  },
-  {
-    "type": "set_module_property",
-    "named": false
-  },
-  {
-    "type": "set_output",
-    "named": false
-  },
-  {
-    "type": "set_prolog_flag",
-    "named": false
-  },
-  {
-    "type": "set_random_state",
-    "named": false
-  },
-  {
-    "type": "set_source_module",
-    "named": false
-  },
-  {
-    "type": "set_stream",
-    "named": false
-  },
-  {
-    "type": "set_stream_position",
-    "named": false
-  },
-  {
-    "type": "set_value",
-    "named": false
-  },
-  {
-    "type": "setarg",
-    "named": false
-  },
-  {
-    "type": "setenv",
-    "named": false
-  },
-  {
-    "type": "setof",
-    "named": false
-  },
-  {
-    "type": "setup_call_catcher_cleanup",
-    "named": false
-  },
-  {
-    "type": "setup_call_cleanup",
-    "named": false
-  },
-  {
-    "type": "sformat",
-    "named": false
-  },
-  {
-    "type": "sh",
-    "named": false
-  },
-  {
-    "type": "show_all_local_tables",
-    "named": false
-  },
-  {
-    "type": "show_all_tables",
-    "named": false
-  },
-  {
-    "type": "show_global_trie",
-    "named": false
-  },
-  {
-    "type": "show_low_level_trace",
-    "named": false
-  },
-  {
-    "type": "show_table",
-    "named": false
-  },
-  {
-    "type": "show_tabled_predicates",
-    "named": false
-  },
-  {
-    "type": "showprofres",
-    "named": false
-  },
-  {
-    "type": "simple",
-    "named": false
-  },
-  {
-    "type": "skip",
-    "named": false
-  },
-  {
-    "type": "skip_list",
-    "named": false
-  },
-  {
-    "type": "sleep",
-    "named": false
-  },
-  {
-    "type": "socket",
-    "named": false
-  },
-  {
-    "type": "socket_accept",
-    "named": false
-  },
-  {
-    "type": "socket_bind",
-    "named": false
-  },
-  {
-    "type": "socket_close",
-    "named": false
-  },
-  {
-    "type": "socket_connect",
-    "named": false
-  },
-  {
-    "type": "socket_listen",
-    "named": false
-  },
-  {
-    "type": "sort",
-    "named": false
-  },
-  {
-    "type": "sort2",
-    "named": false
-  },
-  {
-    "type": "source",
-    "named": false
-  },
-  {
-    "type": "source_file",
-    "named": false
-  },
-  {
-    "type": "source_location",
-    "named": false
-  },
-  {
-    "type": "source_mode",
-    "named": false
-  },
-  {
-    "type": "source_module",
-    "named": false
-  },
-  {
-    "type": "split_path_file",
-    "named": false
-  },
-  {
     "type": "spy",
     "named": false
   },
   {
-    "type": "srandom",
-    "named": false
-  },
-  {
-    "type": "start_low_level_trace",
-    "named": false
-  },
-  {
-    "type": "stash_predicate",
-    "named": false
-  },
-  {
-    "type": "static_array",
-    "named": false
-  },
-  {
-    "type": "static_array_location",
-    "named": false
-  },
-  {
-    "type": "static_array_properties",
-    "named": false
-  },
-  {
-    "type": "static_array_to_term",
-    "named": false
-  },
-  {
-    "type": "statistics",
-    "named": false
-  },
-  {
-    "type": "stop_low_level_trace",
-    "named": false
-  },
-  {
-    "type": "stream_position",
-    "named": false
-  },
-  {
-    "type": "stream_position_data",
-    "named": false
-  },
-  {
-    "type": "stream_property",
-    "named": false
-  },
-  {
-    "type": "stream_select",
-    "named": false
-  },
-  {
-    "type": "string",
-    "named": false
-  },
-  {
     "type": "string",
     "named": true
   },
   {
-    "type": "string_atom",
-    "named": false
-  },
-  {
-    "type": "string_chars",
-    "named": false
-  },
-  {
-    "type": "string_code",
-    "named": false
-  },
-  {
-    "type": "string_codes",
-    "named": false
-  },
-  {
-    "type": "string_concat",
-    "named": false
-  },
-  {
-    "type": "string_length",
-    "named": false
-  },
-  {
-    "type": "string_number",
-    "named": false
-  },
-  {
-    "type": "string_to__atomic",
-    "named": false
-  },
-  {
-    "type": "string_to_atom",
-    "named": false
-  },
-  {
-    "type": "string_to_list",
-    "named": false
-  },
-  {
-    "type": "string_to_term",
-    "named": false
-  },
-  {
-    "type": "strip_module",
-    "named": false
-  },
-  {
-    "type": "style_check",
-    "named": false
-  },
-  {
-    "type": "sub_atom",
-    "named": false
-  },
-  {
-    "type": "sub_string",
-    "named": false
-  },
-  {
-    "type": "sub_term",
-    "named": false
-  },
-  {
-    "type": "sub_text",
-    "named": false
-  },
-  {
-    "type": "subsumes_term",
-    "named": false
-  },
-  {
-    "type": "succ",
-    "named": false
-  },
-  {
-    "type": "sumlist",
-    "named": false
-  },
-  {
-    "type": "sumnodes",
-    "named": false
-  },
-  {
-    "type": "sumnodes_body",
-    "named": false
-  },
-  {
-    "type": "sys_debug",
-    "named": false
-  },
-  {
-    "type": "system",
-    "named": false
-  },
-  {
-    "type": "system_library",
-    "named": false
-  },
-  {
-    "type": "system_module",
-    "named": false
-  },
-  {
-    "type": "system_module_",
-    "named": false
-  },
-  {
-    "type": "system_predicate",
-    "named": false
-  },
-  {
-    "type": "t_body",
-    "named": false
-  },
-  {
-    "type": "t_head",
-    "named": false
-  },
-  {
-    "type": "t_hgoal",
-    "named": false
-  },
-  {
-    "type": "t_hlist",
-    "named": false
-  },
-  {
-    "type": "t_tidy",
-    "named": false
-  },
-  {
-    "type": "tab",
-    "named": false
-  },
-  {
     "type": "table",
-    "named": false
-  },
-  {
-    "type": "table_statistics",
-    "named": false
-  },
-  {
-    "type": "tabling_mode",
-    "named": false
-  },
-  {
-    "type": "tabling_statistics",
-    "named": false
-  },
-  {
-    "type": "tell",
-    "named": false
-  },
-  {
-    "type": "telling",
-    "named": false
-  },
-  {
-    "type": "term_attterms",
-    "named": false
-  },
-  {
-    "type": "term_attvars",
-    "named": false
-  },
-  {
-    "type": "term_factorized",
-    "named": false
-  },
-  {
-    "type": "term_hash",
-    "named": false
-  },
-  {
-    "type": "term_string",
-    "named": false
-  },
-  {
-    "type": "term_to_atom",
-    "named": false
-  },
-  {
-    "type": "term_to_codes",
-    "named": false
-  },
-  {
-    "type": "term_to_string",
-    "named": false
-  },
-  {
-    "type": "term_variable_occurrences",
-    "named": false
-  },
-  {
-    "type": "term_variables",
-    "named": false
-  },
-  {
-    "type": "text",
-    "named": false
-  },
-  {
-    "type": "thread_at_exit",
-    "named": false
-  },
-  {
-    "type": "thread_cancel",
-    "named": false
-  },
-  {
-    "type": "thread_create",
-    "named": false
-  },
-  {
-    "type": "thread_default",
-    "named": false
-  },
-  {
-    "type": "thread_defaults",
-    "named": false
-  },
-  {
-    "type": "thread_detach",
-    "named": false
-  },
-  {
-    "type": "thread_exit",
-    "named": false
-  },
-  {
-    "type": "thread_get_message",
-    "named": false
-  },
-  {
-    "type": "thread_join",
     "named": false
   },
   {
@@ -4238,211 +1751,7 @@
     "named": false
   },
   {
-    "type": "thread_peek_message",
-    "named": false
-  },
-  {
-    "type": "thread_property",
-    "named": false
-  },
-  {
-    "type": "thread_self",
-    "named": false
-  },
-  {
-    "type": "thread_send_message",
-    "named": false
-  },
-  {
-    "type": "thread_set_default",
-    "named": false
-  },
-  {
-    "type": "thread_set_defaults",
-    "named": false
-  },
-  {
-    "type": "thread_signal",
-    "named": false
-  },
-  {
-    "type": "thread_sleep",
-    "named": false
-  },
-  {
-    "type": "thread_statistics",
-    "named": false
-  },
-  {
-    "type": "threads",
-    "named": false
-  },
-  {
     "type": "throw",
-    "named": false
-  },
-  {
-    "type": "throw_error",
-    "named": false
-  },
-  {
-    "type": "throw_file_error",
-    "named": false
-  },
-  {
-    "type": "time",
-    "named": false
-  },
-  {
-    "type": "time_file",
-    "named": false
-  },
-  {
-    "type": "time_file64",
-    "named": false
-  },
-  {
-    "type": "told",
-    "named": false
-  },
-  {
-    "type": "tolower",
-    "named": false
-  },
-  {
-    "type": "total_choicepoints",
-    "named": false
-  },
-  {
-    "type": "total_erased",
-    "named": false
-  },
-  {
-    "type": "toupper",
-    "named": false
-  },
-  {
-    "type": "trace",
-    "named": false
-  },
-  {
-    "type": "trace_error",
-    "named": false
-  },
-  {
-    "type": "trace_goal",
-    "named": false
-  },
-  {
-    "type": "trace_goal_",
-    "named": false
-  },
-  {
-    "type": "true",
-    "named": false
-  },
-  {
-    "type": "true_file_name",
-    "named": false
-  },
-  {
-    "type": "ttyget",
-    "named": false
-  },
-  {
-    "type": "ttyget0",
-    "named": false
-  },
-  {
-    "type": "ttynl",
-    "named": false
-  },
-  {
-    "type": "ttyput",
-    "named": false
-  },
-  {
-    "type": "ttyskip",
-    "named": false
-  },
-  {
-    "type": "type_error",
-    "named": false
-  },
-  {
-    "type": "udi",
-    "named": false
-  },
-  {
-    "type": "unhide_atom",
-    "named": false
-  },
-  {
-    "type": "unify_with_occurs_check",
-    "named": false
-  },
-  {
-    "type": "unix",
-    "named": false
-  },
-  {
-    "type": "unknown",
-    "named": false
-  },
-  {
-    "type": "unload_file",
-    "named": false
-  },
-  {
-    "type": "unload_module",
-    "named": false
-  },
-  {
-    "type": "unnumbervars",
-    "named": false
-  },
-  {
-    "type": "upcase_atom",
-    "named": false
-  },
-  {
-    "type": "upcase_text_to_atom",
-    "named": false
-  },
-  {
-    "type": "upcase_text_to_chars",
-    "named": false
-  },
-  {
-    "type": "upcase_text_to_codes",
-    "named": false
-  },
-  {
-    "type": "upcase_text_to_string",
-    "named": false
-  },
-  {
-    "type": "update_array",
-    "named": false
-  },
-  {
-    "type": "update_mutable",
-    "named": false
-  },
-  {
-    "type": "update_whole_array",
-    "named": false
-  },
-  {
-    "type": "use_module",
-    "named": false
-  },
-  {
-    "type": "use_system_module",
-    "named": false
-  },
-  {
-    "type": "user_defined_directive",
     "named": false
   },
   {
@@ -4454,67 +1763,11 @@
     "named": true
   },
   {
-    "type": "variables_in_any_term",
-    "named": false
-  },
-  {
-    "type": "variables_in_both_terms",
-    "named": false
-  },
-  {
-    "type": "variables_in_term",
-    "named": false
-  },
-  {
-    "type": "varnumbers",
-    "named": false
-  },
-  {
-    "type": "version",
-    "named": false
-  },
-  {
-    "type": "virtual_alarm",
-    "named": false
-  },
-  {
     "type": "volatile",
     "named": false
   },
   {
-    "type": "vsc_go",
-    "named": false
-  },
-  {
-    "type": "vsc_wait",
-    "named": false
-  },
-  {
-    "type": "wait",
-    "named": false
-  },
-  {
-    "type": "wake_choice_point",
-    "named": false
-  },
-  {
-    "type": "watch_goa",
-    "named": false
-  },
-  {
     "type": "when",
-    "named": false
-  },
-  {
-    "type": "with_mutex",
-    "named": false
-  },
-  {
-    "type": "with_output_to",
-    "named": false
-  },
-  {
-    "type": "working_directory",
     "named": false
   },
   {
@@ -4542,15 +1795,7 @@
     "named": false
   },
   {
-    "type": "yap_flag",
-    "named": false
-  },
-  {
     "type": "{",
-    "named": false
-  },
-  {
-    "type": "{}",
     "named": false
   },
   {

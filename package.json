@@ -1,25 +1,35 @@
 {
-  "name": "tree-sitter-prolog",
+  "name": "tree-sitter-yap",
   "version": "1.1.0",
   "description": "Tree Sitter Prolog",
   "main": "bindings/node",
+  "types": "bindings/node",
   "scripts": {
     "build": "tree-sitter generate && prebuildify --napi --electron-compat && prebuildify --napi --electron-compat --platform=windows",
     "install": "node-gyp-build",
-    "test": "tree-sitter test && tree-sitter parse examples/*.pl --quiet --time"
+    "test": "tree-sitter test && tree-sitter parse examples/*.pl --quiet --time",
+    "prebuildify": "prebuildify --napi --strip"
   },
   "author": "theproros@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "nan": "^2.17.0",
     "node-gyp": "^9.3.0",
     "node-gyp-build": "^4.2.3",
     "prebuildify": "^5.0.1",
     "tree-sitter": "^0.20.5",
-    "tree-sitter-prolog": "^1.1.0"
+    "node-addon-api": "^7.1.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.15.3"
+    "tree-sitter-cli": "^0.15.3",
+    "prebuildify": "^6.0.0"
   },
   "tree-sitter": [
     {
@@ -30,5 +40,13 @@
       ],
       "injection-regex": "prolog"
     }
+  ],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
   ]
 }
