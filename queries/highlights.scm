@@ -8,27 +8,23 @@
 
 
 
+(predicate_definition  head: (term (atom) @function))
+
+(predicate_definition  head: (_ operator: (operator) @function))
 
 
-(head predicate:      (goal (pred_name ))) @function
+(body literal: (term (atom) @function))
 
- (pred_name) @function.call
+(body literal: (_ operator: (operator) @function))
+
+
 
 [
-  ";"
   "."
   ","  
 ] @punctuation.delimiter
 
-
 (operator) @operator
-
-[
-  "("
-  ")"
-  "{"
-  "}"
-]  @punctuation.bracket
 
 
 (quoted_atom) @string.special
@@ -47,5 +43,5 @@
 (ERROR) @error
 
 
-(predicate_indicator) @constant
+
 

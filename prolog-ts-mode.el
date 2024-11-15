@@ -67,26 +67,13 @@
   "Syntax table for `prolog-ts-mode'.")
 
 
-(defvar prolog-ts-mode--operators
-  '("=" "-" "*" "/" "+" "%" "~" "|" "&" "^" "<<" ">>" "->"
-    "." "<" "<=" ">=" ">" "==" "!=" "!" "&&" "||" "-="
-    "+=" "*=" "/=" "%=" "|=" "&=" "^=" ">>=" "<<=" "--" "++")
-  "Prolog operators for tree-sitter font-locking.")
-
-(defvar prolog-ts-mode--brackets
-  '("{" "}" "," ";" "[" "]" "(" ")")
-  "Prolog operators for tree-sitter font-locking.")
-
-
 (defvar prolog-ts-mode--indent-rules
   `((prolog
-     ((node-is "predicate_definition") column-0 0)
-     ((node-is "directive") column-0 0)
-     ((parent-is "predicate_definition") parent-bol prolog-ts-mode-indent-offset)
-     ((parent-is "inner_goal") parent-bol 2)
-     ;;     ((grandparent-is "inner_goal") parent-bol 2)
-     ((node-is "inner_goal") parent-bol 2)
-     ((parent-is "body") parent-bol 0)
+     ((field-is "head:") column-0 0)
+     ((field-is "body") parent-bol 2)
+     ((node-is "{") parent-bol 2)
+     ((node-is ")") parent-bol 0)
+
 
     ;; ((node-is "goal") prev-line 0)
     ;;  ((node-is "semic")  parent 0)
@@ -104,9 +91,6 @@
 
 (defvar prolog-ts-mode--font-lock-settings
   (treesit-font-lock-rules
-   :language 'prolog
-   :feature 'bracket
-   '((["(" "{"  "}" ")"]) @font-lock-bracket-face)
 
    ;; :language 'prolog
    ;; :feature 'builtin
@@ -128,74 +112,92 @@
    :language 'prolog
    :feature 'comment
    '((comment) @font-lock-comment-face)
+ 
 
-   ;; :language 'prolog
-   ;; :feature 'operator
-   ;; `([,@prolog-ts-mode--operators] @font-lock-bracket-face)
-
-   ;; :language 'prolog
-   ;; :feature 'bracket
-   ;; `([,@prolog-ts-mode--brackets] @font-lock-bracket-face)
-
-
-   ;; :language 'prolog
-   ;; :feature 'constant
-   ;; `(((argument) @font-lock-constant-face
-   ;;    (:match ,(rx-to-string
-   ;;              `(seq bol
-   ;;                    (or ,@prolog-ts-mode--constants)
-   ;;                    eol))
-   ;;            @font-lock-constant-face)))
-
-   ;; :language 'prolog
-   ;; :feature 'functor
-   ;; '((functor) @font-lock-constant-face)
+   :language 'prolog
+   :feature 'delimiter
+   '((["," "." ";" ":"]) @font-lock-delimiter-face)
 
    
    :language 'prolog
-   :feature 'function-call
-   '((pred_name) @font-lock-function-call-face)
-  
-   ;; :language 'prolog
-   ;; :feature 'function
-   ;; '((head_atom) @font-lock-function-name-face)
+   :feature 'bracket
+   '(([("(") (")")]) @font-lock-bracket-face)
 
-   :language 'prolog
-   :feature 'eot
-   `((eot) @font-lock-warning-face)
-
-   :language 'prolog
-   :feature 'builtin
-   `((builtin) @font-lock-builtin-face)
-
-   :language  'prolog
-   :feature 'number
-   '((number) @font-lock-number-face)
-
-   :language 'prolog
-   :feature 'string
-   '([(quoted_atom) (string) (codes)] @font-lock-string-face)
-
-   ;; :language 'prolog
-   ;; :feature 'escape-sequence
-   ;; :override t
-   ;; '((escape_sequence) @font-lock-escape-face)
-
-   :language 'prolog
-   :feature 'function
-   ;; Don't override strings.
-   :override t
-   '((head (goal (pred-name))) @font-lock-keyword-face)
+   
 
    :language 'prolog
    :feature 'variable
+   :override t
    '((variable) @font-lock-variable-face)
+
+
+ 
+   :language 'prolog
+   :feature 'predicate_indicator
+   :override t
+   '((term
+	     (term (atom))
+	     operator: (operator ("/") )
+	     (term
+	      (number (integer)))) @font-lock-constant-face)
+
+   ;; :language 'prolog
+   ;; :feature 'operator
+   ;; :override t
+   ;; '((operator)  @font-lock-operator-face)
+ 
+   :language 'prolog
+   :feature 'eot
+   :override t
+   '((eot) @font-lock-warning-face)
+
+;;    :language 'prolog
+;;    :feature 'builtin
+;;    :override t
+;;    `((builtin) @font-lock-builtin-face)
+
+   :language  'prolog
+   :feature 'number
+   :override t
+   '((number) @font-lock-number-face)
+
+   :language 'prolog
+   :feature 'function-call
+   :override t
+   '(
+     (body literal: ( term (atom) @font-lock-function-call-face))
+     (body literal: ( term (  operator) @font-lock-function-call-face))
+     )
+   
+
+   :language 'prolog
+   :feature 'function
+   :override t
+   '(
+     (predicate_definition head: ( term (atom) @font-lock-keyword-face))
+     ;;  (predicate_definition (body:  (term *+ ((operator ":") (atom) (atom)   
+     (predicate_definition head: (term (operator) @font-lock-keyword-face)
+     )
+   )
+   
+   
+   
+   :language 'prolog
+   :feature 'string
+   :override t
+   '(([(quoted_atom) (string) (codes)]) @font-lock-string-face)
+
+
+;;    ;; :language 'prolog
+;;    ;; :feature 'escape-sequence
+;;    ;; :override t
+;;    ;; '((escape_sequence) @font-lock-escape-face)
 
    :language 'prolog
    :feature 'error
    :override t
    '((ERROR) @font-lock-warning-face)
-   )
+)   
   "Tree-sitter font-lock settings for `prolog-ts-mode'."
   )
 
@@ -264,14 +266,13 @@ the subtrees."
     ;; Font-lock.
     (setq-local treesit-font-lock-settings prolog-ts-mode--font-lock-settings)
      (setq-local treesit-font-lock-feature-list
-                '((comment function string error eot)
+                '((comment function  directive string error eot function-call misc-punctuation predicate-indicator
+                    number variable bracket operator)
                   ;; 'function' and 'variable' here play 
                   ;; different roles than in other ts modes, so we
                   ;; kept them at level 3.
-                  ( function-call misc-punctuation functor)
-
-
-		  (number variable bracket operator))
+                  ( r)
+		  ())
 		  )
 	       
    
