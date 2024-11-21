@@ -10,6 +10,7 @@ module.exports = grammar({
 	[$.body, $._infix_operator],
 	[$.predicate_definition, $._infix_operator],
 	[$.body, $.bracketed_term],
+	[$.body, $.curly_bracket_term],
   ],
 
     superTypes: ($) => [
@@ -33,26 +34,31 @@ module.exports = grammar({
 	    {
 	    // xfx
 	    const table = [
-		[prec.right,1000,","],
-		[prec.right,1050,"*->"],
-		[prec.right,1050,"->"],
-		[prec.right,1100,";"],
+		[prec.right,1000,",","comma"],
+		[prec.right,1050,"*->","if"],
+		[prec.right,1050,"->","if"],
+		[prec.right,1100,";","semi"],
 	    ];
 
 	    return choice(
-		...table.map(([fn, precedence, operator]) =>
+		...table.map(([fn, precedence, operator,label]) =>
 		    fn(
 			1200-precedence,
 			seq(
 			    $.body,
-			    field("operator", alias(operator, $.operator)),
+			    field(label, alias(operator, $.operator)),
 			    $.body,
 			),
 		    ),
 		),
 		field("literal",$.term),
-  		seq("(", $.body, ")" ),
-);
+  		field("bracketed",choice(
+		    seq("(", $.body, ")" ),
+		    seq("{", $.body, "}" )
+		),
+		     )
+	    )
+	    
 	},
 			     
 
@@ -70,7 +76,7 @@ module.exports = grammar({
               $._postfix_associative,
             //'thing that should not be matched'
             $.list,
-            $._curly_bracketed_notation,
+	    prec(-2000,     $._curly_bracketed_notation),
               prec(-2000,$.bracketed_term),
             $.number,
             //$.negaltive_number,
@@ -99,7 +105,7 @@ module.exports = grammar({
             ),
 	),
 
-	eot: ($) => /\.[\s\n]/,
+	eot: ($) => /\.[\r \t\n]/,
 
 	_atomic: ($) =>
 	prec(
@@ -370,26 +376,7 @@ module.exports = grammar({
 	bracketed_term: ($) =>
 	seq("(", $.term, ")" ),
 	curly_bracket_term: ($) =>
-	prec.right(
-            seq(
-		field("open_cb", alias("{", $.curly_bracket)),
-		optional(
-		    seq(
-			$.term,
-			repeat(
-			    prec.right(
-				seq(
-				    // TODO: Work out if correct
-				    ",",
-				    $.term,
-				),
-			    ),
-			),
-		    ),
-		),
-		field("close_cb", alias("}", $.curly_bracket)),
-            ),
-	),
+	seq("{", $.term, "}" ),
 
 	_std_term: ($) =>
 	seq($.atom,token.immediate("("),$._arguments,")"),

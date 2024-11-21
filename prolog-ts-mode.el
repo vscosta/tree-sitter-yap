@@ -69,23 +69,22 @@
 
 (defvar prolog-ts-mode--indent-rules
   `((prolog
-     ((field-is "head:") column-0 0)
-     ((field-is "body") parent-bol 2)
-     ((node-is "{") parent-bol 2)
      ((node-is ")") parent-bol 0)
-
-
-    ;; ((node-is "goal") prev-line 0)
-    ;;  ((node-is "semic")  parent 0)
-    ;;  ((node-is "rightarrow")   parent 0)
-    ;;  ((node-is "close_b")   parent 0)
+     ((node-is "}") parent-bol 0)
+     ((field-is "semi") grand-parent 0)
+     ((node-is "->") parent-bol -1)
+     ((node-is "*->") parent-bol -1)
+     ((node-is "predicate-definition") column-0 prolog-ts-mode-indent-offset )
+     ((parent-is "predicate-definition") parent 0)
+     ((field-is "bracketed")  parent-bol 2)
+     ((parent-is "body") parent-bol 0)
     ;;  ((parent-is "disj")  parent 2)
     ;;  ((node-is "bracketed_term")  parent 2)
     ;;  ((node-is "body")  parent-bol prolog-ts-mode-indent-offset)
     ;;  ((parent-is "list")  parent-bol 2)
     ;;  ((parent-is "arg")  parent-bol 0)
     ;;  ((node-is "close_list")  first-sibling 1)
-     ((catch-all)   prolog-ts-mode-indent-offset 0)
+
      ))
     "Tree-sitter indent rules for `prolog-ts-mode'.")
 

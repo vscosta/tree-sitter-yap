@@ -22,6 +22,52 @@
     "type": "body",
     "named": true,
     "fields": {
+      "bracketed": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "body",
+            "named": true
+          },
+          {
+            "type": "{",
+            "named": false
+          },
+          {
+            "type": "}",
+            "named": false
+          }
+        ]
+      },
+      "comma": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      },
+      "if": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "operator",
+            "named": true
+          }
+        ]
+      },
       "literal": {
         "multiple": false,
         "required": false,
@@ -32,7 +78,7 @@
           }
         ]
       },
-      "operator": {
+      "semi": {
         "multiple": false,
         "required": false,
         "types": [
@@ -82,31 +128,10 @@
   {
     "type": "curly_bracket_term",
     "named": true,
-    "fields": {
-      "close_cb": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "curly_bracket",
-            "named": true
-          }
-        ]
-      },
-      "open_cb": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "curly_bracket",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
           "type": "term",
@@ -740,11 +765,11 @@
   },
   {
     "type": "codes",
-    "named": false
+    "named": true
   },
   {
     "type": "codes",
-    "named": true
+    "named": false
   },
   {
     "type": "comment",
@@ -777,10 +802,6 @@
   {
     "type": "create_mutable",
     "named": false
-  },
-  {
-    "type": "curly_bracket",
-    "named": true
   },
   {
     "type": "current_source_module",
