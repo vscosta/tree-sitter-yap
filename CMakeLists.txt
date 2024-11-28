@@ -15,11 +15,11 @@ project(tree-sitter-prolog)
 
 
 #talk to python.pl
-add_library(tree-sitter-prolog  src/parser.c)
+add_library(tree-sitter-yap  src/parser.c)
 
 set(INSTALL_LIBDIR $ENV{HOME}/.emacs.d/tree-sitter)
 
-    install(TARGETS  tree-sitter-prolog
+    install(TARGETS  tree-sitter-yap
       LIBRARY DESTINATION ${INSTALL_LIBDIR}
       RUNTIME DESTINATION ${INSTALL_LIBDIR}
       ARCHIVE DESTINATION ${INSTALL_LIBDIR} )
