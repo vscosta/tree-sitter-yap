@@ -4,7 +4,7 @@ description = "Prolog grammar for the tree-sitter parsing library"
 version = "0.0.1"
 keywords = ["incremental", "parsing", "prolog"]
 categories = ["parsing", "text-editors"]
-repository = "https://github.com/Rukiza/tree-sitter-yap"
+repository = "https://github.com/vscosta/tree-sitter-yap"
 edition = "2018"
 license = "MIT"
 
@@ -20,7 +20,7 @@ include = [
 path = "bindings/rust/lib.rs"
 
 [dependencies]
-tree-sitter = "0.20.7"
+tree-sitter = "0.20.8"
 
 [build-dependencies]
 cc = "1.0"

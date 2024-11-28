@@ -10,3 +10,10 @@ cmake_install.cmake
 libtree-sitter-prolog.so
 Makefile
 zed/prolog/extension.toml
+src/grammar.json
+install_manifest.txt
+src/node-types.json
+src/parser.c
+tree-sitter-prolog.wasm
+src/parser.c
+src/parser.c
