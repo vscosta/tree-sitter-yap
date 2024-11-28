@@ -69,16 +69,16 @@
 
 (defvar prolog-ts-mode--indent-rules
   `((prolog
+     ((parent-is "predicate_definition") column-0  prolog-ts-mode-indent-offset )
+;;     ((node-is "-->") column-0 prolog-ts-mode-indent-offset )
      ((node-is ")") parent-bol 0)
      ((node-is "}") parent-bol 0)
-     ((field-is "semi") grand-parent 0)
-     ((node-is "->") parent-bol -1)
-     ((node-is "*->") parent-bol -1)
-     ((node-is "predicate-definition") column-0 prolog-ts-mode-indent-offset )
-     ((parent-is "predicate-definition") parent 0)
+     ((node-is ";") grand-parent 0)
+     ((node-is "->") grand-parent 0)
+     ((node-is "*->") grand-parent 0)
      ((field-is "bracketed")  parent-bol 2)
-     ((parent-is "body") parent-bol 0)
-    ;;  ((parent-is "disj")  parent 2)
+     ((field-is "and")  first-sibling 0)
+     ((parent-is "body")  parent 0)
     ;;  ((node-is "bracketed_term")  parent 2)
     ;;  ((node-is "body")  parent-bol prolog-ts-mode-indent-offset)
     ;;  ((parent-is "list")  parent-bol 2)
@@ -86,8 +86,9 @@
     ;;  ((node-is "close_list")  first-sibling 1)
 
      ))
-    "Tree-sitter indent rules for `prolog-ts-mode'.")
-
+    "Tree-sitter indent rules for `prolog-ts-mode'."
+    )
+  
 (defvar prolog-ts-mode--font-lock-settings
   (treesit-font-lock-rules
 
@@ -194,7 +195,7 @@
 
    :language 'prolog
    :feature 'error
-   :override t
+   :override nil
    '((ERROR) @font-lock-warning-face)
 )   
   "Tree-sitter font-lock settings for `prolog-ts-mode'."

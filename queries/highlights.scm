@@ -13,9 +13,9 @@
 (predicate_definition  head: (_ operator: (operator) @function))
 
 
-(body literal: (term (atom) @function))
+(body (term (atom) @function))
 
-(body literal: (_ operator: (operator) @function))
+(body (_ operator: (operator) @function))
 
 
 

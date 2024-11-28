@@ -6,11 +6,8 @@ module.exports = grammar({
     extras: ($) => [/\s/, "\t", "\n", "\r", $.comment],
 
     conflicts: ($) => [
-	[$._infix_operator, $._infix_operator],
-	[$.body, $._infix_operator],
-	[$.predicate_definition, $._infix_operator],
-	[$.body, $.bracketed_term],
-	[$.body, $.curly_bracket_term],
+	[	$.body,$._infix_operator],
+	[	$._infix_operator,$._infix_operator],
   ],
 
     superTypes: ($) => [
@@ -20,49 +17,61 @@ module.exports = grammar({
     ],
 
     rules: {    
-	source_file: ($) =>repeat( choice(prec(1,$.directive), $.predicate_definition)),
-	directive: ($) => prec.left(1200-1200+1,seq(":-",  $.term, $.eot)),
+	source_file: ($) =>seq(repeat($.header ),
+			       repeat( $.predicate_definition)),
+	header: ($)=> /[#][^\n]*/,
+	//directive: ($) => prec.left(1200-1200-1,seq(":-",  $.term, $.eot)),
 
 	predicate_definition: ($) => 
-		prec(0,
-		     seq(field("head",$.term),
-			 optional(seq(choice(":-","-->"),
-				     $.body)),
-			 $.eot)),
+		prec(1,
+		     seq(optional(field("head",$.term)),
+			 optional(
+			     prec(1200-1200,seq(choice(":-","-->"),
+						field("body",  $.body)))),
+		     $.eot)),
 
-	body: ($) => 
-	    {
-	    // xfx
-	    const table = [
-		[prec.right,1000,",","comma"],
-		[prec.right,1050,"*->","if"],
-		[prec.right,1050,"->","if"],
-		[prec.right,1100,";","semi"],
-	    ];
-
-	    return choice(
-		...table.map(([fn, precedence, operator,label]) =>
-		    fn(
-			1200-precedence,
-			seq(
-			    $.body,
-			    field(label, alias(operator, $.operator)),
-			    $.body,
-			),
-		    ),
+	body: ($) =>
+	choice(
+	    prec.right(
+		1201-1100,
+		seq(
+		    $.body,
+		    field("or", alias(";", $.operator)),
+		    $.body,
 		),
-		field("literal",$.term),
-  		field("bracketed",choice(
-		    seq("(", $.body, ")" ),
-		    seq("{", $.body, "}" )
+	    ),
+	    prec.right(
+		1201-1100,
+		seq(
+		    $.body,
+		    field("and", alias(",", $.operator)),
+		    $.body,
 		),
-		     )
-	    )
+	    ),
 	    
-	},
-			     
-
-	term: ($) => 	  choice(
+	    prec.right(
+		1201-1050,
+		seq(
+		    $.body,
+		    field("if", alias("->", $.operator)),
+		    $.body,
+		),
+	    ),
+	    prec.right(
+		1201-1050,
+		seq(
+		    $.body,
+			    field("softcut", alias("*->", $.operator)),
+		    $.body,
+			),
+	    ),
+	
+	prec.right(1201-600,field("module",seq($.atom,/:/,$.body))),
+	field("bracketed",prec(1200-1200-1,seq("(", $.body, ")" ))),
+	field("bracketed",prec(1200-1200-1,seq("{", $.body, "}" ))),
+	    field("literal",prec(1200-1200-1,$.term))
+    ),
+    	term: ($) => 	  choice(
             // Define Term
 //	    $.predicate_indicator,
             $.atom,
@@ -90,21 +99,6 @@ module.exports = grammar({
 //	predicate_indicator: ($) =>
 //      	seq(repeat(seq(choice($.atom,$.variable),":")),choice($.atom,$.variable),choice("/","//"),/[0-9]+/),
 
-	_method_term: ($) =>
-	prec(
-            1,
-            choice(
-		$._dot_atom,
-		$._dot_var,
-		seq(
-		    // Define Term
-		    field("atom_term", $._dot_atom_functor),
-		    $._arguments,
-		    ")",
-	),
-            ),
-	),
-
 	eot: ($) => /\.[\r \t\n]/,
 
 	_atomic: ($) =>
@@ -126,8 +120,8 @@ module.exports = grammar({
 	choice(seq( $.variable, token.immediate("("), $._arguments ,")"),
 	       seq(  $.variable, token.immediate("["), $._arguments ,"]"),
 	       seq(	$.variable, token.immediate("{"), $._arguments,"}"),
-	       seq(  $.atom, token.immediate("["), $._arguments ,"]"),
-	       seq(	$.atom, token.immediate("{"), $._arguments,"}")
+	       seq(  $._std_atom, token.immediate("["), $._arguments ,"]"),
+	       seq(	$._std_atom, token.immediate("{"), $._arguments,"}")
 	      ),
 	     
 	
@@ -142,17 +136,17 @@ module.exports = grammar({
 	_infix_operator: ($) => {
 	    // xfx
 	    const table = [
-		[prec, 800, "<=="],
-		[prec, 800, "-=="],
-		[prec, 800, "+=="],
-		[prec, 780, "of"],
-		[prec, 700, "within"],
-		[prec, 700, "ins"],
-		[prec, 700, "in"],
-		[prec, 450, ".."],
-		[prec, 50, "same"],
-		[prec, 200, "**"],
-		[prec, 600, "as"],
+		[prec.right, 800, "<=="],
+		[prec.right, 800, "-=="],
+		[prec.right, 800, "+=="],
+		[prec.right, 780, "of"],
+		[prec.right, 710, "within"],
+		[prec.right, 710, "ins"],
+		[prec.right, 710, "in"],
+		[prec.right, 450, ".."],
+		[prec.right, 50, "same"],
+		[prec.right, 200, "**"],
+		[prec.right, 600, "as"],
 		[prec, 700, ">="],
 		[prec, 700, "=<"],
 		[prec, 700, ">"],
@@ -235,8 +229,8 @@ module.exports = grammar({
 		[1150, "initialization"],
 		[1150, "thread_local"],
 		[1150, "dynamic"],
-		[1199, "?-"],
-		//        		[1199,":-"]
+		[1200, "?-"],
+		[1200,":-"]
 	    ];
 
 	    return choice(
@@ -254,6 +248,7 @@ module.exports = grammar({
 		[200, "-"],
 		[200, "+"],
 		[900, "\\+"],
+		[900, "not"],
 		[900, "not"],
 	    ];
 
@@ -317,10 +312,11 @@ module.exports = grammar({
 	code: ($) => seq(token("0'"), token.immediate(/./)),
 
 
+	_std_atom: ($) => /[a-z][a-zA-Z0-9_]*/,
 	atom: ($) => choice(
-	    token( /[a-z][a-zA-Z0-9_]*/),
+	    $._std_atom,
 	    $.quoted_atom,
-	    token( /[:=-@#%^&<>+\//\.]+/ ),
+	     /[:=-@#%^&<>+\//\.]+/ ,
 	    $.cut),
 
 	_base_atom: ($) => 
@@ -340,7 +336,7 @@ module.exports = grammar({
 	string: ($) => token(seq("`", /.*/, "`")),
 	codes: ($) => token(seq('"', /.*/, '"')),
 
-	comment: ($) => token(choice(
+	comment: ($) => (choice(
 	    /%[^\r\n]*/,
       seq(
         '/*',
