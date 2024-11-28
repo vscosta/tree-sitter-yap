@@ -4,3 +4,9 @@ build
 package-lock.json
 prebuilds
 /target/
+CMakeCache.txt
+cmake_install.cmake
+/CMakeFiles
+libtree-sitter-prolog.so
+Makefile
+zed/prolog/extension.toml
