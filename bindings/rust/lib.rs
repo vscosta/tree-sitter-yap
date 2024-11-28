@@ -6,7 +6,7 @@
 //! ```
 //! let code = "";
 //! let mut parser = tree_sitter::Parser::new();
-//! parser.set_language(tree_sitter_YOUR_LANGUAGE_NAME::language()).expect("Error loading YOUR_LANGUAGE_NAME grammar");
+//! parser.set_language(tree_sitter_prolog::language()).expect("Error loading prolog grammar");
 //! let tree = parser.parse(code, None).unwrap();
 //! ```
 //!
@@ -47,6 +47,6 @@ mod tests {
         let mut parser = tree_sitter::Parser::new();
         parser
             .set_language(super::language())
-            .expect("Error loading YOUR_LANGUAGE_NAME language");
+            .expect("Error loading Prolog");
     }
 }
