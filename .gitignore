@@ -17,3 +17,5 @@ src/parser.c
 tree-sitter-prolog.wasm
 src/parser.c
 src/parser.c
+yaplsp.log
+src/parser.c

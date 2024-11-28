@@ -1,11 +1,11 @@
-;;; yap-ts-mode.el --- tree-sitter support for Prolog  -*- lexical-binding: t; -*-
+;;; prolog-ts-mode.el --- tree-sitter support for Prolog  -*- lexical-binding: t; -*-
 
 
 ;; Copyright (C) 2022-2023 Free Software Foundation, Inc.
 
-;; Author     : Randy Taylor <dev@rjt.dev>
-;; Maintainer : Randy Taylor <dev@rjt.dev>
-;; Created    : December 2022
+;; Author     : Vitor Santos Costa <vscosta@github.com>
+;; Maintainer : Vitor Santos Costa <vscosta@github.com>
+;; Created    : November 2024
 ;; Keywords   : prolog languages tree-sitter
 
 ;; This file is part of GNU Emacs.
